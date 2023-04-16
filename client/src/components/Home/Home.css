@@ -1,0 +1,52 @@
+.botonera{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:10px;
+    position:absolute;
+    right: 16%
+}
+.Input{
+    position:absolute;
+    right:2%;
+    border-radius: 55px;
+
+}
+.contenedor{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);;
+    gap:5px;
+}
+.ContBot{
+   position: relative;
+   left:37%;
+ 
+ 
+}
+.button{
+    background-color:black;
+    color:white;
+    padding: 30px;
+    border-radius:5%;
+    font-weight: 800px;
+
+    }
+    .button:hover{
+        background-color: rgb(40, 66, 103);
+    }
+    .Title{
+        text-align: center;
+        margin-top: 40px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 50px;
+    }
+.alert{
+    position:absolute;
+background-color: rgb(210, 65, 65);
+}
+.Botonera2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:5px;
+   
+
+}
