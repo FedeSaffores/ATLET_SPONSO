@@ -4,7 +4,8 @@ const { promisify } = require("util");
 const { User } = require("../db");
 
 exports.register = async (req, res) => {
-  const { name, lastname, email, password } = req.body;
+  const { name, lastname, email, password, address, tel, isAdmin } = req.body;
+  console.log(name, lastname, email, password);
   if (!name || !lastname || !email || !password || !email) {
     return res.status(404).send("You must complete all the files");
   }
@@ -23,8 +24,12 @@ exports.register = async (req, res) => {
         password: newHash,
         email: req.body.email,
         confirmationCode: token,
+        address: req.body.address,
+        tel: req.body.tel,
+        isActive: req.body.isActive,
+        isAdmin: req.body.isAdmin,
       });
-      sendEmail(user.name, user.email, user.confirmationCode);
+      //sendEmail(user.name, user.email, user.confirmationCode);
       return res.status(200).json(user);
     } else {
       return res.status(302).json(dbSearch);
@@ -62,6 +67,7 @@ exports.verifyUser = (req, res, next) => {
 };
 exports.login = async (req, res) => {
   const { email, password } = req.body;
+  console.log(email, password);
   try {
     if (!email || !password) {
       return res.status(404).send("Debe completar todos los campos");

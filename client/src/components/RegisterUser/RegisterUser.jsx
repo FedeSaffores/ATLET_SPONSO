@@ -3,7 +3,7 @@ import React from "react";
 import { useFormik } from "formik";
 import axios from "axios";
 import { schemauser } from "../../schemas/user";
-
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const onSubmit = async (values, actions) => {
@@ -28,7 +28,7 @@ const onSubmit = async (values, actions) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   actions.resetForm();
 };
-
+//const navigate = useNavigate()
 const FormUser = () => {
   const {
     values,

@@ -19,15 +19,11 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <App />
-      <Routes>
-        <Route path="/fighters" element={<Fighters />} />
-      </Routes>
+
       <Routes>
         <Route path="/profile" element={<Profile />} />
       </Routes>
-      <Routes>
-        <Route path="/login" element={<LogUser />} />
-      </Routes>
+
       <Routes>
         <Route path="/landing" element={<Landing />} />
       </Routes>
@@ -41,7 +37,13 @@ ReactDOM.render(
         <Route path="/newFighter" element={<RegisterFighter />} />
       </Routes>
       <Routes>
+        <Route path="/fighters" element={<Fighters />} />
+      </Routes>
+      <Routes>
         <Route path="/formSponsor" element={<FormSponsor />} />
+      </Routes>
+      <Routes>
+        <Route path="/login" element={<LogUser />} />
       </Routes>
       <Routes>
         <Route path="/formuser" element={<FormUser />} />

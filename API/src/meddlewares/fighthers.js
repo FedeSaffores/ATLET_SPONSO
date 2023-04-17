@@ -3,6 +3,7 @@ const { Router } = require("express");
 const {
   getAllFighters,
   getFightersByPk,
+  getFighterByEmail,
 } = require("../controllers/getAllFighters.js");
 
 const router = Router();
@@ -15,7 +16,6 @@ router.get("/myfighter", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  console.log("bbb");
   try {
     const allFight = await getAllFighters(req.query.name);
     res.status(200).json(allFight);
@@ -25,7 +25,6 @@ router.get("/", async (req, res) => {
   }
 });
 router.get("/:idFighter", async (req, res) => {
-  console.log("aaaaa");
   try {
     const { idFighter } = req.params;
     const fighter = await getFightersByPk(idFighter);

@@ -5,8 +5,9 @@ const authController = require("../controllers/autentController.js");
 //const jwt = require("jsonwebtoken");
 
 const router = Router();
-router.post("/login", authController.login);
+
 router.post("/user", authController.register);
+router.post("/login", authController.login);
 router.get("/confirm/:confirmationCode", authController.verifyUser);
 
 module.exports = router;

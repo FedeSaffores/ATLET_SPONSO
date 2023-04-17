@@ -3,16 +3,15 @@ const passport = require("passport");
 const bcryptjs = require("bcryptjs");
 const multer = require("multer");
 
-//const { Comentario, Fighters } = require("../db");
 const { newFighters } = require("../controllers/createNewFighters.js");
 const { newSponsors } = require("../controllers/createNewSponsors.js");
-//const { getFightersByPk } = require("../controllers/getAllFighters.js");
-//const {}
+
 const userService = require("../meddlewares/users");
 const fighterControllers = require("../meddlewares/fighthers");
 const sponsorsControllers = require("../meddlewares/sponsors");
 const userControllers = require("../controllers/autentController.js");
-//const fighterControllers = require("../controllers/getAllFighters.js");
+const autentController = require("../meddlewares/autent.js");
+
 //const meddlewaresnewFighter = require("../meddlewares/createFighters");
 
 /* router.get("/", (req, res) => {
@@ -32,17 +31,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.use(
-  "/fighters",
-  /*  passport.authenticate("jwt", { session: false }), */
-  fighterControllers
-  //)
-);
-
-router.use("/:idFighter", fighterControllers);
 router.post(
   "/user",
-  passport.authenticate("jwt", { session: false }),
+  /*    passport.authenticate("jwt", { session: false }),  */
   userControllers.register
 );
 router.use(
@@ -50,9 +41,17 @@ router.use(
   passport.authenticate("jwt", { session: false }),
   userService
 );
-router.post("/login", userControllers.login);
-router.use("/sponsor", sponsorsControllers);
+//router.post("/login", userControllers.login);
+
 router.post("/newFighter", upload.single("image"), newFighters);
+router.use(
+  "/fighters",
+  /*  passport.authenticate("jwt", { session: false }), */
+  fighterControllers
+);
+router.use("/sponsor", sponsorsControllers);
 router.post("/newSponsor", newSponsors);
 
+router.use("/", autentController);
+router.use("/:idFighter", fighterControllers);
 module.exports = router;

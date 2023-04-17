@@ -9,8 +9,7 @@ const router = Router();
 
 router.get("/myuser", async (req, res) => {
   if (req.user) {
-    //   console.log("aaaaa");
-    console.log(req.user);
+ 
     return res.status(200).send(req.user);
   }
   return res.status(404).send("No esta logueado");

@@ -5,13 +5,13 @@ const {
   GET_MYUSER,
   GET_USER_BY_EMAIL,
   GET_USER_DETAIL,
-  GET_DETAIL_FAIGHTER,
+  GET_DETAIL_FIGHTER,
 } = require("./const");
 
 const inicialState = {
   user: [],
   sponsors: [],
-  fighters: [],
+  Fighters: [],
   userDetail: [],
   myUser: [],
 };
@@ -19,21 +19,22 @@ const inicialState = {
 function reducer(state = inicialState, { type, payload }) {
   switch (type) {
     case GET_FIGHTERS: {
+      console.log(payload);
       return {
         ...state,
-        fighters: payload,
+        Fighters: payload,
       };
     }
     case GET_FIGHTERS_NAME: {
       return {
         ...state,
-        fighters: payload,
+        Fighters: payload,
       };
     }
-    case GET_DETAIL_FAIGHTER: {
+    case GET_DETAIL_FIGHTER: {
       return {
         ...state,
-        fighterDetail: payload,
+        FighterDetail: payload,
       };
     }
     case GET_SPONSORS: {

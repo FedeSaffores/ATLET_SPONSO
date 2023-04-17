@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
@@ -5,7 +6,6 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 //import Nav from "react-bootstrap/Nav";
 
-import React from "react";
 import "./Home.css";
 
 import { getFighters, getFightersByName, getMyUser } from "../../Redux/actions";
@@ -15,8 +15,8 @@ function Home() {
   const navigate = useNavigate();
   const myuser = useSelector((state) => state.myUser);
 
-  const fighters = useSelector((state) => state.fighters);
-
+  const fighters = useSelector((state) => state.Fighters);
+  console.log(fighters);
   const [busqueda, setBusqueda] = useState("");
 
   const InputHandler = (e) => {

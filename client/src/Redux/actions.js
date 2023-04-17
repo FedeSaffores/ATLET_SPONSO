@@ -7,7 +7,7 @@ import {
   GET_SPONSORS_NAME,
   GET_USER_BY_EMAIL,
   GET_USER_DETAIL,
-  GET_DETAIL_FAIGHTER,
+  GET_DETAIL_FIGHTER,
 } from "./const";
 
 /* const instance = axios.create({
@@ -40,8 +40,8 @@ export function getFightersByName(name) {
 }
 export function getFighter(idFighter) {
   return async (dispatch) => {
-    const res = await axios.get(`/fighters/${idFighter}`);
-    dispatch({ type: GET_DETAIL_FAIGHTER, payload: res.data });
+    const res = await instance.get(`/fighters/${idFighter}`);
+    dispatch({ type: GET_DETAIL_FIGHTER, payload: res.data });
   };
 }
 export function getSponsors() {

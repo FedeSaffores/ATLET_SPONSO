@@ -1,25 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-
 import { getFighters, getFightersByName } from "../../Redux/actions";
 
 function Fighters() {
   const dispatch = useDispatch();
-  const fighters = useSelector((state) => state.fighters);
-  console.log(fighters);
-  const [busqueda, setBusqueda] = useState("");
-
-  const InputHandler = (e) => {
-    setBusqueda(e.target.value);
-  };
-  const onClickHandler = () => {
-    dispatch(getFightersByName(busqueda));
-  };
-
-  const HomeHandler = () => {
-    dispatch(getFighters());
-  };
+  const fighters = useSelector((state) => state.Fighters);
 
   useEffect(() => {
     dispatch(getFighters());
@@ -27,19 +14,18 @@ function Fighters() {
 
   return (
     <div>
-      {fighters?.id(
+      {fighters?.map((e) => (
         <>
           <h2>NAME</h2>
-          {fighters.name}
+          {e.name}
           <h2>LASTNAME</h2>
-          {fighters.lastname}
+          {e.lastname}
           <br></br>
           <br></br>
-          {fighters.image}
+          {e.image}
         </>
-      )}
+      ))}
     </div>
   );
 }
-
 export default Fighters;
