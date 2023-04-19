@@ -5,7 +5,7 @@ const userJson = [
   {
     name: "Federico",
     lastname: "Saffores",
-    email: "safforesfederico@gmail.com",
+    email: "federico@gmail.com",
     password: "12345678",
     address: "AlberdiN!123",
     tel: 12345678,

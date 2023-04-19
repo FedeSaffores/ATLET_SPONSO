@@ -23,8 +23,11 @@ module.exports = (sequelize) => {
         unique: true,
         allowNull: false,
       },
-      instergram: {
+      instagram: {
         type: DataTypes.TEXT,
+      },
+      tel: {
+        type: DataTypes.BIGINT,
       },
       description: {
         type: DataTypes.STRING,

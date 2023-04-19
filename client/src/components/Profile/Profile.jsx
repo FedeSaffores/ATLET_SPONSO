@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Profile() {
   const { idFighter } = useParams();
@@ -17,8 +18,12 @@ function Profile() {
     <div>
       <h3>{fighter.name}</h3>
       <h3>{fighter.lastname}</h3>
-      <h3>{fighter.email}</h3>
       <h3>{fighter.description}</h3>
+      <Link to={`${fighter.instagram}`}>Instagram</Link>
+      <h2>Email</h2>
+      <h3>{fighter.email}</h3>
+      <h2>Tel</h2>
+      <h3>{fighter.tel}</h3>
       <h3>{fighter.score}</h3>
       <h3>{fighter.quality}</h3>
       <h3>{fighter.image}</h3>

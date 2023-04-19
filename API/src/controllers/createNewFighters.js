@@ -10,19 +10,20 @@ const newFighters = async (req, res) => {
     lastname,
     email,
     password,
+    tel,
+    instagram,
     description,
     score,
     price,
     quality,
     stock,
-    image,
     promedio,
     isReview,
     instergram,
   } = JSON.parse(req.body.data);
   /*   console.log(req.body);
-  console.log(req.files); */
-  console.log(JSON.parse(req.body.data));
+  console.log(req.files);
+  console.log(JSON.parse(req.body.data)); */
   try {
     if (!email) {
       return res.json({ info: "Email required" });
@@ -35,12 +36,14 @@ const newFighters = async (req, res) => {
       lastname,
       email,
       password,
+      tel,
+      instagram,
       description,
       score,
       price,
       quality,
       stock,
-      image,
+      image: req.file.filename,
       promedio,
       isReview,
     });

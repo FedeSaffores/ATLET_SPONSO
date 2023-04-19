@@ -8,29 +8,18 @@ import { Link } from "react-router-dom";
 
 import "./Home.css";
 
-import { getFighters, getFightersByName, getMyUser } from "../../Redux/actions";
+import { getMyUser } from "../../Redux/actions";
 
 function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const myuser = useSelector((state) => state.myUser);
 
-  const fighters = useSelector((state) => state.Fighters);
-  console.log(fighters);
-  const [busqueda, setBusqueda] = useState("");
+  /*  const fighters = useSelector((state) => state.Fighters);
+  console.log(fighters); */
 
-  const InputHandler = (e) => {
-    //console.log(e.target.value);
-    setBusqueda(e.target.value);
-  };
-  const onClickHandler = () => {
-    dispatch(getFightersByName(busqueda));
-  };
-  const HomeHandler = () => {
-    dispatch(getFighters());
-  };
   useEffect(() => {
-    dispatch(getFighters());
+    //dispatch(getFighters());
     dispatch(getMyUser());
   }, [dispatch]);
   return (
@@ -65,24 +54,14 @@ function Home() {
               </div>
             </a>
           </li>
+          <br></br>
+          <br></br>
+          <li className="BotFight">
+            <Link to={"/fighters"}>
+              <button class="btn btn-info"> Fighters</button>
+            </Link>
+          </li>
         </ul>
-        <input
-          type="text"
-          placeholder="Search"
-          className="Input"
-          name="input"
-          autoComplete="off"
-          onChange={InputHandler}
-          value={busqueda}
-        />
-        <div className="botonera">
-          <button type="button" class="btn btn-info" onClick={onClickHandler}>
-            Search
-          </button>
-          <button type="button" class="btn btn-info" onClick={HomeHandler}>
-            Reset
-          </button>
-        </div>
       </nav>
       <h1 className="Title">SPOATLET</h1>
       <div className="ContBot">

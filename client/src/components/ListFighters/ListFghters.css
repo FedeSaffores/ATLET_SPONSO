@@ -1,0 +1,42 @@
+.botonera{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:10px;
+    position:absolute;
+    right: 1%
+}
+.Input{
+    padding: 5px;
+    border-radius: 30px 30px;
+}
+.box{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:3px;
+    margin-top: 2px;
+}
+.boxFighter{
+    display: grid;
+    grid-template-rows: 10%; 
+    background-color: rgb(65, 61, 55);
+    padding: 50px;
+    border-radius: 25px;
+    position: relative;
+}
+.Atleta{
+    position: relative;
+    left: 15%;
+    color:white;
+    font-size: 60px;
+}
+.NOMBRE{
+    position: relative;
+    left: 30%;
+    margin-top: 30px;
+}
+.img{
+    height: 60%;
+    width: 70%;
+    position: relative;
+    left: 10%;
+}

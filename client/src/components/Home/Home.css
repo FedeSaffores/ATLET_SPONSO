@@ -1,21 +1,12 @@
-.botonera{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap:10px;
-    position:absolute;
-    right: 16%
-}
-.Input{
-    position:absolute;
-    right:2%;
-    border-radius: 55px;
 
+.BotFight{
+    margin-top: 10px;
 }
-.contenedor{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);;
+
+/* .contenedor{
+   
     gap:5px;
-}
+} */
 .ContBot{
    position: relative;
    left:37%;
@@ -43,10 +34,8 @@
     position:absolute;
 background-color: rgb(210, 65, 65);
 }
-.Botonera2{
+ .Botonera2{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap:5px;
-   
-
-}
+} 

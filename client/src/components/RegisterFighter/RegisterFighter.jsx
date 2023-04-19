@@ -14,7 +14,7 @@ const RegisterFighter = () => {
   const Myuser = useSelector((state) => state.myUser);
 
   const onSubmit = async (values, actions) => {
-    const formdata = new FormData();
+    let formdata = new FormData();
     formdata.append("image", values.image);
     //formdata.append()
     const parceValues = {
@@ -24,7 +24,9 @@ const RegisterFighter = () => {
       password: Myuser.password,
       tel: Myuser.tel,
       address: Myuser.address,
-      ...values,
+      description: values.description,
+      quality: values.quality,
+      instagram: values.instagram,
     };
     console.log(parceValues);
     formdata.append("data", JSON.stringify(parceValues));
@@ -65,7 +67,7 @@ const RegisterFighter = () => {
       description: "",
       quality: "",
       image: null,
-      instergram: "",
+      instagram: "",
     },
     //  validationSchema: basicSchema,
     onSubmit,
@@ -111,23 +113,23 @@ const RegisterFighter = () => {
             )}
           </div>
           <div>
-            <label html="instergram" className="lebel">
-              Intergram:
+            <label html="instagram" className="lebel">
+              Instagram:
             </label>
             <br></br>
             <input
-              value={values.instergram}
+              value={values.instagram}
               onChange={handleChange}
-              id="instergram"
-              type="instergram"
-              placeholder="Enter your link of instergram"
+              id="instagram"
+              type="instagram"
+              placeholder="Enter your link of instagram"
               onBlur={handleBlur}
               className={
-                errors.instergram && touched.instergram ? "input-error" : ""
+                errors.instagram && touched.instagram ? "input-error" : ""
               }
             />
-            {errors.instergram && touched.instergram && (
-              <p className="error">{errors.instergram}</p>
+            {errors.instagram && touched.instagram && (
+              <p className="error">{errors.instagram}</p>
             )}
           </div>
           <div className="form-group">

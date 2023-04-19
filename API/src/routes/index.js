@@ -11,7 +11,9 @@ const fighterControllers = require("../meddlewares/fighthers");
 const sponsorsControllers = require("../meddlewares/sponsors");
 const userControllers = require("../controllers/autentController.js");
 const autentController = require("../meddlewares/autent.js");
-
+const uuid = require("uuid");
+const moment = require("moment");
+const path = require("path");
 //const meddlewaresnewFighter = require("../meddlewares/createFighters");
 
 /* router.get("/", (req, res) => {
@@ -20,12 +22,16 @@ const autentController = require("../meddlewares/autent.js");
 }); */
 const router = Router();
 // Configuración de multer para guardar la imagen en el servidor
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "Files/");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    const extencion = path.extname(file.originalname);
+    const utc = moment().utc().format("YYYYMMDD-HHmmss");
+    const newid = uuid.v4();
+    cb(null, `${utc}-${newid}${extencion}`);
   },
 });
 
