@@ -15,13 +15,13 @@ import LogUser from "./components/Login/Login";
 import RegisterFighter from "./components/RegisterFighter/RegisterFighter";
 import Profile from "./components/Profile/Profile";
 import Fighters from "./components/ListFighters/ListFighters";
+import Sponsors from "./components/ListSponsors/ListSponsor";
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <App />
-
       <Routes>
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/sponsor" element={<Sponsors />} />
       </Routes>
 
       <Routes>
@@ -38,6 +38,9 @@ ReactDOM.render(
       </Routes>
       <Routes>
         <Route path="/fighters" element={<Fighters />} />
+      </Routes>
+      <Routes>
+        <Route path="/profile/:id" element={<Profile />} />
       </Routes>
       <Routes>
         <Route path="/formSponsor" element={<FormSponsor />} />

@@ -9,13 +9,20 @@
     padding: 5px;
     border-radius: 30px 30px;
 }
+
 .box{
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap:3px;
-    margin-top: 2px;
-}
-.boxFighter{
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right:10px;
+    
+} 
+  
+ 
+/* .boxFighter{
     display: grid;
     grid-template-rows: 10%; 
     background-color: rgb(65, 61, 55);
@@ -39,4 +46,4 @@
     width: 70%;
     position: relative;
     left: 10%;
-}
+} */

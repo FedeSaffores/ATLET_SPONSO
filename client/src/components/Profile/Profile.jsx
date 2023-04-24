@@ -3,14 +3,16 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 function Profile() {
-  const { idFighter } = useParams();
+  const { id } = useParams();
   const [fighter, setFighter] = useState();
   useEffect(() => {
-    if (idFighter) console.log(idFighter);
-    fetch("http://localhost:3001/fighters" + idFighter)
-      .then((res) => res.json())
-      .then((res) => setFighter(res));
-  }, [idFighter, setFighter]);
+    console.log(id);
+    if (id)
+      fetch("http://localhost:3001/fighters" + id)
+        .then((res) => res.json())
+        .then((res) => setFighter(res));
+  }, [id, setFighter]);
+
   if (fighter) {
     return null;
   }

@@ -1,6 +1,10 @@
 
 .BotFight{
     margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:5px;
+
 }
 
 /* .contenedor{
@@ -8,6 +12,7 @@
     gap:5px;
 } */
 .ContBot{
+    
    position: relative;
    left:37%;
  

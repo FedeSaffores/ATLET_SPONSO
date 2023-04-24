@@ -3,30 +3,26 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  getFighters,
-  getFightersByName,
-  deleteFighter,
-} from "../../Redux/actions";
-import "./ListFghters.css";
+import { getSponsors, getSponsorsByName } from "../../Redux/actions";
+import "./ListSponsor.css";
 
-function Fighters() {
+function Sponsors() {
   const dispatch = useDispatch();
-  const fighters = useSelector((state) => state.Fighters);
+  const sponsors = useSelector((state) => state.sponsors);
   const [busqueda, setBusqueda] = useState("");
 
   const InputHandler = (e) => {
     setBusqueda(e.target.value);
   };
   const onClickHandler = () => {
-    dispatch(getFightersByName(busqueda));
+    dispatch(getSponsorsByName(busqueda));
   };
   const HomeHandler = () => {
-    dispatch(getFighters());
+    dispatch(getSponsors());
   };
 
   useEffect(() => {
-    dispatch(getFighters());
+    dispatch(getSponsors());
   }, [dispatch]);
 
   return (
@@ -56,37 +52,31 @@ function Fighters() {
               </button>
             </div>
             <Link to={"/"}>
-              <button class="btn btn-info"> HOME</button>
+              <button class="btn btn-info">HOME</button>
             </Link>
           </li>
         </ul>
       </nav>
-      {fighters?.map((e) => (
-        <div key={e.id} className="box">
-          <div class="card" style={{ width: "400px" }}>
-            <img
-              class="card-img-top"
-              src={`http://localhost:3001/fotos/${e.image}`}
-              alt={e.name}
-            />
-            <div class="card bg-info">
-              <div class="card-body text-center">
+
+      <div className="Box">
+        <h2 className="Title">SPONSORS LIST</h2>
+        {sponsors?.map((e) => (
+          <div class="container p-3 my-3 border bg-light">
+            <div class="container p-3 my-3 bg-dark text-white">
+              <div class="container p-3 my-3 bg-primary text-white">
                 <h4>
-                  {e.name}
-                  <br />
-                  {e.lastname}
+                  {e.companyName}
+                  <br></br>
+                  {e.description}
+                  <br></br>
+                  {e.email}
                 </h4>
-                <h4>{e.description}</h4>
-                <p class="card-text">Some example text.</p>
-                <a href={`/profile/${e.id}`} class="btn btn-primary">
-                  See Profile
-                </a>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
-export default Fighters;
+export default Sponsors;

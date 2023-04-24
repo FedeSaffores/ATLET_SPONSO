@@ -6,9 +6,9 @@ const newSponsors = async (req, res) => {
   const files = req.files;
   console.log(files);
   const {
-    sponsorName,
+    name,
     email,
-    password,
+    companyName,
     score,
     isActive,
     description,
@@ -25,9 +25,9 @@ const newSponsors = async (req, res) => {
     //console.log(existe);
     if (existe) return res.json({ info: "The Sponsor already exists" });
     const sponsor = await Sponsors.create({
-      sponsorName,
+      name,
       email,
-      password,
+      companyName,
       score,
       isActive,
       description,
@@ -35,7 +35,7 @@ const newSponsors = async (req, res) => {
       promedio,
       isReview,
     });
-    console.log(sponsor);
+    //console.log(sponsor);
     res.json({ info: "THE SPONSOR WAS SUCCESSFULLY CREATED" });
   } catch (error) {
     console.log(error);

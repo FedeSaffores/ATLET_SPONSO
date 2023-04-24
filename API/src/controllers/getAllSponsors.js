@@ -3,28 +3,30 @@ const { Op } = require("sequelize");
 
 const JsonSponsors = [
   {
-    username: "coca123",
+    name: "coca123",
     email: "cocacola@gmail.com",
+    companyName: "cocacola",
+    description: "produccion de gaseosas",
     password: "123213",
-    image: "",
-    promedio: 3,
+    isActive: true,
     score: 2,
     isReview: true,
-    isActive: true,
+    promedio: 3,
   },
 ];
 
-const getAllSponsor = async (name) => {
+const getAllSponsor = async (companyName) => {
   if ((await Sponsors.count()) === 0) {
-    await Sponsors.bulkCreate(JsonSponsors);
+    await Sponsors.bulckCreate(JsonSponsors);
   }
-  if (!name) {
+  console.log(companyName);
+  if (!companyName) {
     return await Sponsors.findAll({});
   } else {
     return await Sponsors.finAll({
       where: {
-        name: {
-          [Op.iLike]: `%${name}%`,
+        companyName: {
+          [Op.iLike]: `%${companyName}%`,
         },
       },
     });

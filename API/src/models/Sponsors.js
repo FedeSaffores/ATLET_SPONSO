@@ -10,9 +10,9 @@ module.exports = (sequelize) => {
         primaryKey: true,
         allowNull: false,
       },
-      sponsorName: {
+      name: {
         type: DataTypes.TEXT,
-        unique: true,
+
         allowNull: false,
       },
       email: {
@@ -20,13 +20,14 @@ module.exports = (sequelize) => {
         unique: true,
         allowNull: false,
       },
-      password: {
+      companyName: {
         type: DataTypes.TEXT,
+        unique: true,
         allowNull: false,
       },
       description: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
 
       isActive: {
@@ -38,9 +39,6 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         defaultValue: 5,
         validate: { min: 1, max: 5 },
-      },
-      image: {
-        type: DataTypes.STRING,
       },
       isReview: {
         type: DataTypes.BOOLEAN,

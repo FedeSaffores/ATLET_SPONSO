@@ -6,6 +6,7 @@ import { login } from "../../schemas/login";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyUser, getUserByEmail } from "../../Redux/actions";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const LogUser = () => {
@@ -65,138 +66,85 @@ const LogUser = () => {
   }, [dispatch, user, email]);
 
   return (
-    <div className="container">
+    <div>
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul class="navbar-nav">
+          <li>
+            <a class="nav-link" href="/login">
+              <div>
+                <Link to={"/"}>
+                  <button class="btn btn-info">HOME</button>
+                </Link>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
       <div className="p-3 mb-2 bg-secondary text-white">
-        <h1 className="h1">LOGIN</h1>
-        <form
-          encType="multipart/form-data"
-          onSubmit={handleSubmit}
-          autoComplete="off"
-        >
-          <div className="form-group">
-            <label htmlFor="email" className="lebel">
-              EMAIL:
-            </label>
-            <br></br>
-            <input
-              value={values.email}
-              onChange={handleChange}
-              id="email"
-              type="email"
-              placeholder="Enter your email"
-              onBlur={handleBlur}
-              className={errors.email && touched.email ? "input-error" : ""}
-            />
-            {errors.email && touched.email && (
-              <p className="error">{errors.email}</p>
-            )}
+        <div class="container p-3 my-3 border bg-light">
+          <div class="container p-3 my-3 bg-dark text-white">
+            <div class="container p-3 my-3 bg-primary text-white">
+              <div className="p-3 mb-2 bg-secondary text-white">
+                <h1 className="h1">LOGIN</h1>
+                <form
+                  encType="multipart/form-data"
+                  onSubmit={handleSubmit}
+                  autoComplete="off"
+                >
+                  <div className="form-group">
+                    <label htmlFor="email" className="lebel">
+                      EMAIL:
+                    </label>
+                    <br></br>
+                    <input
+                      value={values.email}
+                      onChange={handleChange}
+                      id="email"
+                      type="email"
+                      placeholder="Enter your email"
+                      onBlur={handleBlur}
+                      className={
+                        errors.email && touched.email ? "input-error" : ""
+                      }
+                    />
+                    {errors.email && touched.email && (
+                      <p className="error">{errors.email}</p>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="password" className="lebel">
+                      PASSWORD:
+                    </label>
+                    <br></br>
+                    <input
+                      id="password"
+                      type="password"
+                      placeholder="Enter your Password"
+                      onChange={handleChange}
+                      value={values.password}
+                      onBlur={handleBlur}
+                      className={
+                        errors.password && touched.password ? "input-error" : ""
+                      }
+                    />
+                    {errors.password && touched.password && (
+                      <p className="error">{errors.password}</p>
+                    )}
+                  </div>
+                  <button
+                    disabled={isSubmitting}
+                    type="submit"
+                    class="btn btn-primary"
+                  >
+                    Submit
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="password" className="lebel">
-              PASSWORD:
-            </label>
-            <br></br>
-            <input
-              id="password"
-              type="password"
-              placeholder="Enter your Password"
-              onChange={handleChange}
-              value={values.password}
-              onBlur={handleBlur}
-              className={
-                errors.password && touched.password ? "input-error" : ""
-              }
-            />
-            {errors.password && touched.password && (
-              <p className="error">{errors.password}</p>
-            )}
-          </div>
-          <button disabled={isSubmitting} type="submit" class="btn btn-primary">
-            Submit
-          </button>
-        </form>
+        </div>
       </div>
     </div>
   );
 };
 export default LogUser;
-
-/* const FormFighter = () => {
-    const {
-      values,
-      errors,
-      touched,
-      isSubmitting,
-      handleBlur,
-      handleChange,
-      handleSubmit,
-    } = useFormik({
-      initialValues: {
-        email: "",
-        password: "",
-      },
-      validationSchema: basicSchema,
-      onSubmit,
-    });
-    console.log(errors);
-
-    return (
-      <div className="container">
-        <div className="p-3 mb-2 bg-secondary text-white">
-          <form
-            encType="multipart/form-data"
-            onSubmit={handleSubmit}
-            autoComplete="off"
-          >
-            <div className="form-group">
-              <label html="email" className="label">
-                Email:
-              </label>
-              <br></br>
-              <input
-                value={values.email}
-                onChange={handleChange}
-                id="email"
-                type="email"
-                placeholder="Enter your Email"
-                onBlur={handleBlur}
-                className={errors.email && touched.email ? "input-error" : ""}
-              />
-              {errors.email && touched.email && (
-                <p className="error">{errors.email}</p>
-              )}
-            </div>
-            <div className="form-group">
-              <label htmlFor="password" className="lebel">
-                PASSWORD:
-              </label>
-              <br></br>
-              <input
-                id="password"
-                type="password"
-                placeholder="Enter your Password"
-                onChange={handleChange}
-                value={values.password}
-                onBlur={handleBlur}
-                className={
-                  errors.password && touched.password ? "input-error" : ""
-                }
-              />
-              {errors.password && touched.password && (
-                <p className="error">{errors.password}</p>
-              )}
-            </div>
-            <button
-              disabled={isSubmitting}
-              type="submit"
-              class="btn btn-primary"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-      </div>
-    );
-  };
-}
- */

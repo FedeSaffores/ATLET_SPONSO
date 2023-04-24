@@ -60,6 +60,9 @@ function Home() {
             <Link to={"/fighters"}>
               <button class="btn btn-info"> Fighters</button>
             </Link>
+            <Link to={"/sponsor"}>
+              <button class="btn btn-info"> Sponsors</button>
+            </Link>
           </li>
         </ul>
       </nav>

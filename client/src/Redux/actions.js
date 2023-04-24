@@ -2,12 +2,15 @@ import axios from "axios";
 import {
   GET_FIGHTERS,
   GET_SPONSORS,
+  DELETE_SPONSOR,
   GET_MYUSER,
   GET_FIGHTERS_NAME,
   GET_SPONSORS_NAME,
+  GET_DETAIL_SPONSOR,
   GET_USER_BY_EMAIL,
   GET_USER_DETAIL,
   GET_DETAIL_FIGHTER,
+  DELETE_FIGHTER,
 } from "./const";
 
 /* const instance = axios.create({
@@ -38,6 +41,14 @@ export function getFightersByName(name) {
     });
   };
 }
+export function deleteFighter(id) {
+  return async function (dispatch) {
+    const json = await instance.delete(`http://localhost:3001/fighters/${id}`);
+    return dispatch({
+      type: DELETE_FIGHTER,
+    });
+  };
+}
 export function getFighter(idFighter) {
   return async (dispatch) => {
     const res = await instance.get(`/fighters/${idFighter}`);
@@ -50,13 +61,27 @@ export function getSponsors() {
     return dispatch({ type: GET_SPONSORS, payload: json.data });
   };
 }
-export function getSponsorsByName(name) {
+export function getSponsorsByName(companyName) {
   return async function (dispatch) {
-    const json = await instance.get(`/sponsor?name=${name}`);
+    const json = await instance.get(`/sponsor?companyName=${companyName}`);
     return dispatch({
       type: GET_SPONSORS_NAME,
       payload: json.data,
     });
+  };
+}
+export function deleteSponsor(id) {
+  return async function (dispatch) {
+    const json = await instance.delete(`http://localhost:3001/sponsor/${id}`);
+    return dispatch({
+      type: DELETE_SPONSOR,
+    });
+  };
+}
+export function getSponsor(idSponsor) {
+  return async (dispatch) => {
+    const res = await instance.get(`/fighters/${idSponsor}`);
+    dispatch({ type: GET_DETAIL_SPONSOR, payload: res.data });
   };
 }
 export function getMyUser() {
