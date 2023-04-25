@@ -30,7 +30,34 @@ module.exports = (sequelize) => {
         type: DataTypes.BIGINT,
       },
       description: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM([
+          "KICK BOXER",
+          "BOXER",
+          "JIU JITSU FIGHTER",
+          "MMA FIGHTER",
+          "ATHLETICS",
+          "JUDO",
+          "OTHERS",
+        ]),
+        defaultValue: "JIU JITSU FIGHTE",
+        validate: {
+          isIn: {
+            args: [
+              [
+                "KICK BOXER",
+                "BOXER",
+                "JIU JITSU FIGHTER",
+                "MMA FIGHTER",
+                "ATHLETICS",
+                "JUDO",
+                "OTHERS",
+              ],
+            ],
+            msg: "You must decide for one SPORT",
+          },
+        },
+        defaultValue: "JIU JITSU FIGHTER",
+
         allowNull: true,
       },
       score: {
@@ -42,15 +69,15 @@ module.exports = (sequelize) => {
         type: DataTypes.FLOAT,
       },
       quality: {
-        type: DataTypes.ENUM(["amateur", "profesional"]),
-        defaultValue: "amateur",
+        type: DataTypes.ENUM(["Beginner", "Amateur", "Professional"]),
+        defaultValue: "Beginner",
         validate: {
           isIn: {
-            args: [["amateur", "profesional"]],
+            args: [["Beginner", "Amateur", "Professional"]],
             msg: "You must decide if amateur or profesional only",
           },
         },
-        defaultValue: "amateur",
+        defaultValue: "Beginner",
       },
       stock: {
         type: DataTypes.INTEGER,

@@ -10,6 +10,11 @@ module.exports = (sequelize) => {
         primaryKey: true,
         allowNull: false,
       },
+      companyName: {
+        type: DataTypes.TEXT,
+        unique: true,
+        allowNull: false,
+      },
       name: {
         type: DataTypes.TEXT,
 
@@ -20,11 +25,7 @@ module.exports = (sequelize) => {
         unique: true,
         allowNull: false,
       },
-      companyName: {
-        type: DataTypes.TEXT,
-        unique: true,
-        allowNull: false,
-      },
+
       description: {
         type: DataTypes.STRING,
         allowNull: false,

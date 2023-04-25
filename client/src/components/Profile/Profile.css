@@ -1,0 +1,27 @@
+.name{
+    text-transform: uppercase;
+    text-align: center ;
+}
+
+.Insta{
+   
+    color: purple;
+    font-size: 20px;
+    margin-left: 30px;
+    margin-top: 2px;
+    text-decoration: none;
+}
+.Boton{
+    margin-top: 2px;
+    
+}
+.SPORT{
+    text-align: left; 
+}
+
+.img{
+    height: 400px;
+    width: 400px;
+    margin-right: 70%;
+    
+}

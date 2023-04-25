@@ -1,20 +1,13 @@
 const { DataTypes } = require("sequelize");
-module.exports = (sequelize) => {
-  sequelize.define(
-    "Comentarios",
-    {
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        reseña: {
-          type: DataTypes.ENUM("MALO", "BUENO", "MUY BUENO", "EXELENTE"),
-        },
-      },
+(module.exports = (sequelize) => {
+  sequelize.define("Comentarios", {
+    texto: {
+      type: DataTypes.TEXT,
     },
-    {
-      timestamp: false,
-      createdAt: false,
-      updatedAt: false,
-    }
-  );
-};
+  });
+}),
+  {
+    timestamp: false,
+    createdAt: false,
+    updatedAt: false,
+  };

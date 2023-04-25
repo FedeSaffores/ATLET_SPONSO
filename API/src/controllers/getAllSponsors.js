@@ -1,4 +1,5 @@
 const { Sponsors } = require("../db.js");
+const sequelize = require("sequelize");
 const { Op } = require("sequelize");
 
 const JsonSponsors = [
@@ -23,10 +24,10 @@ const getAllSponsor = async (companyName) => {
   if (!companyName) {
     return await Sponsors.findAll({});
   } else {
-    return await Sponsors.finAll({
+    return await Sponsors.findAll({
       where: {
         companyName: {
-          [Op.iLike]: `%${companyName}%`,
+          [sequelize.Op.iLike]: `%${companyName}%`,
         },
       },
     });

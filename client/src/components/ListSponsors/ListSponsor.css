@@ -4,3 +4,14 @@ body{
 .Title{
     font-size: 70px;
 }
+.botonera{
+    display:flex;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:5px;
+
+}
+.box{
+    display:flex;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:5px;
+}

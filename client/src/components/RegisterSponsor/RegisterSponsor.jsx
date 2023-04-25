@@ -24,7 +24,7 @@ const FormSponsor = () => {
         Swal.fire({
           title: `Created Sponsor!`,
           showConfirmButton: false,
-          timer: 2000,
+          timer: 1000,
         });
       })
       .catch((error) => {

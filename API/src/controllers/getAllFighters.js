@@ -36,9 +36,8 @@ const getAllFighters = async (name) => {
   }
 };
 
-const getFightersByPk = async (idFighter) => {
-  console.log(idFighter);
-  if (idFighter) {
+const getFightersByPk = async (id) => {
+  if (id) {
     let fight = await Fighters.findOne({
       where: {
         id,

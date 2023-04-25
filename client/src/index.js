@@ -22,33 +22,21 @@ ReactDOM.render(
       <App />
       <Routes>
         <Route path="/sponsor" element={<Sponsors />} />
-      </Routes>
 
-      <Routes>
         <Route path="/landing" element={<Landing />} />
-      </Routes>
-      <Routes>
+
         <Route path="/" element={<Home />} />
-      </Routes>
-      <Routes>
+
         <Route path="/sponsorhome" element={<SponsorHome />} />
-      </Routes>
-      <Routes>
+
         <Route path="/newFighter" element={<RegisterFighter />} />
-      </Routes>
-      <Routes>
+
         <Route path="/fighters" element={<Fighters />} />
-      </Routes>
-      <Routes>
         <Route path="/profile/:id" element={<Profile />} />
-      </Routes>
-      <Routes>
         <Route path="/formSponsor" element={<FormSponsor />} />
-      </Routes>
-      <Routes>
+
         <Route path="/login" element={<LogUser />} />
-      </Routes>
-      <Routes>
+
         <Route path="/formuser" element={<FormUser />} />
       </Routes>
     </BrowserRouter>

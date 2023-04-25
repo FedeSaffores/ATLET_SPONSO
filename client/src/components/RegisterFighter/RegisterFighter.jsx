@@ -110,26 +110,6 @@ const RegisterFighter = () => {
                   <h2>{Myuser.email}</h2>
                   <h2>{Myuser.tel}</h2>
                   <h2>{Myuser.address}</h2>
-                  <label html="description" className="lebel">
-                    DESCRIPTION:
-                  </label>
-                  <br></br>
-                  <input
-                    value={values.description}
-                    onChange={handleChange}
-                    id="description"
-                    type="description"
-                    placeholder="Enter your description"
-                    onBlur={handleBlur}
-                    className={
-                      errors.description && touched.description
-                        ? "input-error"
-                        : ""
-                    }
-                  />
-                  {errors.description && touched.description && (
-                    <p className="error">{errors.description}</p>
-                  )}
                 </div>
                 <div>
                   <label html="instagram" className="lebel">
@@ -153,6 +133,37 @@ const RegisterFighter = () => {
                 </div>
                 <div className="form-group">
                   <label htmlFor="description" className="lebel">
+                    SPORT:
+                  </label>
+                  <br></br>
+                  <select
+                    value={values.description}
+                    onChange={handleChange}
+                    id="description"
+                    type="description"
+                    placeholder="Enter your description"
+                    onBlur={handleBlur}
+                    className={
+                      errors.description && touched.description
+                        ? "input-error"
+                        : ""
+                    }
+                  >
+                    <option value="">SELECT SPORT</option>
+                    <option value="KICK BOXER">KICK BOXER</option>
+                    <option value="BOXER">BOXER</option>
+                    <option value="JIU JITSU FIGHTER">JIU JITSU FIGHTER</option>
+                    <option value="MMA FIGHTER">MMA FIGHTER</option>
+                    <option value="JUDO">JUDO</option>
+                    <option value="ATHLETICS">ATHLETICS</option>
+                    <option value="OTHERS">OTHERS</option>
+                  </select>
+                  {errors.quality && touched.quality && (
+                    <p className="error">{errors.quality}</p>
+                  )}
+                </div>
+                <div className="form-group">
+                  <label htmlFor="description" className="lebel">
                     QUALITY:
                   </label>
                   <br></br>
@@ -168,8 +179,9 @@ const RegisterFighter = () => {
                     }
                   >
                     <option value="">SELECT QUALITY</option>
-                    <option value="amateur">AMATEUR</option>
-                    <option value="profesional">PROFESIONAL</option>
+                    <option value="Beginner">BEGINNER</option>
+                    <option value="Amateur">AMATEUR</option>
+                    <option value="Professional">PROFESSIONAL</option>
                   </select>
                   {errors.quality && touched.quality && (
                     <p className="error">{errors.quality}</p>

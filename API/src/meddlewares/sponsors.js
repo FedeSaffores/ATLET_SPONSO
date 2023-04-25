@@ -12,7 +12,8 @@ router.get("/", async (req, res) => {
     const allSponsors = await getAllSponsor(req.query.companyName);
     res.status(200).json(allSponsors);
   } catch (error) {
-    res.status(404).send(error);
+    console.log(error);
+    res.status(404).send(error.message);
   }
 });
 router.get("/id", async (req, res) => {

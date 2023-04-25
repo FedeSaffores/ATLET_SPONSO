@@ -11,15 +11,16 @@
 }
 
 .box{
-    display:grid;
-    justify-content: center;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
     margin-top: 10px;
     margin-left: 10px;
     margin-right:10px;
     
 } 
+.supercaja{
+    display:grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+}
   
  
 /* .boxFighter{

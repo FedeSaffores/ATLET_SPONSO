@@ -49,9 +49,9 @@ export function deleteFighter(id) {
     });
   };
 }
-export function getFighter(idFighter) {
+export function getFighter(id) {
   return async (dispatch) => {
-    const res = await instance.get(`/fighters/${idFighter}`);
+    const res = await instance.get(`/fighters/${id}`);
     dispatch({ type: GET_DETAIL_FIGHTER, payload: res.data });
   };
 }
@@ -65,7 +65,7 @@ export function getSponsorsByName(companyName) {
   return async function (dispatch) {
     const json = await instance.get(`/sponsor?companyName=${companyName}`);
     return dispatch({
-      type: GET_SPONSORS_NAME,
+      type: GET_SPONSORS,
       payload: json.data,
     });
   };
