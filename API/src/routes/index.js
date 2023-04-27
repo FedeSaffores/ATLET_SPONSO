@@ -5,12 +5,14 @@ const multer = require("multer");
 
 const { newFighters } = require("../controllers/createNewFighters.js");
 const { newSponsors } = require("../controllers/createNewSponsors.js");
+const { newComment } = require("../controllers/createNewComment.js");
 
 const userService = require("../meddlewares/users");
 const fighterControllers = require("../meddlewares/fighthers");
 const sponsorsControllers = require("../meddlewares/sponsors");
 const userControllers = require("../controllers/autentController.js");
 const autentController = require("../meddlewares/autent.js");
+
 const uuid = require("uuid");
 const moment = require("moment");
 const path = require("path");
@@ -60,4 +62,6 @@ router.post("/newSponsor", newSponsors);
 
 router.use("/", autentController);
 router.use("/:idFighter", fighterControllers);
+
+router.post("/comments", newComment);
 module.exports = router;

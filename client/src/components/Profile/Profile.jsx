@@ -8,6 +8,9 @@ import {
   faMobileRetro,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
+import RegisterComment from "../CreateComments/createComments";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
 
 function Profile() {
   const { id } = useParams();
@@ -38,39 +41,49 @@ function Profile() {
           </div>
         </li>
       </nav>
-      <div class="container p-3 my-3 border bg-light">
-        {/*   <div class="container p-3 my-3 border"> */}
-        <div class="container p-3 my-3 bg-dark text-white">
-          <h1 className="atleta">ATLETA</h1>
-          <div className="name">
-            <h1>
-              {fighter?.name}
-              {"  "}
-              {fighter?.lastname}
-            </h1>
-          </div>
-          <h3 className="SPORT">SPORT {fighter?.description}</h3>
+      {/*   <div class="container p-3 my-3 border"> */}
+      <div class="container p-3 my-3 bg-secondary text-white ">
+        <h1 className="atleta">ATLETA</h1>
 
-          <h3 className="SPORT">LEVEL {fighter?.quality}</h3>
+        <div className="name">
+          <h1>
+            {fighter?.name}
+            {"  "}
+            {fighter?.lastname}
+          </h1>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <h3 className="SPORT">SPORT {fighter?.description}</h3>
 
-          <div>
-            <img
-              className="img"
-              src={`http://localhost:3001/fotos/${fighter?.image}`}
-              alt={fighter?.name}
-            />
+            <h3 className="SPORT">LEVEL {fighter?.quality}</h3>
+            <div>
+              <img
+                className="img"
+                src={`http://localhost:3001/fotos/${fighter?.image}`}
+                alt={fighter?.name}
+              />
+            </div>
           </div>
-          <h2 className="SPORT">
-            {" "}
-            <FontAwesomeIcon icon={faEnvelope} /> {fighter?.email}
-          </h2>
-          <h2 className="SPORT">
-            <FontAwesomeIcon icon={faMobileRetro} /> {fighter?.tel}
-          </h2>
-          <h3 className="SPORT">
-            <FontAwesomeIcon icon={faStar} />
-            {fighter?.score}
-          </h3>
+          <div class="col-sm">
+            <h2 className="SPORT">
+              {" "}
+              <FontAwesomeIcon icon={faEnvelope} /> {fighter?.email}
+            </h2>
+            <h2 className="SPORT">
+              <FontAwesomeIcon icon={faMobileRetro} /> {fighter?.tel}
+            </h2>
+            <h3 className="SPORT">
+              <FontAwesomeIcon icon={faStar} />
+              {fighter?.score}
+            </h3>
+
+            <div className="comments">
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <RegisterComment />
+              </MuiPickersUtilsProvider>
+            </div>
+          </div>
         </div>
       </div>
     </div>

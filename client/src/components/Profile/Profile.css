@@ -1,6 +1,7 @@
 .name{
     text-transform: uppercase;
     text-align: center ;
+    color:black
 }
 
 .Insta{
@@ -11,17 +12,30 @@
     margin-top: 2px;
     text-decoration: none;
 }
+.atleta{
+    font-size: 80px;
+color:black
+}
 .Boton{
     margin-top: 2px;
     
 }
 .SPORT{
     text-align: left; 
+    color:black
 }
 
 .img{
     height: 400px;
     width: 400px;
-    margin-right: 70%;
-    
+    margin-right: 70%;  
+}
+
+.comments{
+    display:flex;
+}
+.box{
+    display:flex;
+    grid-template-columns: 1fr ;
+    gap:5px;
 }
