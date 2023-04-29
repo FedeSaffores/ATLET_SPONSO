@@ -12,6 +12,7 @@ const fighterControllers = require("../meddlewares/fighthers");
 const sponsorsControllers = require("../meddlewares/sponsors");
 const userControllers = require("../controllers/autentController.js");
 const autentController = require("../meddlewares/autent.js");
+const eventController = require("../meddlewares/comment.js");
 
 const uuid = require("uuid");
 const moment = require("moment");
@@ -60,8 +61,11 @@ router.use(
 router.use("/sponsor", sponsorsControllers);
 router.post("/newSponsor", newSponsors);
 
+router.use("/allcoments", eventController);
+router.post("/comments", newComment);
+router.use("/:idComments", eventController);
+
 router.use("/", autentController);
 router.use("/:idFighter", fighterControllers);
 
-router.post("/comments", newComment);
 module.exports = router;

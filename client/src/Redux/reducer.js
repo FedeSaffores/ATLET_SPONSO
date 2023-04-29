@@ -10,6 +10,7 @@ const {
   DELETE_SPONSOR,
   GET_DETAIL_SPONSOR,
   GET_SPONSORS_NAME,
+  GET_COMMENTS,
 } = require("./const");
 
 const inicialState = {
@@ -20,6 +21,7 @@ const inicialState = {
   allFighters: [],
   userDetail: [],
   myUser: [],
+  coments: [],
 };
 
 function reducer(state = inicialState, { type, payload }) {
@@ -90,6 +92,11 @@ function reducer(state = inicialState, { type, payload }) {
       return {
         ...state,
         fighters: payload,
+      };
+    case GET_COMMENTS:
+      return {
+        ...state,
+        coments: payload,
       };
     default:
       return state;

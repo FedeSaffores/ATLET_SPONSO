@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   GET_FIGHTERS,
   GET_SPONSORS,
+  GET_COMMENTS,
   DELETE_SPONSOR,
   GET_MYUSER,
   GET_FIGHTERS_NAME,
@@ -109,6 +110,13 @@ export function getUserByEmail(email) {
       type: GET_USER_BY_EMAIL,
       payload: json.data,
     });
+  };
+}
+export function getAllComments() {
+  return async function (dispatch) {
+    const json = await instance.get("/allcoments");
+    console.log(json.data);
+    return dispatch({ type: GET_COMMENTS, payload: json.data });
   };
 }
 /* export function createComments(comments) {

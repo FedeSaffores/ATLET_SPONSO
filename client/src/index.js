@@ -16,11 +16,13 @@ import RegisterFighter from "./components/RegisterFighter/RegisterFighter";
 import Profile from "./components/Profile/Profile";
 import Fighters from "./components/ListFighters/ListFighters";
 import Sponsors from "./components/ListSponsors/ListSponsor";
+/* import Events from "./components/Events/events"; */
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <App />
       <Routes>
+        {/* <Route path="/events" element={<Events />} /> */}
         <Route path="/sponsor" element={<Sponsors />} />
 
         <Route path="/landing" element={<Landing />} />

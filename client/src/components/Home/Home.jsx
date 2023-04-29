@@ -1,11 +1,10 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 //import Nav from "react-bootstrap/Nav";
-
+import Events from "../Events/events";
 import "./Home.css";
 
 import { getMyUser } from "../../Redux/actions";
@@ -14,7 +13,6 @@ function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const myuser = useSelector((state) => state.myUser);
-
   /*  const fighters = useSelector((state) => state.Fighters);
   console.log(fighters); */
 
@@ -66,7 +64,9 @@ function Home() {
           </li>
         </ul>
       </nav>
+
       <h1 className="Title">SPOATLET</h1>
+      <Events />
       <div className="ContBot">
         {myuser?.id ? (
           <>

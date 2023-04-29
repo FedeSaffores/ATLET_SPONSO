@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useFormik } from "formik";
-import { useSelector, useDispatch } from "react-redux";
+import { validComment } from "../../schemas/comments";
+
 import Swal from "sweetalert2";
 import { DatePicker } from "@material-ui/pickers";
+
 import "./createComment.css";
 
 const RegisterComment = () => {
+  const { id } = useParams();
   const [selectDate, setSelectDate] = useState(new Date());
-
+  const fighterid = id;
   const onSubmit = async (values, actions) => {
     axios
       .post("http://localhost:3001/comments", values, {})
@@ -43,7 +47,9 @@ const RegisterComment = () => {
       eventName: "",
       date: selectDate,
       texto: "",
+      FighterId: fighterid,
     },
+    validationSchema: validComment,
     onSubmit,
   });
   console.log(errors);
@@ -71,6 +77,9 @@ const RegisterComment = () => {
               errors.eventName && touched.eventName ? "input-error" : ""
             }
           />
+          {errors.eventName && touched.eventName && (
+            <p className="error">{errors.eventName}</p>
+          )}
           <div className="form-group">
             <label htmlFor="texto" className="lebel">
               DESCRIBE EVENT:
@@ -83,14 +92,25 @@ const RegisterComment = () => {
               type="texto"
               placeholder="Describe the event"
               onBlur={handleBlur}
-              className="texto"
+              className={errors.texto && touched.texto ? "input-error" : ""}
             />
+            {errors.texto && touched.texto && (
+              <p className="error">{errors.texto}</p>
+            )}
             <br></br>
             <br></br>
             <label>DATE</label>
             <br></br>
-            <DatePicker value={selectDate} onChange={setSelectDate} />
-
+            <DatePicker
+              value={selectDate}
+              onChange={setSelectDate}
+              /*     className={
+                errors.selectDate && touched.selectDate ? "input-error" : ""
+              } */
+            />
+            {/* {errors.selectDate && touched.selectDate && (
+              <p className="error">{errors.selectDate}</p>
+            )} */}
             <button
               disabled={isSubmitting}
               type="submit"
