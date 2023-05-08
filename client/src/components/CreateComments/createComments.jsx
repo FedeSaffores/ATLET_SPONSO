@@ -8,14 +8,22 @@ import Swal from "sweetalert2";
 import { DatePicker } from "@material-ui/pickers";
 
 import "./createComment.css";
+import { useSelector } from "react-redux";
 
 const RegisterComment = () => {
   const { id } = useParams();
   const [selectDate, setSelectDate] = useState(new Date());
-  const fighterid = id;
+
   const onSubmit = async (values, actions) => {
+    const parceValues = {
+      eventName: values.eventName,
+      date: selectDate,
+      texto: values.texto,
+      idFighterComent: id.toString(),
+    };
+
     axios
-      .post("http://localhost:3001/comments", values, {})
+      .post("http://localhost:3001/comments", parceValues, {})
       .then((res) => {
         Swal.fire({
           title: `Created Comment!`,
@@ -47,7 +55,7 @@ const RegisterComment = () => {
       eventName: "",
       date: selectDate,
       texto: "",
-      FighterId: fighterid,
+      idFighterComent: id.toString(),
     },
     validationSchema: validComment,
     onSubmit,

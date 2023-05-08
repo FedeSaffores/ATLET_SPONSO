@@ -8,6 +8,9 @@ import { getMyUser, getUserByEmail } from "../../Redux/actions";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import "./Login.css";
 
 const LogUser = () => {
   const [formSuccess] = useState(false);
@@ -80,68 +83,57 @@ const LogUser = () => {
           </li>
         </ul>
       </nav>
-      <div className="p-3 mb-2 bg-secondary text-white">
-        <div class="container p-3 my-3 border bg-light">
-          <div class="container p-3 my-3 bg-dark text-white">
-            <div class="container p-3 my-3 bg-primary text-white">
-              <div className="p-3 mb-2 bg-secondary text-white">
-                <h1 className="h1">LOGIN</h1>
-                <form
-                  encType="multipart/form-data"
-                  onSubmit={handleSubmit}
-                  autoComplete="off"
-                >
-                  <div className="form-group">
-                    <label htmlFor="email" className="lebel">
-                      EMAIL:
-                    </label>
-                    <br></br>
-                    <input
-                      value={values.email}
-                      onChange={handleChange}
-                      id="email"
-                      type="email"
-                      placeholder="Enter your email"
-                      onBlur={handleBlur}
-                      className={
-                        errors.email && touched.email ? "input-error" : ""
-                      }
-                    />
-                    {errors.email && touched.email && (
-                      <p className="error">{errors.email}</p>
-                    )}
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="password" className="lebel">
-                      PASSWORD:
-                    </label>
-                    <br></br>
-                    <input
-                      id="password"
-                      type="password"
-                      placeholder="Enter your Password"
-                      onChange={handleChange}
-                      value={values.password}
-                      onBlur={handleBlur}
-                      className={
-                        errors.password && touched.password ? "input-error" : ""
-                      }
-                    />
-                    {errors.password && touched.password && (
-                      <p className="error">{errors.password}</p>
-                    )}
-                  </div>
-                  <button
-                    disabled={isSubmitting}
-                    type="submit"
-                    class="btn btn-primary"
-                  >
-                    Submit
-                  </button>
-                </form>
-              </div>
+      <div className="CajaLogin">
+        <div className="login">
+          <h1 className="h1">LOGIN</h1>
+          <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
+          <form
+            encType="multipart/form-data"
+            onSubmit={handleSubmit}
+            autoComplete="off"
+          >
+            <div className="form-group">
+              <label htmlFor="email" className="lebel"></label>
+              <br></br>
+              <input
+                value={values.email}
+                onChange={handleChange}
+                id="email"
+                type="email"
+                placeholder="Enter your email"
+                onBlur={handleBlur}
+                className={errors.email && touched.email ? "input-error" : ""}
+              />
+              {errors.email && touched.email && (
+                <p className="error">{errors.email}</p>
+              )}
             </div>
-          </div>
+            <div className="form-group">
+              <label htmlFor="password" className="lebel"></label>
+              <br></br>
+              <input
+                id="password"
+                type="password"
+                placeholder="Enter your Password"
+                onChange={handleChange}
+                value={values.password}
+                onBlur={handleBlur}
+                className={
+                  errors.password && touched.password ? "input-error" : ""
+                }
+              />
+              {errors.password && touched.password && (
+                <p className="error">{errors.password}</p>
+              )}
+            </div>
+            <button
+              disabled={isSubmitting}
+              type="submit"
+              class="btn btn-primary"
+            >
+              Submit
+            </button>
+          </form>
         </div>
       </div>
     </div>

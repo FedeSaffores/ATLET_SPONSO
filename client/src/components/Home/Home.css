@@ -1,4 +1,31 @@
 
+.margin{
+   display: flex;
+   margin-top: 10px;
+   margin-left:500px;
+  
+}
+.ContBot{
+    
+    display: block;
+    margin-left: 70%;
+    margin-left: 40px;
+    background-color:blue;
+
+}
+.btn2{
+    display:flex;
+    margin-left: 10px;
+   
+}
+
+.evento{
+    margin-left: 5%;
+    margin-right: 5%; 
+    background-color: rgb(40, 66, 103);
+    border-radius: 25px 5px;
+}
+
 .BotFight{
     margin-top: 10px;
     display: grid;
@@ -7,38 +34,18 @@
 
 }
 
-/* .contenedor{
-   
-    gap:5px;
-} */
-.ContBot{
-    
-   position: relative;
-   left:37%;
- 
- 
-}
-.button{
-    background-color:black;
-    color:white;
-    padding: 30px;
-    border-radius:5%;
-    font-weight: 800px;
-
-    }
-    .button:hover{
-        background-color: rgb(40, 66, 103);
-    }
     .Title{
         text-align: center;
         margin-top: 40px;
         font-family: 'Times New Roman', Times, serif;
         font-size: 50px;
     }
-.alert{
-    position:absolute;
-background-color: rgb(210, 65, 65);
-}
+    .alert{
+        display: flex;
+        margin-top:3px;
+        margin-left: 500px;
+    
+    }
  .Botonera2{
     display: grid;
     grid-template-columns: 1fr 1fr;

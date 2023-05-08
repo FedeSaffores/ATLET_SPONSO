@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { getMyUser } from "../../Redux/actions";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import "./RegisterSponsor.css";
 
 const FormSponsor = () => {
   const dispatch = useDispatch();
@@ -73,87 +74,67 @@ const FormSponsor = () => {
           </li>
         </ul>
       </nav>
-
-      <div className="p-3 mb-2 bg-secondary text-white">
-        <div class="container p-3 my-3 border bg-light">
-          <div class="container p-3 my-3 bg-dark text-white">
-            <div class="container p-3 my-3 bg-primary text-white">
-              <div className="p-3 mb-2 bg-secondary text-white">
-                <h1 className="h1">SPONSOR REGISTRATION</h1>
-                <form
-                  encType="multipart/form-data"
-                  onSubmit={handleSubmit}
-                  autoComplete="off"
-                >
-                  <div className="form-group">
-                    <label html="firstName" className="lebel">
-                      USER NAME:
-                    </label>
-                    <br></br>
-                    <h2>{Myuser.name}</h2>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="email" className="lebel">
-                      EMAIL:
-                    </label>
-                    <br></br>
-                    <h2>{Myuser.email}</h2>
-                  </div>
-                  <div className="form-group">
-                    <label html="description" className="lebel">
-                      COMPANY NAME:
-                    </label>
-                    <br></br>
-                    <input
-                      value={values.companyName}
-                      onChange={handleChange}
-                      id="companyName"
-                      type="companyName"
-                      placeholder="Enter your companyName"
-                      onBlur={handleBlur}
-                      className={
-                        errors.companyName && touched.companyName
-                          ? "input-error"
-                          : ""
-                      }
-                    />
-                    {errors.companyName && touched.companyName && (
-                      <p className="error">{errors.companyName}</p>
-                    )}
-                  </div>
-                  <div className="form-group">
-                    <label html="description" className="lebel">
-                      ACTIVITY COMPANY:
-                    </label>
-                    <br></br>
-                    <input
-                      value={values.description}
-                      onChange={handleChange}
-                      id="description"
-                      type="description"
-                      placeholder="Enter your description"
-                      onBlur={handleBlur}
-                      className={
-                        errors.description && touched.description
-                          ? "input-error"
-                          : ""
-                      }
-                    />
-                    {errors.description && touched.description && (
-                      <p className="error">{errors.description}</p>
-                    )}
-                  </div>
-                  <button
-                    disabled={isSubmitting}
-                    type="submit"
-                    class="btn btn-primary"
-                  >
-                    Submit
-                  </button>
-                </form>
-              </div>
+      <h1 className="h1">SPONSOR REGISTRATION</h1>
+      <div className="caja">
+        <div className="perro">
+          <form
+            encType="multipart/form-data"
+            onSubmit={handleSubmit}
+            autoComplete="off"
+          >
+            <div className="msj">
+              <br></br>
+              <h2 className="h2">{Myuser.name}</h2>
+              <h3 className="h3"> Now you can create the sponsor</h3>
             </div>
-          </div>
+            <div className="form-group">
+              <label html="description" className="lebel">
+                COMPANY NAME:
+              </label>
+              <br></br>
+              <input
+                value={values.companyName}
+                onChange={handleChange}
+                id="companyName"
+                type="companyName"
+                placeholder="Enter your companyName"
+                onBlur={handleBlur}
+                className={
+                  errors.companyName && touched.companyName ? "input-error" : ""
+                }
+              />
+              {errors.companyName && touched.companyName && (
+                <p className="error">{errors.companyName}</p>
+              )}
+            </div>
+            <div className="form-group">
+              <label html="description" className="lebel">
+                ACTIVITY COMPANY:
+              </label>
+              <br></br>
+              <input
+                value={values.description}
+                onChange={handleChange}
+                id="description"
+                type="description"
+                placeholder="Enter your description"
+                onBlur={handleBlur}
+                className={
+                  errors.description && touched.description ? "input-error" : ""
+                }
+              />
+              {errors.description && touched.description && (
+                <p className="error">{errors.description}</p>
+              )}
+            </div>
+            <button
+              disabled={isSubmitting}
+              type="submit"
+              class="btn btn-primary"
+            >
+              Submit
+            </button>
+          </form>
         </div>
       </div>
     </div>

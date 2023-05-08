@@ -1,0 +1,14 @@
+.CajaLogin{
+        background-color: rgb(249, 245, 245);
+        margin-left: 25%;
+        margin-right: 25%;
+        margin-top: 40px;
+        border-radius: 30px;
+        border: 2px solid rgb(222, 211, 211);
+    }
+    
+    .login{
+        text-align: center;
+        margin-bottom: 10px;
+
+    } 

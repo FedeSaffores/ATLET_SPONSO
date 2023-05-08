@@ -14,7 +14,9 @@ const getAllComments = async (eventName) => {
     await Comentario.bulkCreate(eventJson);
   }
   if (!eventName) {
-    return await Comentario.findAll({});
+    return await Comentario.findAll({
+      //include
+    });
   } else {
     return await Comentario.findAll({
       where: {
@@ -22,6 +24,7 @@ const getAllComments = async (eventName) => {
           [Op.iLike]: `%${eventName}%`,
         },
       },
+      //include
     });
   }
 };

@@ -6,11 +6,12 @@ const {
   GET_USER_BY_EMAIL,
   GET_USER_DETAIL,
   GET_DETAIL_FIGHTER,
-  DELETE_FIGHTER,
+
   DELETE_SPONSOR,
   GET_DETAIL_SPONSOR,
   GET_SPONSORS_NAME,
   GET_COMMENTS,
+  CLEAR_DETAILS,
 } = require("./const");
 
 const inicialState = {
@@ -18,6 +19,7 @@ const inicialState = {
   sponsors: [],
   allSponsors: [],
   Fighters: [],
+  FighterDetail: [],
   allFighters: [],
   userDetail: [],
   myUser: [],
@@ -40,19 +42,18 @@ function reducer(state = inicialState, { type, payload }) {
         Fighters: payload,
       };
     }
-    case DELETE_FIGHTER: {
-      const deleteFighter = state.allFighters;
-      return {
-        ...state,
-        Fighters: deleteFighter.filter((fight) => fight.id !== payload),
-      };
-    }
+
     case GET_DETAIL_FIGHTER: {
       return {
         ...state,
         FighterDetail: payload,
       };
     }
+    case CLEAR_DETAILS:
+      return {
+        ...state,
+        fighterDetail: [],
+      };
     case GET_SPONSORS: {
       return {
         ...state,
@@ -65,19 +66,7 @@ function reducer(state = inicialState, { type, payload }) {
         sponsors: payload,
       };
     }
-    case DELETE_SPONSOR: {
-      const deleteSponsor = state.allSponsors;
-      return {
-        ...state,
-        sponsors: deleteSponsor.filter((sponsor) => sponsor.id !== payload),
-      };
-    }
-    case GET_DETAIL_SPONSOR: {
-      return {
-        ...state,
-        SponsorDetail: payload,
-      };
-    }
+
     case GET_MYUSER:
       return {
         ...state,
@@ -98,6 +87,7 @@ function reducer(state = inicialState, { type, payload }) {
         ...state,
         coments: payload,
       };
+
     default:
       return state;
   }

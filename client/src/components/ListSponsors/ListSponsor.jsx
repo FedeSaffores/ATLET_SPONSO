@@ -58,21 +58,28 @@ function Sponsors() {
         </ul>
       </nav>
 
-      <div className="Box">
+      <div class="container">
         <h2 className="Title">SPONSORS LIST</h2>
-        {sponsors?.map((e) => (
-          <div class="container p-3 my-3 border bg-light text-white">
-            <div class="container p-3 my-3 bg-dark">
-              <h4>
-                {e.companyName}
-                <br></br>
-                {e.description}
-                <br></br>
-                {e.email}
-              </h4>
-            </div>
-          </div>
-        ))}
+        <div>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Company Name</th>
+                <th>Description </th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sponsors?.map((e) => (
+                <tr>
+                  <td>{e.companyName}</td>
+                  <td> {e.description}</td>
+                  <td> {e.email}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

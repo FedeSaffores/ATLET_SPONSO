@@ -3,11 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  getFighters,
-  getFightersByName,
-  deleteFighter,
-} from "../../Redux/actions";
+import { getFighters, getFightersByName } from "../../Redux/actions";
 import "./ListFghters.css";
 
 function Fighters() {

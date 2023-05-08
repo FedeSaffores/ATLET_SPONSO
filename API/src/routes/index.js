@@ -58,6 +58,7 @@ router.use(
   /*  passport.authenticate("jwt", { session: false }), */
   fighterControllers
 );
+
 router.use("/sponsor", sponsorsControllers);
 router.post("/newSponsor", newSponsors);
 
@@ -66,6 +67,7 @@ router.post("/comments", newComment);
 router.use("/:idComments", eventController);
 
 router.use("/", autentController);
+
 router.use("/:idFighter", fighterControllers);
 
 module.exports = router;

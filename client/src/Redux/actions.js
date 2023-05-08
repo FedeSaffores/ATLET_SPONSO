@@ -3,15 +3,13 @@ import {
   GET_FIGHTERS,
   GET_SPONSORS,
   GET_COMMENTS,
-  DELETE_SPONSOR,
   GET_MYUSER,
   GET_FIGHTERS_NAME,
-  GET_SPONSORS_NAME,
   GET_DETAIL_SPONSOR,
   GET_USER_BY_EMAIL,
   GET_USER_DETAIL,
   GET_DETAIL_FIGHTER,
-  DELETE_FIGHTER,
+  CLEAR_DETAILS,
 } from "./const";
 
 /* const instance = axios.create({
@@ -42,18 +40,17 @@ export function getFightersByName(name) {
     });
   };
 }
-export function deleteFighter(id) {
-  return async function (dispatch) {
-    const json = await instance.delete(`http://localhost:3001/fighters/${id}`);
-    return dispatch({
-      type: DELETE_FIGHTER,
-    });
-  };
-}
+
 export function getFighter(id) {
   return async (dispatch) => {
     const res = await instance.get(`/fighters/${id}`);
     dispatch({ type: GET_DETAIL_FIGHTER, payload: res.data });
+  };
+}
+export function clearDetails() {
+  return {
+    type: CLEAR_DETAILS,
+    payload: [],
   };
 }
 export function getSponsors() {
@@ -71,20 +68,7 @@ export function getSponsorsByName(companyName) {
     });
   };
 }
-export function deleteSponsor(id) {
-  return async function (dispatch) {
-    const json = await instance.delete(`http://localhost:3001/sponsor/${id}`);
-    return dispatch({
-      type: DELETE_SPONSOR,
-    });
-  };
-}
-export function getSponsor(idSponsor) {
-  return async (dispatch) => {
-    const res = await instance.get(`/fighters/${idSponsor}`);
-    dispatch({ type: GET_DETAIL_SPONSOR, payload: res.data });
-  };
-}
+
 export function getMyUser() {
   return async function (dispatch) {
     let json = await instance.get("/user/myuser");
@@ -119,6 +103,7 @@ export function getAllComments() {
     return dispatch({ type: GET_COMMENTS, payload: json.data });
   };
 }
+
 /* export function createComments(comments) {
   return async function () {
     try {

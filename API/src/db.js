@@ -43,11 +43,11 @@ User.belongsTo(Sponsors, { through: "User_Sponsors" });
 
 //Relacion Peleadores con comentarios
 Fighters.belongsToMany(Comentario, { through: "Fighters_Comentarios" });
-Comentario.belongsTo(Fighters, { throw: "Fighters_Comentarios" });
+Comentario.belongsTo(Fighters, { through: "Fighters_Comentarios" });
 
 //Relacion Peleadores con Sponsors
 Fighters.belongsToMany(Sponsors, { through: "Fighters_Sponsors" });
-Sponsors.belongsToMany(Fighters, { through: "Sponsors_Fighters" });
+Sponsors.belongsToMany(Fighters, { through: "Fighters_Sponsors" });
 
 module.exports = {
   ...sequelize.models,

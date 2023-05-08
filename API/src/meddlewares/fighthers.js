@@ -4,6 +4,7 @@ const {
   getAllFighters,
   getFightersByPk,
   getFighterByEmail,
+  deleteFighter,
 } = require("../controllers/getAllFighters.js");
 
 const router = Router();
@@ -40,6 +41,17 @@ router.get("/log/:email", async (req, res) => {
     const userId = await getFighterByEmail(email);
     res.status(200).send(userId);
   } catch (error) {
+    res.status(404).send(error);
+  }
+});
+router.delete("/:idFighter", async (req, res) => {
+  console.log("aaaaaa");
+  try {
+    const { idFighter } = req.params;
+    await deleteFighter(idFighter);
+    res.status(200).json({ msg: `Fighter deleted successfully` });
+  } catch (error) {
+    console.log(error);
     res.status(404).send(error);
   }
 });

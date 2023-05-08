@@ -8,6 +8,7 @@ import {
   faMobileRetro,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
+import RemoverFighter from "../DeleteFighter/DeleteFighter.jsx";
 import RegisterComment from "../CreateComments/createComments";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
@@ -38,6 +39,8 @@ function Profile() {
             <Link className="Insta" to={`${fighter?.instagram}`}>
               Instagra
             </Link>
+            <br></br>
+            <br></br>
           </div>
         </li>
       </nav>

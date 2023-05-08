@@ -1,13 +1,10 @@
 
-.container{
+.caja{
+    background-color: #f8f9fa!important;
+    margin-left: 25%;;
     text-align: center;
-    margin-top: 20px;
-
-}  
-
-.h1{
-    color:black;
+    margin-bottom: 10px;
 }
-.lebel{
-    color:black;
+.msj{
+    color: #17a2b8 !important;
 }

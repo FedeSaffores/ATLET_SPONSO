@@ -52,39 +52,48 @@ function Home() {
               </div>
             </a>
           </li>
-          <br></br>
-          <br></br>
-          <li className="BotFight">
-            <Link to={"/fighters"}>
-              <button class="btn btn-info"> Fighters</button>
-            </Link>
-            <Link to={"/sponsor"}>
-              <button class="btn btn-info"> Sponsors</button>
-            </Link>
+
+          <li>
+            <div className="BotFight">
+              <Link to={"/fighters"}>
+                <button class="btn btn-info"> Fighters</button>
+              </Link>
+              <Link to={"/sponsor"}>
+                <button class="btn btn-info"> Sponsors</button>
+              </Link>
+            </div>
+          </li>
+          <li>
+            {" "}
+            {myuser?.id ? (
+              <>
+                <div className="margin">
+                  <div className="btn2">
+                    <Link to={"/newFighter"}>
+                      <button class="btn btn-success"> CREATE FIGHTER </button>
+                    </Link>
+                  </div>
+                  <div className="btn2">
+                    <Link to={"/formSponsor"}>
+                      <button class="btn btn-success">CREATE SPONSOR</button>
+                    </Link>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div class="alert alert-danger">
+                  <strong> Warnign! </strong> You need Register and Login to
+                  have acces
+                </div>
+              </>
+            )}
           </li>
         </ul>
       </nav>
 
-      <h1 className="Title">SPOATLET</h1>
-      <Events />
-      <div className="ContBot">
-        {myuser?.id ? (
-          <>
-            <Link to={"/newFighter"}>
-              <button className="button">CREATE FIGHTER</button>
-            </Link>
-            <Link to={"/formSponsor"}>
-              <button className="button">CREATE SPONSOR</button>
-            </Link>
-          </>
-        ) : (
-          <>
-            <div className="alert">
-              <strong>Warnign!</strong> You need Register and Login to have
-              acces
-            </div>
-          </>
-        )}
+      <div>
+        <Events />
       </div>
     </div>
   );
