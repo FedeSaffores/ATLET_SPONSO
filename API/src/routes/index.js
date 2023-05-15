@@ -52,10 +52,15 @@ router.use(
 );
 //router.post("/login", userControllers.login);
 
-router.post("/newFighter", upload.single("image"), newFighters);
+router.post(
+  "/newFighter",
+  upload.single("image"),
+  passport.authenticate("jwt", { session: false }),
+  newFighters
+);
 router.use(
   "/fighters",
-  /*  passport.authenticate("jwt", { session: false }), */
+  passport.authenticate("jwt", { session: false }),
   fighterControllers
 );
 
@@ -63,7 +68,11 @@ router.use("/sponsor", sponsorsControllers);
 router.post("/newSponsor", newSponsors);
 
 router.use("/allcoments", eventController);
-router.post("/comments", newComment);
+router.post(
+  "/comments",
+  passport.authenticate("jwt", { session: false }),
+  newComment
+);
 router.use("/:idComments", eventController);
 
 router.use("/", autentController);

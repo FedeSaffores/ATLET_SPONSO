@@ -1,4 +1,4 @@
-const { Fighters } = require("../db");
+const { Fighters, User } = require("../db");
 
 const sequelize = require("sequelize");
 
@@ -47,7 +47,16 @@ const newFighters = async (req, res) => {
       promedio,
       isReview,
     });
-    console.log(fighter);
+    console.log(req.user.id);
+    console.log(fighter.id);
+    User.update(
+      { FighterId: fighter.id },
+      {
+        where: {
+          id: req.user.id,
+        },
+      }
+    );
     res.json({ info: "THE FIGHTER WAS SUCCESSFULLY CREATED" });
   } catch (error) {
     console.log(error);

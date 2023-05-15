@@ -9,6 +9,7 @@ import {
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import RemoverFighter from "../DeleteFighter/DeleteFighter.jsx";
+import instance from "../../Redux/actions";
 import RegisterComment from "../CreateComments/createComments";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
@@ -19,10 +20,12 @@ function Profile() {
 
   useEffect(() => {
     if (id)
-      fetch(`http://localhost:3001/fighters/${id}`)
-        .then((res) => res.json())
+      instance
+        .get(`/fighters/${id}`)
+        .then((res) => res.data)
         .then((res) => setFighter(res));
   }, [id, setFighter]);
+  console.log(fighter);
   console.log(id);
   if (!id) {
     return null;

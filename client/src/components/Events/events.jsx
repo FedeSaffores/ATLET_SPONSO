@@ -16,22 +16,42 @@ const Events = () => {
   useEffect(() => {
     dispatch(getAllComments());
   }, [dispatch]);
-
+  console.log(events);
   return (
-    <div>
-      {events?.map((x) => (
-        <div class="container p-3 my-3 bg-dark text-white">
-          <div>
-            <h3 className="titevent">{x.eventName}</h3>
-            <h3 className="date">
-              DATE <FontAwesomeIcon icon={faCalendarDays} />
-              <> </>
-              {x.date}
-            </h3>
-            <h3 className="razon">
-              DESCRIPTION <FontAwesomeIcon icon={faStickyNote} />
-            </h3>
-            <h4 className="razon">{x.texto}</h4>
+    <div className="Box">
+      {events.slice(1).map((x) => (
+        <div>
+          <div class="media border p-3 bg-secondary">
+            <img
+              src={`http://localhost:3001/fotos/${x.Fighter?.image}`}
+              alt={x.Fighter?.name}
+              class="mr-3 mt-1 rounded-circle"
+              style={{ width: "150px" }}
+            />
+            <div class="media-body">
+              <div className="bor">
+                <h4>
+                  {x.Fighter?.name} {x.Fighter?.lastname}
+                </h4>
+              </div>
+              <div className="ber">
+                <h4 className="date">
+                  {<FontAwesomeIcon icon={faCalendarDays} />}
+                  <> </>
+                  {x.date.split(/[^0-9]/)[2]}-{x.date.split(/[^0-9]/)[1]}-
+                  {x.date.split(/[^0-9]/)[0]}
+                </h4>
+
+                {/*  <div className="ecole"> */}
+                <h3 className="titevent">{x.eventName}</h3>
+
+                <h4 className="razon">
+                  {/*  <FontAwesomeIcon icon={faStickyNote} /> */}
+
+                  {x.texto}
+                </h4>
+              </div>
+            </div>
           </div>
         </div>
       ))}

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useFormik } from "formik";
 import { validComment } from "../../schemas/comments";
-
+import instance from "../../Redux/actions";
 import Swal from "sweetalert2";
 import { DatePicker } from "@material-ui/pickers";
 
@@ -19,11 +19,11 @@ const RegisterComment = () => {
       eventName: values.eventName,
       date: selectDate,
       texto: values.texto,
-      idFighterComent: id.toString(),
+      /*     Fighters: id, */
     };
 
-    axios
-      .post("http://localhost:3001/comments", parceValues, {})
+    instance
+      .post("/comments", parceValues, {})
       .then((res) => {
         Swal.fire({
           title: `Created Comment!`,

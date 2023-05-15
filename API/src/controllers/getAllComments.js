@@ -1,10 +1,10 @@
-const { Comentario } = require("../db");
+const { Comentario, Fighters } = require("../db");
 const { Op } = require("sequelize");
 
 const eventJson = [
   {
     eventName: "",
-    date: "",
+    date: new Date(),
     texto: "",
   },
 ];
@@ -16,6 +16,12 @@ const getAllComments = async (eventName) => {
   if (!eventName) {
     return await Comentario.findAll({
       //include
+      include: [
+        {
+          model: Fighters,
+          attributes: ["name", "lastname", "image"],
+        },
+      ],
     });
   } else {
     return await Comentario.findAll({
@@ -24,6 +30,12 @@ const getAllComments = async (eventName) => {
           [Op.iLike]: `%${eventName}%`,
         },
       },
+      include: [
+        {
+          model: Fighters,
+          attributes: ["name", "lastname", "image"],
+        },
+      ],
       //include
     });
   }

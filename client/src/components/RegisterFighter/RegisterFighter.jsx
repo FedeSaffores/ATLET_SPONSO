@@ -6,7 +6,7 @@ import axios from "axios";
 import "./RegisterFighter.css";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
-import { getMyUser } from "../../Redux/actions";
+import instance, { getMyUser } from "../../Redux/actions";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHand, faImage } from "@fortawesome/free-solid-svg-icons";
@@ -32,8 +32,8 @@ const RegisterFighter = () => {
     };
     console.log(parceValues);
     formdata.append("data", JSON.stringify(parceValues));
-    axios
-      .post("http://localhost:3001/newFighter", formdata, {
+    instance
+      .post("/newFighter", formdata, {
         headers: {
           "Content-Type": "multipart/formdata",
         },

@@ -14,13 +14,24 @@
     margin-top: 10px;
     margin-left: 10px;
     margin-right:10px;
-    
+   
+   
 } 
 .supercaja{
     display:grid;
     justify-content: center;
     grid-template-columns: repeat(3, 1fr);
+    
+    margin-bottom: 50px;
+    
 }
+.image{
+    width: "400px";
+    height: 100%;
+    } 
+.card-img-top{
+    height: 400px;     /* object-fit: contain; */
+    }
   
  
 /* .boxFighter{

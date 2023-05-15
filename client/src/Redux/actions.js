@@ -104,16 +104,4 @@ export function getAllComments() {
   };
 }
 
-/* export function createComments(comments) {
-  return async function () {
-    try {
-      const newComment = await instance.post(
-        "http://localhost:3001//comments",
-        comments
-      );
-    } catch (error) {
-      throw error;
-    }
-  };
-}
- */
+export default instance;

@@ -85,6 +85,7 @@ function Fighters() {
                   src={`http://localhost:3001/fotos/${e.image}`}
                   alt={e.name}
                 />
+
                 <div class="card bg-info">
                   <div class="card-body text-center">
                     <h4>

@@ -56,4 +56,15 @@ router.delete("/:idFighter", async (req, res) => {
   }
 });
 
+router.put('/:id', async (req, res)=>{
+  const data = req.body;
+  const {id: id} = req.params; 
+  try{
+      await editUser(id, data);
+      res.send("La reserva se edito exitosamente");
+  }catch(error){
+      res.status(404).send(error.message)
+  }
+});
+
 module.exports = router;
