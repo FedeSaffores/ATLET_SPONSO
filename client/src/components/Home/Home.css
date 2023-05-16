@@ -1,4 +1,7 @@
-
+body{
+    background-image: url("../Sin\ título.jpg");
+    
+}
 .margin{
    display: flex;
    margin-top: 10px;

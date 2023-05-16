@@ -21,7 +21,7 @@ const Events = () => {
     <div className="Box">
       {events.slice(1).map((x) => (
         <div>
-          <div class="media border p-3 bg-secondary">
+          <div class="media border ">
             <img
               src={`http://localhost:3001/fotos/${x.Fighter?.image}`}
               alt={x.Fighter?.name}

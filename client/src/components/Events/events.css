@@ -8,17 +8,31 @@
 }
 .bor{
 margin-top: 30px;
+color:white;
 }
+.date{
+    color:white;
+}
+
 .media-body{
     display:grid;
     grid-template-columns: repeat(2, 1fr);
 }
 .media{
-    padding: 5px;
+    padding: 10px;
     border-radius: 1px 30px;
-    margin-top: 5px;
+    margin-top: 20px;
+    background-size: 200%;
+}
+.media-body{
+    background-size: 200%;
 }
 .titevent{
-    text-transform: uppercase
+    text-transform: uppercase;
+    color:white;
+}
+.razon{
+    color:white;
+    font-size: 16px;
 }
 

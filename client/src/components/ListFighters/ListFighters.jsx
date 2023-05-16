@@ -94,7 +94,7 @@ function Fighters() {
                       {e.lastname}
                     </h4>
                     <h4>{e.description}</h4>
-                    <p class="card-text">Some example text.</p>
+
                     <a href={`/profile/${e.id}`} class="btn btn-primary">
                       See Profile
                     </a>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./Profile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faInstagram,
   faEnvelope,
   faMobileRetro,
   faStar,
@@ -25,8 +26,7 @@ function Profile() {
         .then((res) => res.data)
         .then((res) => setFighter(res));
   }, [id, setFighter]);
-  console.log(fighter);
-  console.log(id);
+
   if (!id) {
     return null;
   }
@@ -35,22 +35,14 @@ function Profile() {
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <ul class="navbar-nav"></ul>
         <li>
-          <div className="Boton">
-            <Link to={"/fighters"}>
-              <button class="btn btn-info">FIGHTERS</button>
-            </Link>
-            <Link className="Insta" to={`${fighter?.instagram}`}>
-              Instagra
-            </Link>
-            <br></br>
-            <br></br>
-          </div>
+          <Link to={"/fighters"}>
+            <button class="btn btn-info">FIGHTERS</button>
+          </Link>
         </li>
       </nav>
-      {/*   <div class="container p-3 my-3 border"> */}
-      <div class="container p-3 my-3 bg-secondary text-white ">
-        <h1 className="atleta">ATLETA</h1>
 
+      <div class="container p-3 my-3">
+        <div className="atleta">ATLETA</div>
         <div className="name">
           <h1>
             {fighter?.name}
@@ -83,12 +75,15 @@ function Profile() {
               <FontAwesomeIcon icon={faStar} />
               {fighter?.score}
             </h3>
+            <i class="fa-brands fa-instagram"></i>
 
-            <div className="comments">
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <RegisterComment />
-              </MuiPickersUtilsProvider>
-            </div>
+            <Link className="Insta" to={`${fighter?.instagram}`}>
+              Instagram
+            </Link>
+
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <RegisterComment />
+            </MuiPickersUtilsProvider>
           </div>
         </div>
       </div>

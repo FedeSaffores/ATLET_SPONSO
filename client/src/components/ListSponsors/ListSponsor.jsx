@@ -58,10 +58,10 @@ function Sponsors() {
         </ul>
       </nav>
 
-      <div class="container">
+      <div class="container p-3 my-3 -white">
         <h2 className="Title">SPONSORS LIST</h2>
         <div>
-          <table class="table table-hover">
+          <table class="table">
             <thead>
               <tr>
                 <th>Company Name</th>
@@ -69,7 +69,7 @@ function Sponsors() {
                 <th>Email</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="leter">
               {sponsors?.map((e) => (
                 <tr>
                   <td>{e.companyName}</td>

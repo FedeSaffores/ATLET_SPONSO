@@ -109,7 +109,7 @@ const FormSponsor = () => {
             </div>
             <div className="form-group">
               <label html="description" className="lebel">
-                ACTIVITY COMPANY:
+                COMPANY ACTIVITY :
               </label>
               <br></br>
               <input

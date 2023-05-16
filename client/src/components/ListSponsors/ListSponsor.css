@@ -1,8 +1,7 @@
-body{
-    background-color:white;
-}
+
 .Title{
     font-size: 50px;
+    color: white;
     
 }
 .botonera{
@@ -10,5 +9,8 @@ body{
     grid-template-columns: 1fr 1fr 1fr;
     gap:5px;
 
+}
+.table{
+    color: white;
 }
 
