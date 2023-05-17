@@ -6,9 +6,7 @@ import { validComment } from "../../schemas/comments";
 import instance from "../../Redux/actions";
 import Swal from "sweetalert2";
 import { DatePicker } from "@material-ui/pickers";
-
-import "./createComment.css";
-import { useSelector } from "react-redux";
+import "./createComments.css";
 
 const RegisterComment = () => {
   const { id } = useParams();
@@ -93,7 +91,8 @@ const RegisterComment = () => {
               DESCRIBE EVENT:
             </label>
             <br></br>
-            <input
+            <textarea
+              multiple
               value={values.texto}
               onChange={handleChange}
               id="texto"

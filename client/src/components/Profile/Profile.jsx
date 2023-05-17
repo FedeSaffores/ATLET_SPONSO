@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "./Profile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faInstagram,
   faEnvelope,
   faMobileRetro,
   faStar,
@@ -14,6 +13,7 @@ import instance from "../../Redux/actions";
 import RegisterComment from "../CreateComments/createComments";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
+import { FaInstagram } from "react-icons/fa";
 
 function Profile() {
   const { id } = useParams();
@@ -39,10 +39,15 @@ function Profile() {
             <button class="btn btn-info">FIGHTERS</button>
           </Link>
         </li>
+        <li>
+          <Link to={"/"}>
+            <button class="btn btn-info">HOME</button>
+          </Link>
+        </li>
       </nav>
 
-      <div class="container p-3 my-3">
-        <div className="atleta">ATLETA</div>
+      <div class="container p-3 my-3 ">
+        <h1 className="atleta">ATLETA</h1>
         <div className="name">
           <h1>
             {fighter?.name}
@@ -52,9 +57,9 @@ function Profile() {
         </div>
         <div class="row">
           <div class="col-sm">
-            <h3 className="SPORT">SPORT {fighter?.description}</h3>
+            <h3 className="SPORT">{fighter?.description}</h3>
 
-            <h3 className="SPORT">LEVEL {fighter?.quality}</h3>
+            <h3 className="SPORT">{fighter?.quality}</h3>
             <div>
               <img
                 className="img"
@@ -71,14 +76,14 @@ function Profile() {
             <h2 className="SPORT">
               <FontAwesomeIcon icon={faMobileRetro} /> {fighter?.tel}
             </h2>
-            <h3 className="SPORT">
+            {/*   <h3 className="SPORT">
               <FontAwesomeIcon icon={faStar} />
               {fighter?.score}
-            </h3>
+            </h3> */}
             <i class="fa-brands fa-instagram"></i>
 
             <Link className="Insta" to={`${fighter?.instagram}`}>
-              Instagram
+              <FaInstagram /> Instagram
             </Link>
 
             <MuiPickersUtilsProvider utils={DateFnsUtils}>

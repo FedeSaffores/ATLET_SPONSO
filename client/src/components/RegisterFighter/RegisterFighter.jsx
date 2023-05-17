@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHand, faImage } from "@fortawesome/free-solid-svg-icons";
 //import { json } from "react-router-dom";
+import { FaInstagram } from "react-icons/fa";
 
 const RegisterFighter = () => {
   const dispatch = useDispatch();
@@ -97,16 +98,16 @@ const RegisterFighter = () => {
       </nav>
 
       <div>
-        <h1 className="h1">ATHLETE REGISTRATION</h1>
+        <div class="container p-3 my-3 ">
+          <h1 className="h1">ATHLETE REGISTRATION</h1>
 
-        <div className="caja">
           <form
             encType="multipart/form-data"
             onSubmit={handleSubmit}
             autoComplete="off"
           >
             <div className="form-group">
-              <h3>
+              <h3 className="bienvenida">
                 Hello! <FontAwesomeIcon icon={faHand} />
               </h3>
               <h3 className="msj">
@@ -118,9 +119,9 @@ const RegisterFighter = () => {
               <h2>{Myuser.tel}</h2>
               <h2>{Myuser.address}</h2> */}
             </div>
-            <div>
+            <div className="boxis">
               <label html="instagram" className="lebel">
-                INSTAGRAM:
+                <FaInstagram /> INSTAGRAM
               </label>
               <br></br>
               <input
@@ -138,95 +139,101 @@ const RegisterFighter = () => {
                 <p className="error">{errors.instagram}</p>
               )}
             </div>
-            <br></br>
-            <div className="form-group">
-              <label htmlFor="description" className="lebel">
-                CHOOSE YOUR SPORT:
-              </label>
-              <br></br>
+            <div className="boxis2">
+              <div className="form-group">
+                <label htmlFor="description" className="lebel">
+                  CHOOSE YOUR SPORT:
+                </label>
+                <br></br>
 
-              <select
-                value={values.description}
-                onChange={handleChange}
-                id="description"
-                type="description"
-                placeholder="Enter your description"
-                onBlur={handleBlur}
-                className={
-                  errors.description && touched.description ? "input-error" : ""
-                }
+                <select
+                  value={values.description}
+                  onChange={handleChange}
+                  id="description"
+                  type="description"
+                  placeholder="Enter your description"
+                  onBlur={handleBlur}
+                  className={
+                    errors.description && touched.description
+                      ? "input-error"
+                      : ""
+                  }
+                >
+                  <option value="">SELECT SPORT</option>
+                  <option value="KICK BOXER">KICK BOXER</option>
+                  <option value="BOXER">BOXER</option>
+                  <option value="JIU JITSU FIGHTER">JIU JITSU FIGHTER</option>
+                  <option value="MMA FIGHTER">MMA FIGHTER</option>
+                  <option value="JUDO">JUDO</option>
+                  <option value="ATHLETICS">ATHLETICS</option>
+                  <option value="OTHERS">OTHERS</option>
+                </select>
+                {errors.quality && touched.quality && (
+                  <p className="error">{errors.quality}</p>
+                )}
+              </div>
+            </div>
+            <div className="boxis3">
+              <div className="form-group">
+                <label htmlFor="description" className="lebel">
+                  QUALITY:
+                </label>
+                <br></br>
+                <select
+                  value={values.quality}
+                  onChange={handleChange}
+                  id="quality"
+                  type="quality"
+                  placeholder="Enter your quality"
+                  onBlur={handleBlur}
+                  className={
+                    errors.quality && touched.quality ? "input-error" : ""
+                  }
+                >
+                  <option value="">SELECT QUALITY</option>
+                  <option value="Beginner">BEGINNER</option>
+                  <option value="Amateur">AMATEUR</option>
+                  <option value="Professional">PROFESSIONAL</option>
+                </select>
+                {errors.quality && touched.quality && (
+                  <p className="error">{errors.quality}</p>
+                )}
+              </div>
+            </div>
+            <div className="boxis4">
+              <div class="form-group">
+                <label htmlFor="image" className="lebel">
+                  ENTER YOUR PICTURE <br /> <FontAwesomeIcon icon={faImage} />
+                </label>
+                <br></br>
+                <input
+                  //     value={values.image}
+                  onChange={(e) =>
+                    setFieldValue("image", e.currentTarget.files[0])
+                  }
+                  //onChange={handleChange}
+                  id="file"
+                  name="image"
+                  accept="image/*"
+                  type="file"
+                  placeholder="Enter your Image"
+                  onBlur={handleBlur}
+                  className={errors.image && touched.image ? "input-error" : ""}
+                />
+                {errors.image && touched.image && (
+                  <p className="error">{errors.image}</p>
+                )}
+              </div>
+              <button
+                disabled={isSubmitting}
+                type="submit"
+                class="btn btn-primary"
               >
-                <option value="">SELECT SPORT</option>
-                <option value="KICK BOXER">KICK BOXER</option>
-                <option value="BOXER">BOXER</option>
-                <option value="JIU JITSU FIGHTER">JIU JITSU FIGHTER</option>
-                <option value="MMA FIGHTER">MMA FIGHTER</option>
-                <option value="JUDO">JUDO</option>
-                <option value="ATHLETICS">ATHLETICS</option>
-                <option value="OTHERS">OTHERS</option>
-              </select>
-              {errors.quality && touched.quality && (
-                <p className="error">{errors.quality}</p>
-              )}
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="description" className="lebel">
-                QUALITY:
-              </label>
+                Submit
+              </button>
               <br></br>
-              <select
-                value={values.quality}
-                onChange={handleChange}
-                id="quality"
-                type="quality"
-                placeholder="Enter your quality"
-                onBlur={handleBlur}
-                className={
-                  errors.quality && touched.quality ? "input-error" : ""
-                }
-              >
-                <option value="">SELECT QUALITY</option>
-                <option value="Beginner">BEGINNER</option>
-                <option value="Amateur">AMATEUR</option>
-                <option value="Professional">PROFESSIONAL</option>
-              </select>
-              {errors.quality && touched.quality && (
-                <p className="error">{errors.quality}</p>
-              )}
-            </div>
-            <div class="form-group">
-              <label htmlFor="image" className="lebel">
-                ENTER YOUR PICTURE <br /> <FontAwesomeIcon icon={faImage} />
-              </label>
               <br></br>
-              <input
-                //     value={values.image}
-                onChange={(e) =>
-                  setFieldValue("image", e.currentTarget.files[0])
-                }
-                //onChange={handleChange}
-                id="file"
-                name="image"
-                accept="image/*"
-                type="file"
-                placeholder="Enter your Image"
-                onBlur={handleBlur}
-                className={errors.image && touched.image ? "input-error" : ""}
-              />
-              {errors.image && touched.image && (
-                <p className="error">{errors.image}</p>
-              )}
             </div>
-            <button
-              disabled={isSubmitting}
-              type="submit"
-              class="btn btn-primary"
-            >
-              Submit
-            </button>
-            <br></br>
-            <br></br>
           </form>
         </div>
       </div>

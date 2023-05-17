@@ -1,10 +1,29 @@
-
-.caja{
-    background-color: #f8f9fa!important;
-    margin-left: 25%;;
-    text-align: center;
-    margin-bottom: 10px;
+.h1{
+    margin-top: 50px;
+    color: white;
+    text-shadow: 4px 4px #17a2b8 !important
 }
 .msj{
+    text-align: center;
     color: #17a2b8 !important;
+    text-shadow: 4px 4px black !important
+}
+.bienvenida{
+    text-align: center;
+    text-shadow: 4px 4px #17a2b8 !important
+}
+.boxis{
+    text-align: center;
+}
+.boxis2{
+    margin-top: 10px;
+    text-align: center;
+}
+.boxis3{
+    margin-top: 10px;
+    text-align: center;
+}
+.boxis4{
+    margin-top: 10px;
+    text-align: center;
 }

@@ -1,20 +1,24 @@
 .name{
     text-transform: uppercase;
     text-align: center ;
-    color:white
+    color:white;
+    font-style: italic;
+    text-shadow: 2px 2px blue
 }
 
 .Insta{
     color: purple;
     font-size: 30px;
-    margin-left: 30px;
+  
     margin-top: 2px;
     margin-bottom: 10px;
     text-decoration: none;
 }
 .atleta{
+    
     text-align: center;
-    font-family: 'Lucida Sans';
+    font-style: italic;
+    text-shadow: 2px 2px blue;
     font-size: 60px;
     
     color:white
@@ -22,13 +26,15 @@
 
 .SPORT{
     text-align: left; 
-    color:white
+    color:white;
+    text-shadow: 4px 4px black
 }
 
 .img{
     height: 400px;
     width: 400px;
     margin-right: 70%;  
+    border-radius: 25px 25px;
 }
 
 .comments{
@@ -40,6 +46,9 @@
     gap:5px;
 }
 .container{
-border:5px white;
-color: white
+    border: 3px solid white;
+color: white;
+box-shadow: 4px 4px rgb(64, 62, 62);
+border-radius: 25px 25px;
 }
+

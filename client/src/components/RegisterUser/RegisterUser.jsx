@@ -3,15 +3,13 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
 import { schemauser } from "../../schemas/user";
-//import { useNavigate } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import "./RegisterUser.css";
 
 const onSubmit = async (values, actions) => {
-  console.log(values);
-  console.log(actions);
   axios
     .post("http://localhost:3001/user", values, {})
     .then((res) => {
@@ -29,6 +27,7 @@ const onSubmit = async (values, actions) => {
       });
     });
   await new Promise((resolve) => setTimeout(resolve, 1000));
+
   actions.resetForm();
 };
 const FormUser = () => {
@@ -70,7 +69,7 @@ const FormUser = () => {
         <div className="raja">
           <h1 className="h1">REGISTER USER</h1>
           <br></br>
-          <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faUser} className="icon"></FontAwesomeIcon>
 
           <form
             encType="multipart/form-data"
@@ -192,4 +191,5 @@ const FormUser = () => {
     </div>
   );
 };
+
 export default FormUser;
