@@ -34,6 +34,7 @@ const Events = () => {
           onClick={() => {
             setPage(page + 1);
           }}
+          disabled={events?.slice((page + 1) * 3).length === 0}
         >
           Siguiente
         </button>

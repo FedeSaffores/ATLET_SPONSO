@@ -10,15 +10,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import RemoverFighter from "../DeleteFighter/DeleteFighter.jsx";
 import instance from "../../Redux/actions";
+import { useSelector, useDispatch } from "react-redux";
 import RegisterComment from "../CreateComments/createComments";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { FaInstagram } from "react-icons/fa";
+import { getMyUser } from "../../Redux/actions";
 
 function Profile() {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const [fighter, setFighter] = useState();
-
+  const myuser = useSelector((state) => state.myUser);
   useEffect(() => {
     if (id)
       instance
@@ -26,6 +29,10 @@ function Profile() {
         .then((res) => res.data)
         .then((res) => setFighter(res));
   }, [id, setFighter]);
+
+  useEffect(() => {
+    dispatch(getMyUser());
+  }, [dispatch]);
 
   if (!id) {
     return null;
@@ -85,10 +92,21 @@ function Profile() {
             <Link className="Insta" to={`${fighter?.instagram}`}>
               <FaInstagram /> Instagram
             </Link>
-
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <RegisterComment />
-            </MuiPickersUtilsProvider>
+            <div>
+              {myuser?.FighterId ? (
+                <>
+                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <RegisterComment />
+                  </MuiPickersUtilsProvider>
+                </>
+              ) : (
+                <div className="ALERTA">
+                  <strong className="alertatex">
+                    Only Fighters can Create events!!
+                  </strong>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -11,6 +11,7 @@ function Fighters() {
   const fighters = useSelector((state) => state.Fighters);
   const [busqueda, setBusqueda] = useState("");
   const [sport, setSport] = useState("");
+  const [page, setPage] = useState(0);
   const InputHandler = (e) => {
     setBusqueda(e.target.value);
   };
@@ -73,36 +74,61 @@ function Fighters() {
           </li>
         </ul>
       </nav>
-      {fighters.length === 0 && <h1>NOT FIGHTERS</h1>}
-      <div className="supercaja">
-        {fighters
-          ?.filter((x) => (sport !== "" ? x.description === sport : true))
-          .map((e) => (
-            <div key={e.id} className="box">
-              <div class="card" style={{ width: "400px" }}>
-                <img
-                  class="card-img-top"
-                  src={`http://localhost:3001/fotos/${e.image}`}
-                  alt={e.name}
-                />
+      <div>
+        <div className="bt">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onClick={() => {
+              setPage(page - 1);
+            }}
+            disabled={page === 0}
+          >
+            Anterior
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onClick={() => {
+              setPage(page + 1);
+            }}
+            disabled={fighters?.slice((page + 1) * 3).length === 0}
+          >
+            Siguiente
+          </button>
+        </div>
+        {fighters.length === 0 && <h1>NOT FIGHTERS</h1>}
+        <div className="supercaja">
+          {fighters
+            ?.filter((x) => (sport !== "" ? x.description === sport : true))
+            .slice(page * 3, (page + 1) * 3)
+            .map((e) => (
+              <div key={e.id} className="box">
+                <div class="card" style={{ width: "400px" }}>
+                  <img
+                    class="card-img-top"
+                    src={`http://localhost:3001/fotos/${e.image}`}
+                    alt={e.name}
+                  />
 
-                <div class="card bg-info">
-                  <div class="card-body text-center">
-                    <h4>
-                      {e.name}
-                      <br />
-                      {e.lastname}
-                    </h4>
-                    <h4>{e.description}</h4>
+                  <div class="card bg-info">
+                    <div class="card-body text-center">
+                      <h4>
+                        {e.name}
+                        <br />
+                        {e.lastname}
+                      </h4>
+                      <h4>{e.description}</h4>
 
-                    <a href={`/profile/${e.id}`} class="btn btn-primary">
-                      See Profile
-                    </a>
+                      <a href={`/profile/${e.id}`} class="btn btn-primary">
+                        See Profile
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+        </div>
       </div>
     </div>
   );

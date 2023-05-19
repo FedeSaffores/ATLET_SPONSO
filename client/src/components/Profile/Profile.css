@@ -51,4 +51,17 @@ color: white;
 box-shadow: 4px 4px rgb(64, 62, 62);
 border-radius: 25px 25px;
 }
+.ALERTA{
+    text-align: center;
+    height: 50%;
+    margin-top: 15%;
+    background-color: #17a2b8;
+    margin-bottom: 30px;
+    margin-right:auto;
+    border-radius: 25px 25px;
+}
+.alertatex{
+
+}
+
 

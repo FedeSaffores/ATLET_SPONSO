@@ -55,12 +55,19 @@ function Home() {
 
           <li>
             <div className="BotFight">
-              <Link to={"/fighters"}>
-                <button class="btn btn-info"> Fighters</button>
-              </Link>
-              <Link to={"/sponsor"}>
-                <button class="btn btn-info"> Sponsors</button>
-              </Link>
+              {!myuser?.id ? (
+                <></>
+              ) : (
+                <>
+                  {" "}
+                  <Link to={"/fighters"}>
+                    <button class="btn btn-info"> Fighters</button>
+                  </Link>
+                  <Link to={"/sponsor"}>
+                    <button class="btn btn-info"> Sponsors</button>
+                  </Link>
+                </>
+              )}
             </div>
           </li>
           <li>
