@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
         unique: true,
         allowNull: false,
       },
-      name: {
+      completeName: {
         type: DataTypes.TEXT,
 
         allowNull: false,

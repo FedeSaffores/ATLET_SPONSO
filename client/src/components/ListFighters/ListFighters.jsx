@@ -108,16 +108,12 @@ function Fighters() {
                   <img
                     class="card-img-top"
                     src={`http://localhost:3001/fotos/${e.image}`}
-                    alt={e.name}
+                    alt={e.completeName}
                   />
 
                   <div class="card bg-info">
                     <div class="card-body text-center">
-                      <h4>
-                        {e.name}
-                        <br />
-                        {e.lastname}
-                      </h4>
+                      <h4>{e.completeName}</h4>
                       <h4>{e.description}</h4>
 
                       <a href={`/profile/${e.id}`} class="btn btn-primary">

@@ -3,8 +3,7 @@ const { Op } = require("sequelize");
 
 const userJson = [
   {
-    name: "Federico",
-    lastname: "Saffores",
+    completeName: "Federico Saffores",
     email: "federico@gmail.com",
     password: "12345678",
     address: "AlberdiN!123",
@@ -14,17 +13,17 @@ const userJson = [
   },
 ];
 
-const getAllUsers = async (name) => {
+const getAllUsers = async (completeName) => {
   if ((await User.count()) === 0) {
     await User.bulkCreate(userJson);
   }
-  if (!name) {
+  if (!completeName) {
     return await User.findAll({});
   } else {
     return await User.findAll({
       where: {
-        name: {
-          [Op.iLike]: `%${name}%`,
+        completeName: {
+          [Op.iLike]: `%${completeName}%`,
         },
       },
     });

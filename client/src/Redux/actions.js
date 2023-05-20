@@ -30,9 +30,9 @@ export function getFighters() {
     return dispatch({ type: GET_FIGHTERS, payload: json.data });
   };
 }
-export function getFightersByName(name) {
+export function getFightersByName(completeName) {
   return async function (dispatch) {
-    const json = await instance.get(`/fighters?name=${name}`);
+    const json = await instance.get(`/fighters?completeName=${completeName}`);
     console.log(json);
     return dispatch({
       type: GET_FIGHTERS_NAME,

@@ -6,8 +6,7 @@ const newFighters = async (req, res) => {
   /*  const files = req.files;
   console.log(files); */
   const {
-    name,
-    lastname,
+    completeName,
     email,
     password,
     tel,
@@ -32,8 +31,7 @@ const newFighters = async (req, res) => {
     //console.log(existe);
     if (existe) return res.json({ info: "The Fighter already exists" });
     const fighter = await Fighters.create({
-      name,
-      lastname,
+      completeName,
       email,
       password,
       tel,

@@ -21,8 +21,7 @@ const RegisterFighter = () => {
     formdata.append("image", values.image);
     //formdata.append()
     const parceValues = {
-      name: Myuser.name,
-      lastname: Myuser.lastname,
+      completeName: Myuser.completeName,
       email: Myuser.email,
       password: Myuser.password,
       tel: Myuser.tel,
@@ -111,7 +110,7 @@ const RegisterFighter = () => {
                 Hello! <FontAwesomeIcon icon={faHand} />
               </h3>
               <h3 className="msj">
-                {Myuser.name} we need you enter this information
+                {Myuser.completeName} we need you enter this information
               </h3>
               {/*   <h2>{Myuser.name}</h2>
               <h2>{Myuser.lastname}</h2>

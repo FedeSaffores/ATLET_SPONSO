@@ -4,9 +4,9 @@ const { promisify } = require("util");
 const { User } = require("../db");
 
 exports.register = async (req, res) => {
-  const { name, lastname, email, password, address, tel, isAdmin } = req.body;
-  console.log(name, lastname, email, password);
-  if (!name || !lastname || !email || !password || !email) {
+  const { completeName, email, password, address, tel, isAdmin } = req.body;
+  console.log(completeName, email, password);
+  if (!completeName || !email || !password || !email) {
     return res.status(404).send("You must complete all the files");
   }
   try {
@@ -19,8 +19,7 @@ exports.register = async (req, res) => {
       const newHash = await bcryptjs.hash(req.body.password, 8);
       const token = jwt.sign({ email: req.body.email }, "userKey");
       const user = await User.create({
-        name: req.body.name,
-        lastname: req.body.lastname,
+        completeName: req.body.completeName,
         password: newHash,
         email: req.body.email,
         confirmationCode: token,
@@ -105,7 +104,7 @@ exports.protectedRoute = async (req, res) => {
       success: true,
       user: {
         id: req.user.id,
-        user: req.user.name,
+        user: req.user.completeName,
       },
     });
   } catch (error) {

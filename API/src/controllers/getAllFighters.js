@@ -4,8 +4,7 @@ const { Op } = require("sequelize");
 
 const JsonFighters = [
   {
-    name: "Federico",
-    lastname: "Saffores",
+    completeName: "Federico Saffores",
     email: "fede@gmail.com",
     instergram: "",
     description: "Jiu jitsu Fighter",
@@ -19,17 +18,17 @@ const JsonFighters = [
   },
 ];
 
-const getAllFighters = async (name) => {
+const getAllFighters = async (completeName) => {
   if ((await Fighters.count()) === 0) {
     await Fighters.bulkCreate(JsonFighters);
   }
-  if (!name) {
+  if (!completeName) {
     return await Fighters.findAll({});
   } else {
     return await Fighters.findAll({
       where: {
-        name: {
-          [Op.iLike]: `%${name}%`,
+        completeName: {
+          [Op.iLike]: `%${completeName}%`,
         },
       },
     });

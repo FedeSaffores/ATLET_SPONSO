@@ -14,7 +14,7 @@ const FormSponsor = () => {
   let Myuser = useSelector((state) => state.myUser);
   const onSubmit = async (values, actions) => {
     const parceValues = {
-      name: Myuser.name,
+      completeName: Myuser.completeName,
       email: Myuser.email,
       companyName: values.companyName,
       description: values.description,
@@ -112,7 +112,8 @@ const FormSponsor = () => {
                 COMPANY ACTIVITY :
               </label>
               <br></br>
-              <input
+              <textarea
+                multiple
                 value={values.description}
                 onChange={handleChange}
                 id="description"

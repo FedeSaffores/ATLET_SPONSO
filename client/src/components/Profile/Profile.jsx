@@ -56,11 +56,7 @@ function Profile() {
       <div class="container p-3 my-3 ">
         <h1 className="atleta">ATLETA</h1>
         <div className="name">
-          <h1>
-            {fighter?.name}
-            {"  "}
-            {fighter?.lastname}
-          </h1>
+          <h1>{fighter?.completeName}</h1>
         </div>
         <div class="row">
           <div class="col-sm">
@@ -71,7 +67,7 @@ function Profile() {
               <img
                 className="img"
                 src={`http://localhost:3001/fotos/${fighter?.image}`}
-                alt={fighter?.name}
+                alt={fighter?.completeName}
               />
             </div>
           </div>

@@ -42,8 +42,7 @@ const FormUser = () => {
     setFieldValue,
   } = useFormik({
     initialValues: {
-      name: "",
-      lastname: "",
+      completeName: "",
       email: "",
       password: "",
       address: "",
@@ -77,22 +76,26 @@ const FormUser = () => {
             autoComplete="off"
           >
             <div className="form-group">
-              <label html="name" className="lebel"></label>
+              <label html="completeName" className="lebel"></label>
               <br></br>
               <input
-                value={values.name}
+                value={values.completeName}
                 onChange={handleChange}
-                id="name"
-                type="name"
-                placeholder="Enter Name"
+                id="completeName"
+                type="completeName"
+                placeholder="Enter completeName"
                 onBlur={handleBlur}
-                className={errors.name && touched.name ? "input-error" : ""}
+                className={
+                  errors.completeName && touched.completeName
+                    ? "input-error"
+                    : ""
+                }
               />
-              {errors.name && touched.name && (
-                <p className="error">{errors.name}</p>
+              {errors.completeName && touched.completeName && (
+                <p className="error">{errors.completeName}</p>
               )}
             </div>
-            <div className="form-group">
+            {/*    <div className="form-group">
               <label htmlFor="lastname" className="lebel"></label>
               <br></br>
               <input
@@ -109,7 +112,7 @@ const FormUser = () => {
               {errors.lastname && touched.lastname && (
                 <p className="error">{errors.lastname}</p>
               )}
-            </div>
+            </div> */}
             <div className="form-group">
               <label htmlFor="email" className="lebel"></label>
               <br></br>

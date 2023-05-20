@@ -18,7 +18,8 @@ router.get("/myfighter", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const allFight = await getAllFighters(req.query.name);
+    const allFight = await getAllFighters(req.query.completeName);
+
     res.status(200).json(allFight);
     console.log(allFight);
   } catch (error) {
@@ -56,14 +57,14 @@ router.delete("/:idFighter", async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res)=>{
+router.put("/:id", async (req, res) => {
   const data = req.body;
-  const {id: id} = req.params; 
-  try{
-      await editUser(id, data);
-      res.send("La reserva se edito exitosamente");
-  }catch(error){
-      res.status(404).send(error.message)
+  const { id: id } = req.params;
+  try {
+    await editUser(id, data);
+    res.send("La reserva se edito exitosamente");
+  } catch (error) {
+    res.status(404).send(error.message);
   }
 });
 

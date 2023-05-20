@@ -19,7 +19,7 @@ const getAllComments = async (eventName) => {
       include: [
         {
           model: Fighters,
-          attributes: ["name", "lastname", "image"],
+          attributes: ["completeName", "image"],
         },
       ],
     });
@@ -33,7 +33,7 @@ const getAllComments = async (eventName) => {
       include: [
         {
           model: Fighters,
-          attributes: ["name", "lastname", "image"],
+          attributes: ["completeName", "image"],
         },
       ],
       //include
