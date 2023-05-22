@@ -69,11 +69,7 @@ const Events = () => {
                   {/*  <div className="ecole"> */}
                   <h3 className="titevent">{x.eventName}</h3>
 
-                  <h4 className="razon">
-                    {/*  <FontAwesomeIcon icon={faStickyNote} /> */}
-
-                    {x.texto}
-                  </h4>
+                  <p className="texto">{x.texto}</p>
                 </div>
               </div>
             </div>

@@ -1,0 +1,8 @@
+textarea{
+    resize: none;
+    width: 400px;
+    height: 90px
+}
+.date{
+    margin-top:5px
+}

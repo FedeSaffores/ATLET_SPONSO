@@ -105,12 +105,13 @@ const RegisterComment = () => {
               <p className="error">{errors.texto}</p>
             )}
             <br></br>
-            <br></br>
             <label>DATE</label>
+
             <br></br>
             <DatePicker
               value={selectDate}
               onChange={setSelectDate}
+              className="date"
               /*     className={
                 errors.selectDate && touched.selectDate ? "input-error" : ""
               } */
