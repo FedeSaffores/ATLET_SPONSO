@@ -14,12 +14,12 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-
       email: {
         type: DataTypes.TEXT,
         unique: true,
         allowNull: false,
       },
+      
       instagram: {
         type: DataTypes.TEXT,
       },

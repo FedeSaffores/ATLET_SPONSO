@@ -45,6 +45,7 @@ const FormUser = () => {
       completeName: "",
       email: "",
       password: "",
+      location:"",
       address: "",
       tel: "",
     },

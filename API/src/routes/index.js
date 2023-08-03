@@ -6,6 +6,7 @@ const multer = require("multer");
 const { newFighters } = require("../controllers/createNewFighters.js");
 const { newSponsors } = require("../controllers/createNewSponsors.js");
 const { newComment } = require("../controllers/createNewComment.js");
+const { getForName } = require("../controllers/getLocality.js");
 
 const userService = require("../meddlewares/users");
 const fighterControllers = require("../meddlewares/fighthers");
@@ -13,6 +14,8 @@ const sponsorsControllers = require("../meddlewares/sponsors");
 const userControllers = require("../controllers/autentController.js");
 const autentController = require("../meddlewares/autent.js");
 const eventController = require("../meddlewares/comment.js");
+const locations = require("../meddlewares/localities.js");
+/* const locationByName = require("../meddlewares/localities.js"); */
 
 const uuid = require("uuid");
 const moment = require("moment");
@@ -63,6 +66,8 @@ router.use(
   passport.authenticate("jwt", { session: false }),
   fighterControllers
 );
+router.use("/localidades", locations);
+/* router.use("/filtrar", locations); */
 
 router.use("/sponsor", sponsorsControllers);
 router.post("/newSponsor", newSponsors);
