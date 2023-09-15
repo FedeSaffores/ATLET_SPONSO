@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { useFormik } from "formik";
 import { validComment } from "../../schemas/comments";
 import instance from "../../Redux/actions";
@@ -28,6 +27,7 @@ const RegisterComment = () => {
           showConfirmButton: false,
           timer: 2000,
         });
+        window.location.href = "/";
       })
       .catch((error) => {
         Swal.fire({
@@ -47,7 +47,6 @@ const RegisterComment = () => {
     handleBlur,
     handleChange,
     handleSubmit,
-    setFieldValue,
   } = useFormik({
     initialValues: {
       eventName: "",

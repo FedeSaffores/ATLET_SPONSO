@@ -27,6 +27,7 @@ const FormSponsor = () => {
           showConfirmButton: false,
           timer: 1000,
         });
+        window.location.href = "/sponsor";
       })
       .catch((error) => {
         Swal.fire({

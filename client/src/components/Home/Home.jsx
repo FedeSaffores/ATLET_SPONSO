@@ -20,6 +20,7 @@ function Home() {
     //dispatch(getFighters());
     dispatch(getMyUser());
   }, [dispatch]);
+  console.log(myuser);
   return (
     <div>
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -38,15 +39,36 @@ function Home() {
                   </>
                 ) : (
                   <>
-                    <Link
-                      to={"#"}
-                      onClick={() => {
-                        localStorage.removeItem("jwt");
-                        navigate(0);
-                      }}
-                    >
-                      <button class="btn btn-info">Sign out</button>
-                    </Link>
+                    <div className="Logbot">
+                      <div
+                        classname="element1"
+                        style={{
+                          marginRight: "75px",
+                        }}
+                      >
+                        <a>
+                          <p>{myuser.completeName.toUpperCase()}</p>
+                        </a>
+                      </div>
+                      <div
+                        className="element1"
+                        style={{
+                          display: "flex",
+                          marginLeft: "5px",
+                          marginRight: "5px",
+                        }}
+                      >
+                        <Link
+                          to={"#"}
+                          onClick={() => {
+                            localStorage.removeItem("jwt");
+                            navigate(0);
+                          }}
+                        >
+                          <button class="btn btn-info">Sign out</button>
+                        </Link>
+                      </div>
+                    </div>
                   </>
                 )}
               </div>
@@ -60,12 +82,20 @@ function Home() {
               ) : (
                 <>
                   {" "}
-                  <Link to={"/fighters"}>
-                    <button class="btn btn-info"> Fighters</button>
-                  </Link>
-                  <Link to={"/sponsor"}>
-                    <button class="btn btn-info"> Sponsors</button>
-                  </Link>
+                  <div className="fightexpo" style={{ display: "flex" }}>
+                    <Link to={"/fighters"}>
+                      <button
+                        class="btn btn-info"
+                        style={{ marginRight: "10px" }}
+                      >
+                        {" "}
+                        Fighters
+                      </button>
+                    </Link>
+                    <Link to={"/sponsor"}>
+                      <button class="btn btn-info"> Sponsors</button>
+                    </Link>
+                  </div>
                 </>
               )}
             </div>
@@ -75,12 +105,12 @@ function Home() {
             {myuser?.id ? (
               <>
                 <div className="margin">
-                  <div className="btn2">
+                  <div>
                     <Link to={"/newFighter"}>
                       <button class="btn btn-success"> CREATE FIGHTER </button>
                     </Link>
                   </div>
-                  <div className="btn2">
+                  <div>
                     <Link to={"/formSponsor"}>
                       <button class="btn btn-success">CREATE SPONSOR</button>
                     </Link>

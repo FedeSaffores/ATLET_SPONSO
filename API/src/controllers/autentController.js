@@ -4,9 +4,18 @@ const { promisify } = require("util");
 const { User } = require("../db");
 
 exports.register = async (req, res) => {
-  const { completeName, email, password, address, tel, isAdmin } = req.body;
-  console.log(completeName, email, password);
-  if (!completeName || !email || !password || !email) {
+  const {
+    completeName,
+    email,
+    password,
+    address,
+    passwordConfirm,
+    city,
+    tel,
+    isAdmin,
+  } = req.body;
+  console.log(completeName, email, password, passwordConfirm, city);
+  if (!completeName || !email || !password || !email | !passwordConfirm) {
     return res.status(404).send("You must complete all the files");
   }
   try {
@@ -21,9 +30,11 @@ exports.register = async (req, res) => {
       const user = await User.create({
         completeName: req.body.completeName,
         password: newHash,
+        passwordConfirm: newHash,
         email: req.body.email,
         confirmationCode: token,
         address: req.body.address,
+        city: req.body.city,
         tel: req.body.tel,
         isActive: req.body.isActive,
         isAdmin: req.body.isAdmin,

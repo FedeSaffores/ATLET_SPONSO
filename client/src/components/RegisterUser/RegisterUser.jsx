@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
 import { schemauser } from "../../schemas/user";
-
+import { getCities, getCitiesByName } from "../../Redux/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import "./RegisterUser.css";
 
 const onSubmit = async (values, actions) => {
+  console.log(values);
   axios
     .post("http://localhost:3001/user", values, {})
     .then((res) => {
@@ -18,6 +20,7 @@ const onSubmit = async (values, actions) => {
         showConfirmButton: false,
         timer: 1000,
       });
+      window.location.href = "/login";
     })
     .catch((error) => {
       Swal.fire({
@@ -26,11 +29,20 @@ const onSubmit = async (values, actions) => {
         text: `${error}`,
       });
     });
+
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   actions.resetForm();
 };
 const FormUser = () => {
+  const [busqueda, setBusqueda] = useState("");
+  const dispatch = useDispatch();
+  const cities = useSelector((state) => state.cities);
+
+  useEffect(() => {
+    dispatch(getCities());
+  }, [dispatch]);
+
   const {
     values,
     errors,
@@ -39,13 +51,13 @@ const FormUser = () => {
     handleBlur,
     handleChange,
     handleSubmit,
-    setFieldValue,
   } = useFormik({
     initialValues: {
       completeName: "",
       email: "",
       password: "",
-      location:"",
+      passwordConfirm: "",
+      city: "",
       address: "",
       tel: "",
     },
@@ -53,6 +65,16 @@ const FormUser = () => {
     onSubmit,
   });
   console.log(errors);
+
+  const handleCityChange = (event) => {
+    const selectedCity = event.target.value;
+    values.city = selectedCity;
+  };
+  const handleSearchChange = (event) => {
+    const searchTerm = event.target.value;
+    setBusqueda(searchTerm);
+    dispatch(getCitiesByName(searchTerm));
+  };
 
   return (
     <div>
@@ -96,24 +118,34 @@ const FormUser = () => {
                 <p className="error">{errors.completeName}</p>
               )}
             </div>
-            {/*    <div className="form-group">
-              <label htmlFor="lastname" className="lebel"></label>
-              <br></br>
-              <input
-                value={values.lastname}
-                onChange={handleChange}
-                id="lastname"
-                type="lastname"
-                placeholder="Enter your lastname"
-                onBlur={handleBlur}
-                className={
-                  errors.lastname && touched.lastname ? "input-error" : ""
-                }
-              />
-              {errors.lastname && touched.lastname && (
-                <p className="error">{errors.lastname}</p>
-              )}
-            </div> */}
+            <div className="form-group">
+              <div className="input-group">
+                <div>
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    placeholder="Buscar por nombre"
+                    value={busqueda}
+                    onChange={handleSearchChange}
+                  />
+                </div>
+                <div>
+                  <select
+                    className="form-select custom-select-sm"
+                    type="city"
+                    value={values.city}
+                    onChange={handleCityChange}
+                  >
+                    <option value="">Todas las ciudades</option>
+                    {cities.map((city) => (
+                      <option key={city.id} value={city.id}>
+                        {city.nombre} - {city.provincia} -{city.pais}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </div>
             <div className="form-group">
               <label htmlFor="email" className="lebel"></label>
               <br></br>
@@ -146,6 +178,26 @@ const FormUser = () => {
               />
               {errors.password && touched.password && (
                 <p className="error">{errors.password}</p>
+              )}
+            </div>
+            <div className="form-group">
+              <label htmlFor="passwordConfirm" className="lebel"></label>
+              <br />
+              <input
+                id="passwordConfirm"
+                type="password"
+                placeholder="Confirm your Password"
+                onChange={handleChange}
+                value={values.passwordConfirm}
+                onBlur={handleBlur}
+                className={
+                  errors.passwordConfirm && touched.passwordConfirm
+                    ? "input-error"
+                    : ""
+                }
+              />
+              {errors.passwordConfirm && touched.passwordConfirm && (
+                <p className="error">{errors.passwordConfirm}</p>
               )}
             </div>
             <div className="form-group">

@@ -12,13 +12,13 @@ const newFighters = async (req, res) => {
     tel,
     instagram,
     description,
+    city,
     score,
     price,
     quality,
     stock,
     promedio,
     isReview,
-    instergram,
   } = JSON.parse(req.body.data);
   /*   console.log(req.body);
   console.log(req.files);
@@ -37,6 +37,7 @@ const newFighters = async (req, res) => {
       tel,
       instagram,
       description,
+      city,
       score,
       price,
       quality,
@@ -45,8 +46,6 @@ const newFighters = async (req, res) => {
       promedio,
       isReview,
     });
-    console.log(req.user.id);
-    console.log(fighter.id);
     User.update(
       { FighterId: fighter.id },
       {

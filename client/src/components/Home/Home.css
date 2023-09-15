@@ -2,20 +2,19 @@ body{
     background-image: url("../Sin\ título.jpg");
     
 }
-.margin{
+ .margin{
    display: flex;
-   margin-top: 10px;
-   margin-left:500px;
+   margin-top: 5px;
+   justify-content: flex-end
   
-}
-.ContBot{
-    
-    display: block;
-    margin-left: 70%;
-    margin-left: 40px;
-    background-color:blue;
+} 
+.fightexpo {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    gap: 10px;
 
-}
+  }
 .btn2{
     display:flex;
     margin-left: 10px;
@@ -30,16 +29,30 @@ body{
 }
 
 .BotFight{
-    margin-top: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap:5px;
-
+    gap:5px; 
 }
+.margin {
+    display: flex;
+    margin-top: 5px;
+    
+    gap: 10px; /* Espacio entre elementos */
+  }
+
+ 
+  .evento {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px; /* Puedes ajustar el margen superior según tu diseño */
+    background-color: rgb(40, 66, 103);
+    border-radius: 25px 5px;
+  }
 
     .Title{
         text-align: center;
         margin-top: 40px;
+        margin-bottom: 20px; /* Añade margen inferior */
         font-family: 'Times New Roman', Times, serif;
         font-size: 50px;
     }
@@ -58,3 +71,23 @@ body{
     display: flex;
     margin-left:40%
 }
+.Logbot{
+    display: flex;
+    align-items: center;
+}
+.Logbot .element1 {
+    margin-right: 10px;
+  }
+  .alert .btn {
+    margin-right: 5px;
+  }
+
+
+
+  
+  
+  
+  
+  
+  
+  

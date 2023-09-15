@@ -6,12 +6,14 @@ const {
   GET_USER_BY_EMAIL,
   GET_USER_DETAIL,
   GET_DETAIL_FIGHTER,
-
+  GET_LIKES_BY_USER,
   DELETE_SPONSOR,
   GET_DETAIL_SPONSOR,
   GET_SPONSORS_NAME,
   GET_COMMENTS,
   CLEAR_DETAILS,
+  GET_CITIES,
+  GET_All_LIKES,
 } = require("./const");
 
 const inicialState = {
@@ -24,6 +26,9 @@ const inicialState = {
   userDetail: [],
   myUser: [],
   coments: [],
+  cities: [],
+  getAllLikes: [],
+  allLikes: [],
 };
 
 function reducer(state = inicialState, { type, payload }) {
@@ -86,6 +91,21 @@ function reducer(state = inicialState, { type, payload }) {
       return {
         ...state,
         coments: payload,
+      };
+    case GET_CITIES:
+      return {
+        ...state,
+        cities: payload,
+      };
+    case GET_All_LIKES:
+      return {
+        ...state,
+        getAllLikes: payload,
+      };
+    case GET_LIKES_BY_USER:
+      return {
+        ...state,
+        allLikes: payload,
       };
 
     default:

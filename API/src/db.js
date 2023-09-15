@@ -34,11 +34,10 @@ let capsEntries = entries.map((entry) => [
 
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Fighters, User, Comentario, Sponsors } = sequelize.models;
+const { Fighters, User, Comentario, Sponsors, Likes } = sequelize.models;
 
 //Relación con usuario
 User.belongsTo(Fighters, { through: "User_Fighters" });
-
 User.belongsTo(Sponsors, { through: "User_Sponsors" });
 
 //Relacion Peleadores con comentarios
@@ -48,6 +47,9 @@ Comentario.belongsTo(Fighters, { through: "Fighters_Comentarios" });
 //Relacion Peleadores con Sponsors
 Fighters.belongsToMany(Sponsors, { through: "Fighters_Sponsors" });
 Sponsors.belongsToMany(Fighters, { through: "Fighters_Sponsors" });
+
+//Relacion entre Likes y Usuarios
+User.belongsToMany(Comentario, { through: Likes });
 
 module.exports = {
   ...sequelize.models,

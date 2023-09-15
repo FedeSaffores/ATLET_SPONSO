@@ -31,7 +31,6 @@ ReactDOM.render(
         <Route path="/adminfight" element={<AdminFighters />} />
         <Route path="/adminfight" element={<AdminFighters />} />
         <Route path="/sponsor" element={<Sponsors />} />
-
         <Route path="/landing" element={<Landing />} />
 
         <Route path="/" element={<Home />} />

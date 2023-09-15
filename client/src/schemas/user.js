@@ -7,16 +7,15 @@ export const schemauser = yup.object().shape({
     .min(2, "Too Short!")
     .max(20, "Too Long!")
     .required("Required"),
-  email: yup.string().email("Plase enter a valid Email").required("Required"),
+  email: yup.string().email("Please enter a valid Email").required("Required"),
   password: yup
     .string()
-    .matches(passwordRules, {
-      message: "Must have at least 8 digits and maximum of 16",
-    })
+    .matches(passwordRules, "Must have at least 8 digits and maximum of 16")
     .required("Required"),
-  tel: yup
-    .number()
-    .min(5, "Too Short!")
-    //.max(20, "Too Long!")
-    .required("Required"),
+  passwordConfirm: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match")
+    .required("Password confirmation is required"),
+  tel: yup.number().min(5, "Too Short!").required("Required"),
+  city: yup.string(),
 });

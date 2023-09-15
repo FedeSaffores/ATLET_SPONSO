@@ -8,3 +8,7 @@ export const GET_USER_DETAIL = "GET_USER_DETAIL";
 export const GET_DETAIL_FIGHTER = "GET_DETAIL_FIGHTER";
 export const GET_COMMENTS = "GET_COMMENTS";
 export const CLEAR_DETAILS = "CLEAR_DETAIL";
+export const GET_CITIES = "GET_CITIES";
+export const GET_LIKES = "GET_LIKES";
+export const GET_LIKES_BY_USER = "GET_LIKES_BY_USER";
+export const GET_All_LIKES = "GET_All_LIKES";

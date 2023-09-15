@@ -5,11 +5,14 @@ import {
   GET_COMMENTS,
   GET_MYUSER,
   GET_FIGHTERS_NAME,
-  GET_DETAIL_SPONSOR,
   GET_USER_BY_EMAIL,
   GET_USER_DETAIL,
   GET_DETAIL_FIGHTER,
   CLEAR_DETAILS,
+  GET_CITIES,
+  GET_LIKES,
+  GET_LIKES_BY_USER,
+  GET_All_LIKES,
 } from "./const";
 
 /* const instance = axios.create({
@@ -99,8 +102,75 @@ export function getUserByEmail(email) {
 export function getAllComments() {
   return async function (dispatch) {
     const json = await instance.get("/allcoments");
-    console.log(json.data);
+
     return dispatch({ type: GET_COMMENTS, payload: json.data });
+  };
+}
+export function getCities() {
+  return async function (dispatch) {
+    try {
+      const json = await instance.get("http://localhost:3001/localidades");
+
+      return dispatch({ type: GET_CITIES, payload: json.data });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+}
+export function getCitiesByName(name) {
+  return async function (dispatch) {
+    const json = await instance.get(
+      `http://localhost:3001/localidades/name?name=${name}`
+    );
+
+    return dispatch({ type: GET_CITIES, payload: json.data });
+  };
+}
+
+export function addLikes(comentarioId, userId) {
+  return async function (dispatch) {
+    let json = await instance.post(`/comments/:comentarioId/add`, {
+      comentarioId,
+      userId,
+    });
+    return dispatch({
+      type: GET_LIKES,
+      payload: json.data,
+    });
+  };
+}
+export function removeFav(comentarioId, userId) {
+  return async function (dispatch) {
+    try {
+      let json = await instance.delete(`/comments/${comentarioId}/${userId}`);
+      return dispatch({
+        type: GET_LIKES,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.error("Error deleting like:", error);
+    }
+  };
+}
+export const getAllLikes = async (comentarioId) => {
+  console.log("aaaa");
+  console.log(comentarioId);
+  return async function (dispatch) {
+    let json = await instance.get(`/comments/${comentarioId}/likes`);
+    return dispatch({
+      type: GET_All_LIKES,
+      payload: json.data,
+    });
+  };
+};
+
+export function getLikesByUser(userId) {
+  return async function (dispatch) {
+    let json = await instance.get(`/comments/${userId}/count`);
+    return dispatch({
+      type: GET_LIKES_BY_USER,
+      payload: json.data,
+    });
   };
 }
 

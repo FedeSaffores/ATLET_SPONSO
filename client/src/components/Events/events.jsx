@@ -1,20 +1,45 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllComments } from "../../Redux/actions";
+import {
+  getAllComments,
+  getLikesByUser,
+  getAllLikes,
+} from "../../Redux/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
+import { addLikes, removeFav } from "../../Redux/actions";
 import "./events.css";
 
 const Events = () => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.coments);
   const [page, setPage] = useState(0);
+  const myuser = useSelector((state) => state.myUser);
+  const userLikes = useSelector((state) => state.allLikes);
 
+  const mapLike = userLikes?.likes?.map((i) => i.ComentarioId);
+
+  const maplike1 = mapLike && mapLike.length > 0 ? mapLike : null;
+
+  const remfav = (id) => {
+    dispatch(removeFav(id, myuser.id)).then(() =>
+      dispatch(getLikesByUser(myuser.id))
+    );
+    dispatch(getLikesByUser(null));
+  };
+
+  const addFav = (id) => {
+    dispatch(addLikes(id, myuser.id)).then(() =>
+      dispatch(getLikesByUser(myuser.id))
+    );
+  };
   useEffect(() => {
     dispatch(getAllComments());
-  }, [dispatch]);
-  console.log(events);
+    dispatch(getLikesByUser(myuser.id));
+  }, [dispatch, myuser.id]);
+
   return (
     <div className="Box">
       <div className="bt">
@@ -54,9 +79,7 @@ const Events = () => {
               />
               <div class="media-body">
                 <div className="bor">
-                  <h4>
-                    {x.Fighter?.name} {x.Fighter?.lastname}
-                  </h4>
+                  <h4>{x.Fighter?.completeName}</h4>
                 </div>
                 <div className="ber">
                   <h4 className="date">
@@ -68,9 +91,13 @@ const Events = () => {
 
                   {/*  <div className="ecole"> */}
                   <h3 className="titevent">{x.eventName}</h3>
-
                   <p className="texto">{x.texto}</p>
                 </div>
+                {maplike1 && maplike1.includes(x.id) ? (
+                  <button onClick={() => remfav(x.id)}>❤️</button>
+                ) : (
+                  <button onClick={() => addFav(x.id)}>🖤</button>
+                )}
               </div>
             </div>
           </div>

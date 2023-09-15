@@ -1,7 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
 //import { basicSchema } from "../../schemas/index";
 import "./RegisterFighter.css";
 import Swal from "sweetalert2";
@@ -16,6 +15,7 @@ import { FaInstagram } from "react-icons/fa";
 const RegisterFighter = () => {
   const dispatch = useDispatch();
   const Myuser = useSelector((state) => state.myUser);
+
   const onSubmit = async (values, actions) => {
     let formdata = new FormData();
     formdata.append("image", values.image);
@@ -26,6 +26,7 @@ const RegisterFighter = () => {
       password: Myuser.password,
       tel: Myuser.tel,
       address: Myuser.address,
+      city: Myuser.city,
       description: values.description,
       quality: values.quality,
       instagram: values.instagram,
@@ -99,7 +100,6 @@ const RegisterFighter = () => {
       <div>
         <div class="container p-3 my-3 ">
           <h1 className="h1">ATHLETE REGISTRATION</h1>
-
           <form
             encType="multipart/form-data"
             onSubmit={handleSubmit}
@@ -112,11 +112,7 @@ const RegisterFighter = () => {
               <h3 className="msj">
                 {Myuser.completeName} we need you enter this information
               </h3>
-              {/*   <h2>{Myuser.name}</h2>
-              <h2>{Myuser.lastname}</h2>
-              <h2>{Myuser.email}</h2>
-              <h2>{Myuser.tel}</h2>
-              <h2>{Myuser.address}</h2> */}
+              <p>{Myuser.city}</p>
             </div>
             <div className="boxis">
               <label html="instagram" className="lebel">
@@ -138,6 +134,7 @@ const RegisterFighter = () => {
                 <p className="error">{errors.instagram}</p>
               )}
             </div>
+
             <div className="boxis2">
               <div className="form-group">
                 <label htmlFor="description" className="lebel">

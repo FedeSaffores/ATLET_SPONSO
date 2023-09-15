@@ -19,12 +19,17 @@ module.exports = (sequelize) => {
         unique: true,
         allowNull: false,
       },
-      
+
       instagram: {
         type: DataTypes.TEXT,
+        allowNull: false,
       },
       tel: {
         type: DataTypes.BIGINT,
+      },
+      city: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       description: {
         type: DataTypes.ENUM([

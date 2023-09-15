@@ -2,14 +2,12 @@ const { Comentario } = require("../db");
 
 const newComment = async (req, res) => {
   const { eventName, date, texto } = req.body;
-
   try {
     const findEvent = await Comentario.findOne({
       where: {
         eventName: eventName,
       },
     });
-    console.log(req.body);
     if (!findEvent) {
       const AddEvent = await Comentario.create({
         eventName,

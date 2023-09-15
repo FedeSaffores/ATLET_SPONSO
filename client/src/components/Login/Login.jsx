@@ -13,30 +13,35 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import "./Login.css";
 
 const LogUser = () => {
-  const [formSuccess] = useState(false);
   const dispatch = useDispatch();
   const [email] = useState("");
   const navigate = useNavigate();
   let user = useSelector((state) => state.user);
 
   const onSubmit = async (values, actions) => {
-    console.log(values);
-    console.log(actions);
     axios
       .post("http://localhost:3001/login", values, {})
       .then((res) => {
         localStorage.setItem("jwt", res.data.data);
         dispatch(getMyUser());
+        console.log(getMyUser());
+
         navigate("/");
       })
       .catch((error) => {
-        axios.post("http://localhost:3001/user", values, {}).then((res) =>
+        if (error.response && error.response.status === 401) {
           Swal.fire({
-            title: `Done!`,
-            showConfirmButton: false,
-            timer: 5000,
-          })
-        );
+            icon: "error",
+            title: "Authentication Failed",
+            text: "Invalid email or password.",
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "An error occurred while trying to log in.",
+          });
+        }
       });
     await new Promise((resolve) => setTimeout(resolve, 1000));
     actions.resetForm();
@@ -49,7 +54,6 @@ const LogUser = () => {
     handleBlur,
     handleChange,
     handleSubmit,
-    setFieldValue,
   } = useFormik({
     initialValues: {
       email: "",

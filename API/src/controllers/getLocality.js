@@ -22,23 +22,26 @@ async function fetchLocalities() {
 }
 
 async function getForName(name) {
-  const searchTerm = name.toLowerCase();
-  console.log(searchTerm);
-  const dataName = await fetchLocalities();
-  console.log(dataName);
-  const filteredJson = dataName.filter((e) => {
-    const lowerCaseFields = [
-      e.nombre.toLowerCase() ||
-        e.municipio.toLowerCase() ||
-        e.departamento.toLowerCase() ||
-        e.provincia.toLowerCase(),
-    ];
-
-    return lowerCaseFields.some((field) => field.includes(searchTerm));
-  });
-  return filteredJson;
+  try {
+    const searchTerm = name.toLowerCase();
+    const dataName = await fetchLocalities();
+    const filteredJson = dataName.filter((e) => {
+      for (const key in e) {
+        if (
+          typeof e[key] === "string" &&
+          e[key].toLowerCase().includes(searchTerm)
+        ) {
+          return true;
+        }
+      }
+      return false;
+    });
+    return filteredJson;
+  } catch (error) {
+    console.error("Error:", error);
+    return [];
+  }
 }
-
 module.exports = {
   fetchLocalities,
   getForName,

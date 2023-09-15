@@ -33,10 +33,10 @@ function Profile() {
   useEffect(() => {
     dispatch(getMyUser());
   }, [dispatch]);
-
   if (!id) {
     return null;
   }
+  console.log(myuser);
   return (
     <div key={id}>
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -63,6 +63,7 @@ function Profile() {
             <h3 className="SPORT">{fighter?.description}</h3>
 
             <h3 className="SPORT">{fighter?.quality}</h3>
+            <h3>{fighter?.city}</h3>
             <div>
               <img
                 className="img"
@@ -89,7 +90,7 @@ function Profile() {
               <FaInstagram /> Instagram
             </Link>
             <div>
-              {myuser?.FighterId ? (
+              {myuser?.FighterId === fighter?.id ? (
                 <>
                   <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <RegisterComment />
@@ -98,7 +99,7 @@ function Profile() {
               ) : (
                 <div className="ALERTA">
                   <strong className="alertatex">
-                    Only Fighters can Create events!!
+                    Only the Fighters of this profile can Create events!!
                   </strong>
                 </div>
               )}

@@ -19,3 +19,25 @@
 .error{
     color:white
 }
+.custom-select-sm {
+    width: 190px;
+    
+}
+.form-control-sm {
+    width: 190px; 
+  }
+.form-group {
+    margin-bottom: 10px; /* Agrega un espacio entre los grupos de entrada */
+  }
+  
+  /* Cambiar el diseño de la barra de búsqueda y del select */
+  .input-group {
+    display: flex;
+    flex-direction: column-reverse; /* Cambia el orden de los elementos */
+    align-items: center;
+  }
+  
+  /* Ajustar el espacio entre los elementos del input-group */
+  .input-group > * {
+    margin: 5px 0; /* Agrega un espacio vertical entre los elementos */
+  }

@@ -1,4 +1,5 @@
-const { Router } = require("express");
+const express = require("express");
+const router = express.Router();
 const passport = require("passport");
 const bcryptjs = require("bcryptjs");
 const multer = require("multer");
@@ -6,7 +7,6 @@ const multer = require("multer");
 const { newFighters } = require("../controllers/createNewFighters.js");
 const { newSponsors } = require("../controllers/createNewSponsors.js");
 const { newComment } = require("../controllers/createNewComment.js");
-const { getForName } = require("../controllers/getLocality.js");
 
 const userService = require("../meddlewares/users");
 const fighterControllers = require("../meddlewares/fighthers");
@@ -15,18 +15,13 @@ const userControllers = require("../controllers/autentController.js");
 const autentController = require("../meddlewares/autent.js");
 const eventController = require("../meddlewares/comment.js");
 const locations = require("../meddlewares/localities.js");
+const LikeControllers = require("../controllers/likeControllers.js");
 /* const locationByName = require("../meddlewares/localities.js"); */
 
 const uuid = require("uuid");
 const moment = require("moment");
 const path = require("path");
-//const meddlewaresnewFighter = require("../meddlewares/createFighters");
 
-/* router.get("/", (req, res) => {
-  console.log("entro aca");
-  res.send("carro");
-}); */
-const router = Router();
 // Configuración de multer para guardar la imagen en el servidor
 
 const storage = multer.diskStorage({
@@ -73,11 +68,20 @@ router.use("/sponsor", sponsorsControllers);
 router.post("/newSponsor", newSponsors);
 
 router.use("/allcoments", eventController);
+
+router.post("/comments/:comentarioId/add", LikeControllers.createLike);
+
+router.delete("/comments/:comentarioId/:userId", LikeControllers.deleteLike);
+
+router.get("/comments/:userId/count", LikeControllers.getAllLikesByUserId);
+router.get("/comments/:comentarioId/likes", LikeControllers.getLikesForComment);
+
 router.post(
   "/comments",
   passport.authenticate("jwt", { session: false }),
   newComment
 );
+
 router.use("/:idComments", eventController);
 
 router.use("/", autentController);
