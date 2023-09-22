@@ -74,7 +74,7 @@ router.post("/comments/:comentarioId/add", LikeControllers.createLike);
 router.delete("/comments/:comentarioId/:userId", LikeControllers.deleteLike);
 
 router.get("/comments/:userId/count", LikeControllers.getAllLikesByUserId);
-router.get("/comments/:comentarioId/likes", LikeControllers.getLikesForComment);
+router.get("/comments/likes", LikeControllers.getLikesForComment);
 
 router.post(
   "/comments",

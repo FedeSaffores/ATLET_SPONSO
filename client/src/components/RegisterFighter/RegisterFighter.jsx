@@ -89,7 +89,7 @@ const RegisterFighter = () => {
             <a class="nav-link" href="/login">
               <div>
                 <Link to={"/"}>
-                  <button class="btn btn-info">HOME</button>
+                  <button class="btn btn-light">HOME</button>
                 </Link>
               </div>
             </a>
@@ -223,7 +223,7 @@ const RegisterFighter = () => {
               <button
                 disabled={isSubmitting}
                 type="submit"
-                class="btn btn-primary"
+                class="btn btn-dark"
               >
                 Submit
               </button>

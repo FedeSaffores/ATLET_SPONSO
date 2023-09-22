@@ -43,12 +43,12 @@ function Profile() {
         <ul class="navbar-nav"></ul>
         <li>
           <Link to={"/fighters"}>
-            <button class="btn btn-info">FIGHTERS</button>
+            <button class="btn btn-light">FIGHTERS</button>
           </Link>
         </li>
         <li>
           <Link to={"/"}>
-            <button class="btn btn-info">HOME</button>
+            <button class="btn btn-light">HOME</button>
           </Link>
         </li>
       </nav>

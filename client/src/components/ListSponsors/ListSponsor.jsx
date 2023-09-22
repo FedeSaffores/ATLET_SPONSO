@@ -42,17 +42,17 @@ function Sponsors() {
               />
               <button
                 type="button"
-                class="btn btn-info"
+                class="btn btn-light"
                 onClick={onClickHandler}
               >
                 Search
               </button>
-              <button type="button" class="btn btn-info" onClick={HomeHandler}>
+              <button type="button" class="btn bg-light" onClick={HomeHandler}>
                 Reset
               </button>
             </div>
             <Link to={"/"}>
-              <button class="btn btn-info">HOME</button>
+              <button class="btn btn-light">HOME</button>
             </Link>
           </li>
         </ul>

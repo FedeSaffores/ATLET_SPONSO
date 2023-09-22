@@ -80,7 +80,7 @@ const LogUser = () => {
             <a class="nav-link" href="/login">
               <div>
                 <Link to={"/"}>
-                  <button class="btn btn-info">HOME</button>
+                  <button class="btn bg-light">Home</button>
                 </Link>
               </div>
             </a>
@@ -130,11 +130,7 @@ const LogUser = () => {
                 <p className="error">{errors.password}</p>
               )}
             </div>
-            <button
-              disabled={isSubmitting}
-              type="submit"
-              class="btn btn-primary"
-            >
+            <button disabled={isSubmitting} type="submit" class="btn btn-dark">
               Submit
             </button>
           </form>

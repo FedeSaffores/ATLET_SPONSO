@@ -24,111 +24,72 @@ function Home() {
   return (
     <div>
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        {myuser?.id ? (
+          <>
+            <ul class="navbar-nav">
+              <a class="navbar-brand" href="#">
+                <p className="userName">{myuser.completeName.toUpperCase()}</p>
+              </a>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="#"
+                  onClick={() => {
+                    localStorage.removeItem("jwt");
+                    navigate(0);
+                  }}
+                >
+                  <button class="btn bg-light"> Salir</button>
+                </a>
+              </li>
+            </ul>
+          </>
+        ) : (
+          <>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/login">
+                  <button class="btn bg-light"> Sign in</button>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/formuser">
+                  <button class="btn bg-light">Sign up</button>
+                </a>
+              </li>
+            </ul>
+          </>
+        )}
         <ul class="navbar-nav">
-          <li>
-            <a class="nav-link" href="/login">
-              <div className="Botonera2">
-                {!myuser?.id ? (
-                  <>
-                    <Link to={"/login"}>
-                      <button class="btn btn-info"> Sign in</button>
-                    </Link>
-                    <Link to={"/formuser"}>
-                      <button class="btn btn-info">Sign up</button>
-                    </Link>
-                  </>
-                ) : (
-                  <>
-                    <div className="Logbot">
-                      <div
-                        classname="element1"
-                        style={{
-                          marginRight: "75px",
-                        }}
-                      >
-                        <a>
-                          <p>{myuser.completeName.toUpperCase()}</p>
-                        </a>
-                      </div>
-                      <div
-                        className="element1"
-                        style={{
-                          display: "flex",
-                          marginLeft: "5px",
-                          marginRight: "5px",
-                        }}
-                      >
-                        <Link
-                          to={"#"}
-                          onClick={() => {
-                            localStorage.removeItem("jwt");
-                            navigate(0);
-                          }}
-                        >
-                          <button class="btn btn-info">Sign out</button>
-                        </Link>
-                      </div>
-                    </div>
-                  </>
-                )}
+          {myuser?.id ? (
+            <li class="dropdown">
+              <button
+                type="button"
+                class="btn bg-light dropdown-toggle"
+                data-toggle="dropdown"
+              >
+                Menu
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/newFighter">
+                  Crear Atleta
+                </a>
+                <a class="dropdown-item" href="/formSponsor">
+                  Crear Sponsors
+                </a>
+                <a class="dropdown-item" href="/fighters">
+                  Atletas
+                </a>
+                <a class="dropdown-item" href="/sponsor">
+                  Sponsors
+                </a>
               </div>
-            </a>
-          </li>
-
-          <li>
-            <div className="BotFight">
-              {!myuser?.id ? (
-                <></>
-              ) : (
-                <>
-                  {" "}
-                  <div className="fightexpo" style={{ display: "flex" }}>
-                    <Link to={"/fighters"}>
-                      <button
-                        class="btn btn-info"
-                        style={{ marginRight: "10px" }}
-                      >
-                        {" "}
-                        Fighters
-                      </button>
-                    </Link>
-                    <Link to={"/sponsor"}>
-                      <button class="btn btn-info"> Sponsors</button>
-                    </Link>
-                  </div>
-                </>
-              )}
-            </div>
-          </li>
-          <li>
-            {" "}
-            {myuser?.id ? (
-              <>
-                <div className="margin">
-                  <div>
-                    <Link to={"/newFighter"}>
-                      <button class="btn btn-success"> CREATE FIGHTER </button>
-                    </Link>
-                  </div>
-                  <div>
-                    <Link to={"/formSponsor"}>
-                      <button class="btn btn-success">CREATE SPONSOR</button>
-                    </Link>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <>
-                <div class="alert alert-danger">
-                  <strong> Warnign! </strong> You need Register and Login to
-                  have acces
-                </div>
-              </>
-            )}
-          </li>
+            </li>
+          ) : (
+            <></>
+          )}
         </ul>
       </nav>
-
       <div>
         <Events />
       </div>

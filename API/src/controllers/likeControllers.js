@@ -90,18 +90,14 @@ const getAllLikesByUserId = async (req, res) => {
 //Funcion que trae todos los likes por evento.
 
 const getLikesForComment = async (req, res) => {
-  const { comentarioId } = req.params; // Obtiene el comentarioId de los parámetros de la solicitud
   try {
-    const likesCount = await Likes.count({
-      where: {
-        ComentarioId: comentarioId,
-      },
-    });
+    const likes = await Likes.findAll();
+    const likesCount = likes;
     res.status(200).json({ likesCount });
   } catch (error) {
     console.error(error);
     res.status(500).json({
-      error: "Error al obtener la cantidad de likes para el comentario",
+      error: "Error al obtener la cantidad de likes",
     });
   }
 };

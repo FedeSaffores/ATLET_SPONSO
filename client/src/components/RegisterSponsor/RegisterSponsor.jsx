@@ -68,7 +68,7 @@ const FormSponsor = () => {
             <a class="nav-link" href="/login">
               <div>
                 <Link to={"/"}>
-                  <button class="btn btn-info">HOME</button>
+                  <button class="btn bg-light">HOME</button>
                 </Link>
               </div>
             </a>

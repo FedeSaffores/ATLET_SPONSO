@@ -152,18 +152,18 @@ export function removeFav(comentarioId, userId) {
     }
   };
 }
-export const getAllLikes = async (comentarioId) => {
+/* export const getAllLikes = async (comentarioId) => {
   console.log("aaaa");
   console.log(comentarioId);
   return async function (dispatch) {
-    let json = await instance.get(`/comments/${comentarioId}/likes`);
+    let json = await instance.get(`/comments/likes`);
     return dispatch({
       type: GET_All_LIKES,
       payload: json.data,
     });
   };
 };
-
+ */
 export function getLikesByUser(userId) {
   return async function (dispatch) {
     let json = await instance.get(`/comments/${userId}/count`);

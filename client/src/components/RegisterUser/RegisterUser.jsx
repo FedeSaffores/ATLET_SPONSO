@@ -82,7 +82,7 @@ const FormUser = () => {
         <ul class="navbar-nav"></ul>
         <li>
           <Link to={"/login"}>
-            <button class="btn btn-info">Login</button>
+            <button class="btn btn-light">Login</button>
           </Link>
         </li>
       </nav>
@@ -234,11 +234,7 @@ const FormUser = () => {
                 <p className="error">{errors.address}</p>
               )}
             </div>
-            <button
-              disabled={isSubmitting}
-              type="submit"
-              class="btn btn-primary"
-            >
+            <button disabled={isSubmitting} type="submit" class="btn btn-light">
               Submit
             </button>
           </form>
