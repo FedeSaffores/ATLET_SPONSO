@@ -45,11 +45,12 @@ router.get("/log/:email", async (req, res) => {
     res.status(404).send(error);
   }
 });
-router.delete("/:idFighter", async (req, res) => {
-  console.log("aaaaaa");
+
+router.delete("/fighters/:FightersId", async (req, res) => {
+  console.log(req.params.FightersId); // Usar req.params.FightersId para acceder al ID del luchador
   try {
-    const { idFighter } = req.params;
-    await deleteFighter(idFighter);
+    const { FightersId } = req.params;
+    await deleteFighter(FightersId);
     res.status(200).json({ msg: `Fighter deleted successfully` });
   } catch (error) {
     console.log(error);

@@ -61,6 +61,11 @@ router.use(
   passport.authenticate("jwt", { session: false }),
   fighterControllers
 );
+router.delete(
+  "/fighters/:FightersId",
+  passport.authenticate("jwt", { session: false }),
+  fighterControllers
+);
 router.use("/localidades", locations);
 /* router.use("/filtrar", locations); */
 

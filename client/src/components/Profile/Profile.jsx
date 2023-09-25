@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Profile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEnvelope,
-  faMobileRetro,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
-import RemoverFighter from "../DeleteFighter/DeleteFighter.jsx";
+import { faEnvelope, faMobileRetro } from "@fortawesome/free-solid-svg-icons";
+
 import instance from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import RegisterComment from "../CreateComments/createComments";
@@ -21,7 +17,40 @@ function Profile() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [fighter, setFighter] = useState();
+  const [userWithRelations, setUserWithRelations] = useState(null);
+  const [hasFetchedUser, setHasFetchedUser] = useState(false);
+  const navigate = useNavigate();
+
   const myuser = useSelector((state) => state.myUser);
+
+  function deleteFighter(id) {
+    instance
+      .delete(`/fighters/${id}`, {
+        method: "DELETE",
+      })
+      .then((result) => {
+        if (result.status === 200) {
+          navigate.push("/");
+        }
+        result.json().then((resp) => {
+          console.log(resp);
+        });
+      });
+  }
+
+  useEffect(() => {
+    if (myuser === null || !myuser.relationshipsAreLoaded) {
+      if (!hasFetchedUser) {
+        dispatch(getMyUser()).then(() => {
+          setUserWithRelations(myuser);
+          setHasFetchedUser(true);
+        });
+      }
+    } else {
+      setUserWithRelations(myuser);
+    }
+  }, [dispatch, myuser, hasFetchedUser]);
+
   useEffect(() => {
     if (id)
       instance
@@ -36,7 +65,7 @@ function Profile() {
   if (!id) {
     return null;
   }
-  console.log(myuser);
+
   return (
     <div key={id}>
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -80,10 +109,10 @@ function Profile() {
             <h2 className="SPORT">
               <FontAwesomeIcon icon={faMobileRetro} /> {fighter?.tel}
             </h2>
-            {/*   <h3 className="SPORT">
-              <FontAwesomeIcon icon={faStar} />
-              {fighter?.score}
-            </h3> */}
+            {/*    <h3 className="SPORT">
+                <FontAwesomeIcon icon={faStar} />
+                {fighter?.score}
+              </h3> */}
             <i class="fa-brands fa-instagram"></i>
 
             <Link className="Insta" to={`${fighter?.instagram}`}>
@@ -103,6 +132,17 @@ function Profile() {
                   </strong>
                 </div>
               )}
+            </div>
+            <div>
+              {
+                <div>
+                  {id === userWithRelations?.FighterId ? (
+                    <button onClick={() => deleteFighter(id)}>Delete</button>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              }
             </div>
           </div>
         </div>

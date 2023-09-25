@@ -12,7 +12,6 @@ import {
   GET_CITIES,
   GET_LIKES,
   GET_LIKES_BY_USER,
-  GET_All_LIKES,
 } from "./const";
 
 /* const instance = axios.create({
@@ -28,7 +27,7 @@ instance.interceptors.request.use((config) => {
 
 export function getFighters() {
   return async function (dispatch) {
-    const json = await instance.get("/fighters");
+    const json = await instance.get(`/fighters`);
     console.log(json.data);
     return dispatch({ type: GET_FIGHTERS, payload: json.data });
   };
