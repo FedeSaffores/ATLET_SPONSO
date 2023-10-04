@@ -16,11 +16,13 @@ const autentController = require("../meddlewares/autent.js");
 const eventController = require("../meddlewares/comment.js");
 const locations = require("../meddlewares/localities.js");
 const LikeControllers = require("../controllers/likeControllers.js");
-/* const locationByName = require("../meddlewares/localities.js"); */
+
+
 
 const uuid = require("uuid");
 const moment = require("moment");
 const path = require("path");
+const { deleteComent } = require("../controllers/getAllComments.js");
 
 // Configuración de multer para guardar la imagen en el servidor
 
@@ -72,7 +74,10 @@ router.use("/localidades", locations);
 router.use("/sponsor", sponsorsControllers);
 router.post("/newSponsor", newSponsors);
 
-router.use("/allcoments", eventController);
+router.use("/allcoments", eventController);     
+router.use("/all-coment",eventController);
+router.delete("/delete/:commentId", deleteComent)         
+
 
 router.post("/comments/:comentarioId/add", LikeControllers.createLike);
 
@@ -88,6 +93,7 @@ router.post(
 );
 
 router.use("/:idComments", eventController);
+
 
 router.use("/", autentController);
 

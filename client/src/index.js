@@ -16,6 +16,7 @@ import RegisterFighter from "./components/RegisterFighter/RegisterFighter";
 import Profile from "./components/Profile/Profile";
 import Fighters from "./components/ListFighters/ListFighters";
 import Sponsors from "./components/ListSponsors/ListSponsor";
+import AllEventsFighter from "./components/ComentsByFihter/comentsFighter";
 
 /* import Events from "./components/Events/events"; */
 ReactDOM.render(
@@ -36,6 +37,7 @@ ReactDOM.render(
 
         <Route path="/fighters" element={<Fighters />} />
         <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/event/fighter/:id" element={<AllEventsFighter />} />
         <Route path="/formSponsor" element={<FormSponsor />} />
 
         <Route path="/login" element={<LogUser />} />

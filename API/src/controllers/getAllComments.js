@@ -41,31 +41,45 @@ const getAllComments = async (eventName) => {
   }
 };
 
-const getEventByPK = async (id) => {
-  if (id) {
-    let event = await Comentario.findOne({
-      where: {
-        id,
-      },
-    });
-    if (!event) {
-      throw new Error("Event not found");
-    }
-    return event;
-  } else {
-    throw new Error("Event not found");
-  }
-};
 
-const deleteEvent = async (id) => {
-  await Comentario.destroy({
-    where: { id },
-  });
-  return `User id:${id} deleted sucessfully`;
-};
+const getComentarioFighter = async (FighterId)=>{
+  console.log(FighterId)
+   try {
+        const comments = await Comentario.findAll({
+          where: {
+            FighterId: FighterId,
+          },
+        });
+        return comments;
+    } catch (error) {
+      console.error('Error al buscar comentarios:', error);
+      throw error;
+    } 
+  }
+  const deleteComent = async (req, res) => {  
+    console.log(req)
+    const {commentId} = req.params;
+    try {
+      const comentario = await Comentario.findOne({
+        where: {
+          id: commentId,
+        },
+      });
+      if (!comentario) {
+        return res.status(404).json({ error: 'Comentario no encontrado ' });
+      }
+      await comentario.destroy();
+      res.status(200).json({ message: 'Comentario eliminado con éxito' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error al eliminar el comentario' });
+    }
+  }
 
 module.exports = {
   getAllComments,
-  getEventByPK,
-  deleteEvent,
+  deleteComent,
+  getComentarioFighter ,
+
+
 };

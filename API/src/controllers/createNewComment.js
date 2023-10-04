@@ -22,6 +22,8 @@ const newComment = async (req, res) => {
     res.status(404).json({ info: "THE COMMENT WASN'T CREATED", error });
   }
 };
+
+
 module.exports = {
   newComment,
 };

@@ -1,23 +1,26 @@
 const { Router } = require("express");
 
-const { getAllComments } = require("../controllers/getAllComments.js");
+const { getAllComments, getComentarioFighter, deleteComent } = require("../controllers/getAllComments.js");
 
 const router = Router();
 router.get("/", async (req, res) => {
   try {
-    const allComent = await getAllComments(req.query.eventName);
-    res.status(200).json(allComent);
+    const eventName = req.query.eventName;
+    const allComments = await getAllComments(eventName);
+    res.status(200).json(allComments);
   } catch (error) {
-    console.log(error);
-    res.status(404).send(error);
+    console.error(error);
+    res.status(500).send("Error interno del servidor");
   }
 });
-router.get("/:idComments", async (req, res) => {
+router.get("/:FighterId", async (req, res) => {
   try {
-    const allComent = await getEventByPK(idComments);
-    res.status(200).json(allComent);
+    const fighterId = req.params.FighterId;
+    const comments = await getComentarioFighter(fighterId);
+    res.status(200).json(comments);
   } catch (error) {
-    res.status(404).send(error);
+    console.error(error);
+    res.status(500).send("Error interno del servidor");
   }
 });
 

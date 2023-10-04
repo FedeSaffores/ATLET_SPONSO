@@ -13,6 +13,7 @@ import DateFnsUtils from "@date-io/date-fns";
 import { FaInstagram } from "react-icons/fa";
 import { getMyUser } from "../../Redux/actions";
 
+
 function Profile() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -137,7 +138,7 @@ function Profile() {
               {
                 <div>
                   {id === userWithRelations?.FighterId ? (
-                    <button onClick={() => deleteFighter(id)}>Delete</button>
+                    <Link to={`/event/fighter/${myuser.FighterId}`}>List Events</Link>
                   ) : (
                     <></>
                   )}
