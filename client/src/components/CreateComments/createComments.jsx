@@ -113,6 +113,11 @@ const RegisterComment = () => {
               type="texto"
               placeholder="Describe the event"
               onBlur={handleBlur}
+              style={{
+                width: '90%', // Ancho del 90% del contenedor
+                height: '20vh', // Alto del 40% del viewport
+                padding:'2%',
+                borderRadius:'10%'              }}
               className={errors.texto && touched.texto ? "input-error" : ""}
             />
             {errors.texto && touched.texto && (

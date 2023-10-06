@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import { useSelector, useDispatch } from "react-redux";
 //import { basicSchema } from "../../schemas/index";
@@ -11,10 +11,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHand, faImage } from "@fortawesome/free-solid-svg-icons";
 //import { json } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
+import { Modal } from "react-bootstrap";
 
 const RegisterFighter = () => {
   const dispatch = useDispatch();
   const Myuser = useSelector((state) => state.myUser);
+  const [showRecommendation, setShowRecommendation] = useState(false);
 
   const onSubmit = async (values, actions) => {
     let formdata = new FormData();
@@ -95,25 +97,24 @@ const RegisterFighter = () => {
           </li>
         </ul>
       </nav>
-
-      <div className="container-fluid vh-100 d-flex justify-content-center align-items-center">
+      <div className="container-fluid vh-100 d-flex flex-column justify-content-start align-items-center"> 
         <div class="container p-3 my-3 ">
-          <h1 className="AtRe">REGISTRO DEL ATLETA </h1>
+          <h1 style={{textShadow: "3px 3px 8px white", fontFamily: "fantasy" }}>REGISTRO DEL ATLETA </h1>
           <form
             encType="multipart/form-data"
             onSubmit={handleSubmit}
             autoComplete="off"
           >
-            <div className="form-group">
-              <h3 className="AtRe">
-                Hola! <FontAwesomeIcon icon={faHand} />
+            <div className="form-group" style={{marginTop:"5%", textShadow: "3px 3px 8px white", fontFamily: "fantasy" }}>
+              <h3 >
+                BIENVENIDO! <FontAwesomeIcon icon={faHand} />
               </h3>
-              <h3 className="AtRe">
+              <h3 style={{marginTop:"5%", textAlign: "justify",  textShadow: "3px 3px 8px white", fontFamily: "fantasy" }}>
                 Estimado {Myuser.completeName} necesitamos que ingreses estos datos a los fines de brindarte el mejor servicio.
               </h3>
             </div>
-            <div className="boxis">
-              <label html="instagram" className="lebel2">
+            <div style={{textAlign:"left"}}  >
+              <label html="instagram" style={{marginTop:"2%", textShadow: "3px 3px 8px white", fontFamily: "fantasy" }} >
                 <FaInstagram /> INSTAGRAM
               </label>
               <br></br>
@@ -133,9 +134,9 @@ const RegisterFighter = () => {
               )}
             </div>
 
-            <div className="boxis2">
-              <div className="form-group">
-                <label htmlFor="description" className="lebel2">
+            <div >
+              <div className="form-group" style={{textAlign:"left"}}>
+                <label htmlFor="description" style={{marginTop:"2%", textShadow: "3px 3px 8px white", fontFamily: "fantasy" }}>
                   ELIGE TU DEPORTE:
                 </label>
                 <br></br>
@@ -167,9 +168,9 @@ const RegisterFighter = () => {
                 )}
               </div>
             </div>
-            <div className="boxis3">
-              <div className="form-group">
-                <label htmlFor="description" className="lebel2">
+            <div >
+              <div className="form-group" style={{textAlign:"left"}} >
+                <label htmlFor="description" style={{marginTop:"2%", textShadow: "3px 3px 8px white", fontFamily: "fantasy" }}>
                   EXPERIENCIA:
                 </label>
                 <br></br>
@@ -194,9 +195,9 @@ const RegisterFighter = () => {
                 )}
               </div>
             </div>
-            <div className="boxis4">
-              <div class="form-group">
-                <label htmlFor="image" className="lebel2">
+            <div >
+              <div class="form-group" style={{textAlign:"left"}}>
+                <label htmlFor="image" style={{marginTop:"2%", textShadow: "3px 3px 8px white", fontFamily: "fantasy" }}>
                   FOTO DE PERFIL <br /> <FontAwesomeIcon icon={faImage} />
                 </label>
                 <br></br>
@@ -222,9 +223,26 @@ const RegisterFighter = () => {
                 disabled={isSubmitting}
                 type="submit"
                 class="btn btn-dark"
+                onClick={() => setShowRecommendation(false)}
               >
                 Submit
               </button>
+              <Modal show={showRecommendation} onHide={() => setShowRecommendation(false)}>
+  <Modal.Header closeButton>
+    <Modal.Title>Recomendación</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    Aquí puedes agregar tu mensaje de recomendación antes de la carga.
+  </Modal.Body>
+  <Modal.Footer>
+    <button
+      className="btn btn-secondary"
+      onClick={() => setShowRecommendation(false)}
+    >
+      Cerrar
+    </button>
+  </Modal.Footer>
+</Modal>
               <br></br>
               <br></br>
             </div>

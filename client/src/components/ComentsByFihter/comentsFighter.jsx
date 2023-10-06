@@ -71,6 +71,8 @@ return(
       </button>
       </a>
   </nav>
+  {elEvento.length===0?(
+  <h1>NO TIENES NINGUN EVENTO CREADO AUN</h1>):(<></>) }
   {elEvento?.map((x) => (
     <div style={styles.box}>
     <ul className="list-group" key={x.eventName}>

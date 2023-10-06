@@ -74,7 +74,7 @@ function Profile() {
         </Link>
       </li>
       <li className="nav-item ml-3">
-        <Link to={"/"}>
+        <Link to={"/home"}>
           <button className="btn btn-light">HOME</button>
         </Link>
       </li>
@@ -111,8 +111,8 @@ function Profile() {
   </nav>
 
 
-      <div class="container p-3 my-3 ">
-        <div style={{ color: "black", textShadow: "3px 3px white" }} className="name">
+  <div className="container-fluid vh-100 d-flex flex-column justify-content-start align-items-center"> 
+        <div class="container p-3 my-3 "style={{ color: "black", textShadow: "3px 3px white" }} >
           <h1>{fighter?.completeName}</h1>
         </div>
         <div class="row">
