@@ -1,61 +1,71 @@
-.Box{
+.Box {
     margin-top: 2%;
     margin-right: 5%;
     margin-left: 5%;
+
 }
 
-.bor{
-margin-top: 30px;
-color:black;
-}
-.date{
-    color:black;
+.bor {
+    margin-top: 30px;
+    color: black;
 }
 
-.media-body{
-    display:grid;
+.date {
+    color: black;
+}
+
+.media-body {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
+
 }
-.media{
+
+.media {
     padding: 10%;
-    border-radius: 25% 25% 25% 25%;
-    margin-top: 2%;
+    border-radius: 15% 10% 10% 15%;
+    margin-top: 5%;
 }
-.media-body{
+
+.media-body {
     background-size: 100%;
 }
-.titevent{
+
+.titevent {
     text-transform: uppercase;
-    color:white;
+    color: black;
 }
-.texto{
-    color:white;
+
+.texto {
+    color: black;
     resize: none;
     width: 50%;
+    text-align: center;
 }
-.mr-3{
-    border: 3px solid white;
+
+.mr-3 {
+    border: 5px solid white;
 }
+
 .iconThun {
     font-size: 3x;
-    cursor: pointer; /* Cambia el cursor a una manito */
-  }
-  
-  /* Cambia el icono cuando el cursor está encima */
-  .iconThun {
+    cursor: pointer;
+    /* Cambia el cursor a una manito */
+}
+
+/* Cambia el icono cuando el cursor está encima */
+.iconThun {
     font-size: 3x;
-    cursor: pointer; /* Cambia el cursor a una manito */
-  }
-  
-  /* Cambia el icono cuando el cursor está encima */
-  .iconThun:hover {
-    content: '\f234'; /* Reemplaza '\f234' con el código de tu icono de manito en FontAwesome */
+    cursor: pointer;
+    /* Cambia el cursor a una manito */
+}
+
+/* Cambia el icono cuando el cursor está encima */
+.iconThun:hover {
+    content: '\f234';
+    /* Reemplaza '\f234' con el código de tu icono de manito en FontAwesome */
     /* Ajusta el tamaño y el color del nuevo icono si es necesario */
-    font-size: 3x; /* Tamaño del nuevo icono */
-    color: #241bd9; /* Color del nuevo icono */
-  }
-  
-  
-  
-  
-  
+    font-size: 3x;
+    /* Tamaño del nuevo icono */
+    color: #241bd9;
+    /* Color del nuevo icono */
+}

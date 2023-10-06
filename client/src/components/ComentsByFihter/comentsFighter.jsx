@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
+
 import { useParams } from "react-router-dom";
-import { useDispatch } from 'react-redux';
 import instance, { getAllComments } from "../../Redux/actions";
 
 
@@ -9,12 +9,11 @@ function AllEventsFighter(){
   const { id } = useParams();
   const [elEvento, setEvento] = useState([]);
   const [error, setError] = useState(null);
-  const dispatch = useDispatch();
 console.log(elEvento)
 
 const deleteComment = async (id) => {
   try {
-    const response = await instance.delete(`/delete/${id}`);
+    const response = await instance.delete(`/delete-comment/${id}`);
     if (response.status === 200) {
       const updatedComments = await getAllComments();
       window.location.reload();
@@ -51,19 +50,40 @@ useEffect(() => {
 
   fetchData(); 
 }, [id]);
+const handleGoBack = () => {
+  window.history.back(); // Redirige a la página anterior
+}
+
+const styles ={
+  box:{
+    marginTop: "2%",
+    marginLeft:"5%",
+    marginRight:"5%",
+  },
+}
 
 return(
-  <div>
-    {elEvento?.map((x) => (
-    <ul class="list-group" key={x.eventName}>
-      <li class="list-group-item">
-        {x.eventName} -- {x.date}
-        <button onClick={() => deleteComment(x.id)}>Eliminar</button>
+<div>
+  <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+      <a className="navbar-brand" href="#">
+      <button class="btn btn-light" onClick={()=>handleGoBack()}>
+        GO BACK
+      </button>
+      </a>
+  </nav>
+  {elEvento?.map((x) => (
+    <div style={styles.box}>
+    <ul className="list-group" key={x.eventName}>
+      <li className="list-group-item d-flex justify-content-between align-items-center">
+        {x.eventName.toUpperCase()} <br /> <br /> {x.date}
+        <button onClick={() => deleteComment(x.id)} className="btn btn-danger">
+          Eliminar
+        </button>
       </li>
     </ul>
+    </div>
   ))}
-  </div>
+</div>
 )
-
 }
 export default AllEventsFighter;

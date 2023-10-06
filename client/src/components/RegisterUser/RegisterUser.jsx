@@ -87,9 +87,9 @@ const FormUser = () => {
         </li>
       </nav>
 
-      <div className="caja">
+      <div>
         <div className="raja">
-          <h1 className="h1">REGISTER USER</h1>
+          <h1 className="RegisterUser">REGISTER USER</h1>
           <br></br>
           <FontAwesomeIcon icon={faUser} className="icon"></FontAwesomeIcon>
 
@@ -99,7 +99,7 @@ const FormUser = () => {
             autoComplete="off"
           >
             <div className="form-group">
-              <label html="completeName" className="lebel"></label>
+              <label html="completeName" className="lebel1"></label>
               <br></br>
               <input
                 value={values.completeName}
@@ -147,7 +147,7 @@ const FormUser = () => {
               </div>
             </div>
             <div className="form-group">
-              <label htmlFor="email" className="lebel"></label>
+              <label htmlFor="email" className="lebel1"></label>
               <br></br>
               <input
                 value={values.email}
@@ -163,7 +163,7 @@ const FormUser = () => {
               )}
             </div>
             <div className="form-group">
-              <label htmlFor="password" className="lebel"></label>
+              <label htmlFor="password" className="lebel1"></label>
               <br></br>
               <input
                 id="password"
@@ -181,7 +181,7 @@ const FormUser = () => {
               )}
             </div>
             <div className="form-group">
-              <label htmlFor="passwordConfirm" className="lebel"></label>
+              <label htmlFor="passwordConfirm" className="lebel1"></label>
               <br />
               <input
                 id="passwordConfirm"
@@ -201,7 +201,7 @@ const FormUser = () => {
               )}
             </div>
             <div className="form-group">
-              <label htmlFor="tel" className="lebel"></label>
+              <label htmlFor="tel" className="lebel1"></label>
               <br></br>
               <input
                 value={values.tel}
@@ -217,7 +217,7 @@ const FormUser = () => {
               )}
             </div>
             <div className="form-group">
-              <label htmlFor="address" className="lebel"></label>
+              <label htmlFor="address" className="lebel1"></label>
               <br></br>
               <input
                 value={values.address}
@@ -234,7 +234,7 @@ const FormUser = () => {
                 <p className="error">{errors.address}</p>
               )}
             </div>
-            <button disabled={isSubmitting} type="submit" class="btn btn-light">
+            <button disabled={isSubmitting} type="submit" class="btn btn-dark">
               Submit
             </button>
           </form>

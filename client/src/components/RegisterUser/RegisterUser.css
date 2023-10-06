@@ -1,43 +1,53 @@
+.raja {
+  text-align: center;
+  width: 500px;
 
-.caja{
+  height: 400px;
 
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-top: 40px;
-    border-radius: 30px;
-    border: 2px solid rgb(222, 211, 211);
+  margin: 0 auto;
 
+  padding: 5px;
+
+  box-sizing: border-box;
 }
 
-.raja{
-    text-align: center;
-    margin-bottom: 10px;
-} 
-.icon{
-    color:white;
+.icon {
+  color: white;
 }
-.error{
-    color:white
+
+.error {
+  color: white
 }
+
 .custom-select-sm {
-    width: 190px;
-    
+  width: 190px;
+
 }
+
 .form-control-sm {
-    width: 190px; 
-  }
+  width: 190px;
+}
+
 .form-group {
-    margin-bottom: 10px; /* Agrega un espacio entre los grupos de entrada */
-  }
-  
-  /* Cambiar el diseño de la barra de búsqueda y del select */
-  .input-group {
-    display: flex;
-    flex-direction: column-reverse; /* Cambia el orden de los elementos */
-    align-items: center;
-  }
-  
-  /* Ajustar el espacio entre los elementos del input-group */
-  .input-group > * {
-    margin: 5px 0; /* Agrega un espacio vertical entre los elementos */
-  }
+  margin-bottom: 10px;
+  /* Agrega un espacio entre los grupos de entrada */
+}
+
+/* Cambiar el diseño de la barra de búsqueda y del select */
+.input-group {
+  display: flex;
+  flex-direction: column-reverse;
+  /* Cambia el orden de los elementos */
+  align-items: center;
+}
+
+/* Ajustar el espacio entre los elementos del input-group */
+.input-group>* {
+  margin: 5px 0;
+  /* Agrega un espacio vertical entre los elementos */
+}
+
+.RegisterUser {
+  margin-top: 8%;
+  text-shadow: 3px 3px 4px white;
+}

@@ -31,7 +31,6 @@ const RegisterFighter = () => {
       quality: values.quality,
       instagram: values.instagram,
     };
-    console.log(parceValues);
     formdata.append("data", JSON.stringify(parceValues));
     instance
       .post("/newFighter", formdata, {
@@ -88,7 +87,7 @@ const RegisterFighter = () => {
           <li>
             <a class="nav-link" href="/login">
               <div>
-                <Link to={"/"}>
+                <Link to={"/home"}>
                   <button class="btn btn-light">HOME</button>
                 </Link>
               </div>
@@ -97,25 +96,24 @@ const RegisterFighter = () => {
         </ul>
       </nav>
 
-      <div>
+      <div className="container-fluid vh-100 d-flex justify-content-center align-items-center">
         <div class="container p-3 my-3 ">
-          <h1 className="h1">ATHLETE REGISTRATION</h1>
+          <h1 className="AtRe">REGISTRO DEL ATLETA </h1>
           <form
             encType="multipart/form-data"
             onSubmit={handleSubmit}
             autoComplete="off"
           >
             <div className="form-group">
-              <h3 className="bienvenida">
-                Hello! <FontAwesomeIcon icon={faHand} />
+              <h3 className="AtRe">
+                Hola! <FontAwesomeIcon icon={faHand} />
               </h3>
-              <h3 className="msj">
-                {Myuser.completeName} we need you enter this information
+              <h3 className="AtRe">
+                Estimado {Myuser.completeName} necesitamos que ingreses estos datos a los fines de brindarte el mejor servicio.
               </h3>
-              <p>{Myuser.city}</p>
             </div>
             <div className="boxis">
-              <label html="instagram" className="lebel">
+              <label html="instagram" className="lebel2">
                 <FaInstagram /> INSTAGRAM
               </label>
               <br></br>
@@ -124,7 +122,7 @@ const RegisterFighter = () => {
                 onChange={handleChange}
                 id="instagram"
                 type="instagram"
-                placeholder="Enter your link of instagram"
+                placeholder="Link completo de Instagram"
                 onBlur={handleBlur}
                 className={
                   errors.instagram && touched.instagram ? "input-error" : ""
@@ -137,8 +135,8 @@ const RegisterFighter = () => {
 
             <div className="boxis2">
               <div className="form-group">
-                <label htmlFor="description" className="lebel">
-                  CHOOSE YOUR SPORT:
+                <label htmlFor="description" className="lebel2">
+                  ELIGE TU DEPORTE:
                 </label>
                 <br></br>
 
@@ -155,7 +153,7 @@ const RegisterFighter = () => {
                       : ""
                   }
                 >
-                  <option value="">SELECT SPORT</option>
+                  <option value="">DEPORTE</option>
                   <option value="KICK BOXER">KICK BOXER</option>
                   <option value="BOXER">BOXER</option>
                   <option value="JIU JITSU FIGHTER">JIU JITSU FIGHTER</option>
@@ -171,8 +169,8 @@ const RegisterFighter = () => {
             </div>
             <div className="boxis3">
               <div className="form-group">
-                <label htmlFor="description" className="lebel">
-                  QUALITY:
+                <label htmlFor="description" className="lebel2">
+                  EXPERIENCIA:
                 </label>
                 <br></br>
                 <select
@@ -186,7 +184,7 @@ const RegisterFighter = () => {
                     errors.quality && touched.quality ? "input-error" : ""
                   }
                 >
-                  <option value="">SELECT QUALITY</option>
+                  <option value="">EXPERIENCIA</option>
                   <option value="Beginner">BEGINNER</option>
                   <option value="Amateur">AMATEUR</option>
                   <option value="Professional">PROFESSIONAL</option>
@@ -198,8 +196,8 @@ const RegisterFighter = () => {
             </div>
             <div className="boxis4">
               <div class="form-group">
-                <label htmlFor="image" className="lebel">
-                  ENTER YOUR PICTURE <br /> <FontAwesomeIcon icon={faImage} />
+                <label htmlFor="image" className="lebel2">
+                  FOTO DE PERFIL <br /> <FontAwesomeIcon icon={faImage} />
                 </label>
                 <br></br>
                 <input

@@ -1,8 +1,21 @@
-textarea{
+textarea {
     resize: none;
     width: 400px;
     height: 90px
 }
-.date{
-    margin-top:5px
+
+.date {
+    margin-top: 5px
+}
+
+.lebel {
+    font-family: fantasy;
+    font-size: 20px;
+    margin-top: 10%;
+}
+
+.custom-container {
+    margin-top: 40px;
+    width: 25%;
+    border-radius: 5%;
 }

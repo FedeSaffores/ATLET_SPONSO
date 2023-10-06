@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useFormik } from "formik";
@@ -9,6 +10,7 @@ import "./createComments.css";
 
 const RegisterComment = () => {
   const { id } = useParams();
+  console.log(id)
   const [selectDate, setSelectDate] = useState(new Date());
 
   const onSubmit = async (values, actions) => {
@@ -16,7 +18,7 @@ const RegisterComment = () => {
       eventName: values.eventName,
       date: selectDate,
       texto: values.texto,
-      /*     Fighters: id, */
+           Fighters: id, 
     };
 
     instance
@@ -27,7 +29,7 @@ const RegisterComment = () => {
           showConfirmButton: false,
           timer: 2000,
         });
-        window.location.href = "/";
+        window.location.href = "/home";
       })
       .catch((error) => {
         Swal.fire({
@@ -58,9 +60,22 @@ const RegisterComment = () => {
     onSubmit,
   });
   console.log(errors);
+  const handleGoBack = () => {
+    window.history.back(); // Redirige a la página anterior
+  }
 
   return (
-    <div class="container p-3 my-3 bg-info text-dark container-sm row">
+    <div>
+    <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a className="navbar-brand" href="#">
+    <button class="btn btn-light" onClick={()=>handleGoBack()}>
+      GO BACK
+    </button>
+    </a>
+</nav>
+   
+    <div className="container p-3 my-3 bg-dark text-white custom-container">
+       
       <form
         encType="multipart/form-data"
         onSubmit={handleSubmit}
@@ -68,7 +83,7 @@ const RegisterComment = () => {
       >
         <div className="form-group">
           <label htmlFor="eventName" className="lebel">
-            EVENT NAME:
+            NOMBRE DEL EVENTO
           </label>
           <br></br>
           <input
@@ -87,7 +102,7 @@ const RegisterComment = () => {
           )}
           <div className="form-group">
             <label htmlFor="texto" className="lebel">
-              DESCRIBE EVENT:
+              DESCRIPCION
             </label>
             <br></br>
             <textarea
@@ -103,8 +118,8 @@ const RegisterComment = () => {
             {errors.texto && touched.texto && (
               <p className="error">{errors.texto}</p>
             )}
-            <br></br>
-            <label>DATE</label>
+        
+            <label className="lebel">FECHA DEL EVENTO</label>
 
             <br></br>
             <DatePicker
@@ -128,6 +143,7 @@ const RegisterComment = () => {
           </div>
         </div>
       </form>
+    </div>
     </div>
   );
 };

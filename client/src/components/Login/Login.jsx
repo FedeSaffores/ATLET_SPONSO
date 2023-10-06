@@ -26,7 +26,7 @@ const LogUser = () => {
         dispatch(getMyUser());
         console.log(getMyUser());
 
-        navigate("/");
+        navigate("/home");
       })
       .catch((error) => {
         if (error.response && error.response.status === 401) {
@@ -79,7 +79,7 @@ const LogUser = () => {
           <li>
             <a class="nav-link" href="/login">
               <div>
-                <Link to={"/"}>
+                <Link to={"/home"}>
                   <button class="btn bg-light">Home</button>
                 </Link>
               </div>
@@ -87,9 +87,9 @@ const LogUser = () => {
           </li>
         </ul>
       </nav>
-      <div className="CajaLogin">
+      <div >
         <div className="login">
-          <h1 className="h1">LOGIN</h1>
+          <h1 className="Login1">LOGIN</h1>
           <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
           <form
             encType="multipart/form-data"
@@ -97,7 +97,7 @@ const LogUser = () => {
             autoComplete="off"
           >
             <div className="form-group">
-              <label htmlFor="email" className="lebel"></label>
+              <label htmlFor="email" className="lebel1"></label>
               <br></br>
               <input
                 value={values.email}
@@ -113,7 +113,7 @@ const LogUser = () => {
               )}
             </div>
             <div className="form-group">
-              <label htmlFor="password" className="lebel"></label>
+              <label htmlFor="password" className="lebel1"></label>
               <br></br>
               <input
                 id="password"

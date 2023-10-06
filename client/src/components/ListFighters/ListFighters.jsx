@@ -111,13 +111,13 @@ function Fighters() {
                     alt={e.completeName}
                   />
 
-                  <div class="card bg-info">
+                  <div class="card bg-dark">
                     <div class="card-body text-center">
-                      <h4>{e.completeName}</h4>
-                      <h4>{e.description}</h4>
+                      <h4 style={{ color: "white" }}>{e.completeName}</h4>
+                      <h4 style={{ color: "white" }}>{e.description}</h4>
 
-                      <a href={`/profile/${e.id}`} class="btn btn-primary">
-                        See Profile
+                      <a href={`/profile/${e.id}`} class="btn btn-light">
+                        Ver Perfil
                       </a>
                     </div>
                   </div>

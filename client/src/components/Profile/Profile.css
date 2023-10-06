@@ -1,67 +1,65 @@
-.name{
+.name {
     text-transform: uppercase;
-    text-align: center ;
-    color:white;
+    text-align: center;
     font-style: italic;
-    text-shadow: 2px 2px blue
+
 }
 
-.Insta{
+.Insta {
     color: purple;
     font-size: 30px;
-  
+
     margin-top: 2px;
     margin-bottom: 10px;
     text-decoration: none;
 }
-.atleta{
-    
+
+.atleta {
     text-align: center;
     font-style: italic;
-    text-shadow: 2px 2px blue;
+    text-shadow: 2px 2px;
     font-size: 60px;
-    
-    color:white
+
+
 }
 
-.SPORT{
-    text-align: left; 
-    color:white;
-    text-shadow: 4px 4px black
+.SPORT {
+    text-align: left;
 }
 
-.img{
+.img {
     height: 400px;
     width: 400px;
-    margin-right: 70%;  
+    margin-right: 70%;
     border-radius: 25px 25px;
 }
 
-.comments{
-    display:flex;
+.comments {
+    display: flex;
 }
-.box{
-    display:flex;
-    grid-template-columns: 1fr ;
-    gap:5px;
+
+.box {
+    display: flex;
+    grid-template-columns: 1fr;
+    gap: 5px;
 }
-.container{
-    border: 3px solid white;
-color: white;
-box-shadow: 4px 4px rgb(64, 62, 62);
-border-radius: 25px 25px;
+
+.centered-buttons {
+    display: flex;
+    justify-content: center;
+    /* Centra horizontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+    margin-top: 20px;
+    /* Añade un margen superior opcional */
 }
-.ALERTA{
+
+.ALERTA {
     text-align: center;
     height: 50%;
     margin-top: 15%;
     background-color: #17a2b8;
     margin-bottom: 30px;
-    margin-right:auto;
+    margin-right: auto;
     border-radius: 25px 25px;
 }
-.alertatex{
-
-}
-
-

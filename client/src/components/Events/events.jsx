@@ -62,7 +62,7 @@ const Events = () => {
       <div className="bt">
         <button
           type="button"
-          class="btn btn-secondary"
+          class="btn btn-light"
           onClick={() => {
             setPage(page - 1);
           }}
@@ -96,7 +96,7 @@ const Events = () => {
               />
               <div class="media-body">
                 <div className="bor">
-                  <h4>{x.Fighter?.completeName}</h4>
+                  <h4>{x.Fighter?.completeName.toUpperCase()}</h4>
                 </div>
                 <div>
                   <h4 className="date">
@@ -107,7 +107,7 @@ const Events = () => {
                   </h4>
 
                   {/*  <div className="ecole"> */}
-                  <h3 className="titevent">{x.eventName}</h3>
+                  <h3 className="titevent">{x.eventName.toUpperCase()}</h3>
                   <p className="texto">{x.texto}</p>
                 </div>
                 <div className="likEv">

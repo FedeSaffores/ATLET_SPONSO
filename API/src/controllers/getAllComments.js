@@ -57,6 +57,7 @@ const getComentarioFighter = async (FighterId)=>{
     } 
   }
   const deleteComent = async (req, res) => {  
+    console.log("AAA")
     console.log(req)
     const {commentId} = req.params;
     try {

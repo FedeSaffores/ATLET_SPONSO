@@ -1,27 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
+import { faHand } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Landing = () => {
   return (
     <div>
-      <h1 className="title"> WELCOME TO AMONGUS</h1>
-      <p className="p">
-        AMONGOS IS A WEBSITE WHOSE OBJECTIVE IS CRETE ONE SPACE BETWEEN THE
-        ATHLETES AND THE SPONSORS{" "}
-      </p>
+      <div class="container">
       <div className="buttons">
-        <Link className="fighter" to={"/newFighter"}>
-          <button type="button" class="btn btn-dark">
-            Fighter Register
+        <Link className="fighter" to={"/home"}>
+          <button type="button" class="custom-button">
+            WELCOME
+            <FontAwesomeIcon icon={faHand} size="150px" />
           </button>
         </Link>
-        <Link className="fighter" to={"/newSponsor"}>
-          {" "}
-          <button type="button" class="btn btn-dark">
-            Sponsor Register
-          </button>
-        </Link>
+        </div>
       </div>
     </div>
   );

@@ -1,19 +1,12 @@
-body{
-    background-image: url("../Sin\ título.jpg");
-    
+body {
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 0.8) 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
 }
-.userName{
-font-family:italic;
-color:rgb(141, 150, 152)
+
+.userName {
+    font-family: italic;
+    color: rgb(141, 150, 152)
 }
-
-
-
-
-  
-  
-  
-  
-  
-  
-  

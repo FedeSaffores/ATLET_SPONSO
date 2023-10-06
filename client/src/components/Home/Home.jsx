@@ -49,18 +49,18 @@ function Home() {
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="/login">
-                  <button class="btn bg-light"> Sign in</button>
+                  <button class="btn bg-light">Ingresar</button>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/formuser">
-                  <button class="btn bg-light">Sign up</button>
+                  <button class="btn bg-light">Registrarse</button>
                 </a>
               </li>
             </ul>
           </>
         )}
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-5">
           {myuser?.id ? (
             <li class="dropdown">
               <button

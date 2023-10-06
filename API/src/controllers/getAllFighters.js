@@ -1,5 +1,5 @@
 //const { Sequelize } = require("sequelize");
-const { Fighters } = require("../db.js");
+const { Fighters, Comentario } = require("../db.js");
 const { Op } = require("sequelize");
 
 const JsonFighters = [
@@ -67,12 +67,32 @@ const getFighterByEmail = async (email) => {
   }
 };
 
-const deleteFighter = async (id) => {
-  await Fighters.destroy({
-    where: { id },
-  });
-  return `User id:${id} deleted sucessfully`;
-};
+const deleteFighter = async (req, res) => {
+  const {id} = req.params;
+  try {
+    const Fighter = await Fighters.findOne({
+      where: {
+        id: id,
+      },
+    });
+    if (!Fighter) {
+      return res.status(404).json({ error: 'Fighter not found ' });
+    }
+    const comments = await Comentario.findAll({
+      where: {
+        FighterId: id,
+      },
+    });
+    await Promise.all(comments.map(async (comment) => {
+      await comment.destroy();
+    }));
+    await Fighter.destroy();
+    res.status(200).json({ message: 'Fighter delete succesfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error to delete' });
+  }
+}
 
 async function editFighter(id, data) {
   try {

@@ -1,32 +1,25 @@
-.h1{
-    margin-top: 50px;
-    color: white;
-    text-shadow: 4px 4px #17a2b8 !important
-}
-.msj{
-    text-align: center;
-    color: #17a2b8 !important;
-    text-shadow: 4px 4px black !important
-}
-.bienvenida{
-    text-align: center;
-    text-shadow: 4px 4px #17a2b8 !important
-}
-.boxis{
+.boxis {
     text-align: center;
 }
-.boxis2{
+
+.boxis2 {
     margin-top: 10px;
     text-align: center;
 }
-.boxis3{
+
+.boxis3 {
     margin-top: 10px;
     text-align: center;
 }
-.boxis4{
-    margin-top: 10px;
-    text-align: center;
+
+.lebel2 {
+    font-family: fantasy;
+    font-size: 20px;
 }
-p{
+
+.AtRe {
+    margin-top: 5%;
+    margin-top: 20px;
     text-align: center;
+    text-shadow: 3px 3px 4px white;
 }

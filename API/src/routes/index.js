@@ -23,6 +23,7 @@ const uuid = require("uuid");
 const moment = require("moment");
 const path = require("path");
 const { deleteComent } = require("../controllers/getAllComments.js");
+const { deleteFighter } = require("../controllers/getAllFighters.js");
 
 // Configuración de multer para guardar la imagen en el servidor
 
@@ -64,9 +65,9 @@ router.use(
   fighterControllers
 );
 router.delete(
-  "/fighters/:FightersId",
+  "/delete/:id",
   passport.authenticate("jwt", { session: false }),
-  fighterControllers
+  deleteFighter
 );
 router.use("/localidades", locations);
 /* router.use("/filtrar", locations); */
@@ -76,7 +77,7 @@ router.post("/newSponsor", newSponsors);
 
 router.use("/allcoments", eventController);     
 router.use("/all-coment",eventController);
-router.delete("/delete/:commentId", deleteComent)         
+router.delete("/delete-comment/:commentId", deleteComent)         
 
 
 router.post("/comments/:comentarioId/add", LikeControllers.createLike);

@@ -1,39 +1,42 @@
-.botonera{
+.botonera {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap:10px;
-    position:absolute;
+    gap: 10px;
+    position: absolute;
     right: 1%
 }
-.Input{
+
+.Input {
     padding: 5px;
     border-radius: 30px 30px;
 }
 
-.box{
+.box {
     margin-top: 10px;
     margin-left: 10px;
-    margin-right:10px;
-   
-   
-} 
-.supercaja{
-    display:grid;
+    margin-right: 10px;
+}
+
+.supercaja {
+    display: grid;
     justify-content: center;
     grid-template-columns: repeat(3, 1fr);
-    
+
     margin-bottom: 50px;
-    
+
 }
-.image{
+
+.image {
     width: "400px";
     height: 100%;
-    } 
-.card-img-top{
-    height: 400px;     /* object-fit: contain; */
-    }
-  
- 
+}
+
+.card-img-top {
+    height: 400px;
+    /* object-fit: contain; */
+}
+
+
 /* .boxFighter{
     display: grid;
     grid-template-rows: 10%; 

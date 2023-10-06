@@ -4,7 +4,6 @@ const {
   getAllFighters,
   getFightersByPk,
   getFighterByEmail,
-  deleteFighter,
 } = require("../controllers/getAllFighters.js");
 
 const router = Router();
@@ -46,7 +45,7 @@ router.get("/log/:email", async (req, res) => {
   }
 });
 
-router.delete("/fighters/:FightersId", async (req, res) => {
+/* router.delete("/fighters/:FightersId", async (req, res) => {
   console.log(req.params.FightersId); // Usar req.params.FightersId para acceder al ID del luchador
   try {
     const { FightersId } = req.params;
@@ -56,7 +55,7 @@ router.delete("/fighters/:FightersId", async (req, res) => {
     console.log(error);
     res.status(404).send(error);
   }
-});
+}); */
 
 router.put("/:id", async (req, res) => {
   const data = req.body;

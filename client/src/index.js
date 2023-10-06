@@ -17,6 +17,10 @@ import Profile from "./components/Profile/Profile";
 import Fighters from "./components/ListFighters/ListFighters";
 import Sponsors from "./components/ListSponsors/ListSponsor";
 import AllEventsFighter from "./components/ComentsByFihter/comentsFighter";
+import RegisterComment from "./components/CreateComments/createComments";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns"
+import DeleteFighter from "./components/DeleteFighter/DeleteFighter";
 
 /* import Events from "./components/Events/events"; */
 ReactDOM.render(
@@ -29,19 +33,24 @@ ReactDOM.render(
         <Route path="/sponsor" element={<Sponsors />} />
         <Route path="/landing" element={<Landing />} />
 
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
 
         <Route path="/sponsorhome" element={<SponsorHome />} />
 
         <Route path="/newFighter" element={<RegisterFighter />} />
-
+        <Route path="/coment-fighter/:id" element={
+  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <RegisterComment />
+  </MuiPickersUtilsProvider>
+} />
         <Route path="/fighters" element={<Fighters />} />
         <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/delete-fighter/:id" element={<DeleteFighter />} />
         <Route path="/event/fighter/:id" element={<AllEventsFighter />} />
         <Route path="/formSponsor" element={<FormSponsor />} />
 
         <Route path="/login" element={<LogUser />} />
-
+        <Route path="/" element={<Landing />} />
         <Route path="/formuser" element={<FormUser />} />
       </Routes>
     </BrowserRouter>
