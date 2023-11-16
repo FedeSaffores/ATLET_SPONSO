@@ -33,10 +33,10 @@ function Home() {
               <li class="nav-item">
                 <a
                   class="nav-link"
-                  href="#"
+                  href="/home"
                   onClick={() => {
                     localStorage.removeItem("jwt");
-                    navigate(0);
+                    navigate('/home');
                   }}
                 >
                   <button class="btn bg-light"> Salir</button>

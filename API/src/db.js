@@ -5,7 +5,7 @@ const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 let sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/fedeproyect`,
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:5422/fedeproyect`,
   {
     logging: false,
     native: false,
